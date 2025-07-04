@@ -53,7 +53,6 @@ graph TD;
     C1 -.->|"Skip Connection"| D1
     
     D1 --> Output["출력 세그멘테이션 맵"]
-```
     C2 -- Skip --> D1
     C1 -- Skip --> D1
 

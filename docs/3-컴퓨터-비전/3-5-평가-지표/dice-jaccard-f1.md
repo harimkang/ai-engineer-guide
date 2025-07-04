@@ -1,13 +1,6 @@
 ---
-title: Dice, Jaccard, F| 지표        | 수식        - **모델 학습** – Dice Loss $= 1 - D$를 손실 함수로 채택해 포어그라운드 극소 픽셀 문제를 완화함.                                             | 범위      |
-| :-------- | :------------------------------------------------------ | :------ |
-| Jaccard J | $J = \frac{|A \cap B|}{|A \cup B|}$                     | [0,1]   |
-| Dice D    | $D = \frac{2|A \cap B|}{|A| + |B|}$                     | [0,1]   |
-| F1 (이진)   | $F1 = \frac{2 \cdot \text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$ | [0,1]   |
-
-- **관계**: $D = \frac{2J}{1+J}$ → Jaccard는 Dice를 통해 쉽게 변환 가능.
-    
-- **일반화**: Tversky 지수 $T = \frac{|A \cap B|}{|A \cap B| + \alpha|A \setminus B| + \beta|B \setminus A|}$는 $\alpha = \beta = 0.5$일 때 Dice, $\alpha = \beta = 1$일 때 Jaccard로 귀결됨.025-07-04
+title: Dice, Jaccard, F1
+date: 2025-07-04
 tags:
   - 컴퓨터
   - 비전
@@ -34,14 +27,13 @@ difficulty: medium
 
 | 지표        | 수식                                 | 범위      |
 | :-------- | :--------------------------------- | :------ |
-| Jaccard J | (\frac{                            | A\cap B |
-| Dice D    | (\frac{2                           | A\cap B |
-| F1 (이진)   | 2⋅Precision⋅RecallPrecision+Recall | [0,1]   |
+| Jaccard J | $J = \frac{\lvert A \cap B \rvert}{\lvert A \cup B \rvert}$ | [0,1] |
+| Dice D    | $D = \frac{2\lvert A \cap B \rvert}{\lvert A \rvert + \lvert B \rvert}$ | [0,1] |
+| F1 (이진)   | $F1 = \frac{2 \cdot \text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$ | [0,1]   |
 
-- **관계**: D=2J1+J → Jaccard는 Dice를 통해 쉽게 변환 가능.
+- **관계**: $D = \frac{2J}{1+J}$ → Jaccard는 Dice를 통해 쉽게 변환 가능.
     
-- **일반화**: Tversky 지수 T=∣A∩B∣∣A∩B∣+α∣A∖B∣+β∣B∖A∣는 α=β=0.5일 때 Dice, α=β=1일 때 Jaccard로 귀결됨.
-    
+- **일반화**: Tversky 지수 $T = \frac{\lvert A \cap B \rvert}{\lvert A \cap B \rvert + \alpha\lvert A \setminus B \rvert + \beta\lvert B \setminus A \rvert}$ 는 $\alpha = \beta = 0.5$일 때 Dice, $\alpha = \beta = 1$일 때 Jaccard로 귀결됨.
 
 ### 2.2 사용 맥락
 

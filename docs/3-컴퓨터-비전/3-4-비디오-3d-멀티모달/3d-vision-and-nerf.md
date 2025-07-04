@@ -1,7 +1,6 @@
 ---
 title: 3D 비전 & NeRF
-date: 2025-07-04
-tags:
+date: 2025
   - 컴퓨터
   - 비전
   - 3D
@@ -35,17 +34,17 @@ difficulty: hard
 ### 2.2 NeRF 구조와 학습 과정
 
 ```mermaid
-graph LR;
-    A[이미지 & 카메라 포즈] --> B[5D 좌표 샘플링];
-    B --> C[MLP f_θ];
-    C --> D[σ(밀도) & RGB(색)];
-    D --> E[볼륨 렌더링 적분];
-    E --> F[합성 이미지];
-    F --> G[재구성 손실 L];
-    G -->|역전파| C;
+graph LR
+    A["이미지 & 카메라 포즈"] --> B["5D 좌표 샘플링"]
+    B --> C["MLP f_θ"]
+    C --> D["σ(밀도) & RGB(색)"]
+    D --> E["볼륨 렌더링 적분"]
+    E --> F["합성 이미지"]
+    F --> G["재구성 손실 L"]
+    G -.->|"역전파"| C
 ```
 
-- **학습**: 레이마다 수십~수백 샘플을 MLP에 투입하여 색/밀도를 얻고, 터미네이션 공지수를 포함한 볼륨 렌더링 공식을 적분하여 픽셀 색을 예측함 ([arxiv.org](https://arxiv.org/abs/2003.08934?utm_source=chatgpt.com)).
+- **학습**: 레이마다 수십~수백 샘플을 MLP에 투입하여 색/밀도를 얻고, 터미네이션 공지수를 포함한 볼륨 렌더링 공식을 적분하여 픽셀 색을 예측함 ([arxiv.org](https://arxiv.org/abs/2003.08934?utm_source=chatgpt.com)).
     
 - **표현력 vs 속도**: 고해상도 장면은 수천 스텝의 레이 마칭이 필요해 느림. 이를 해결하기 위해 **Instant‑NGP**는 멀티해시 그리드와 CUDA 카운터 트릭으로 수 초 내 학습을 달성함 ([nvlabs.github.io](https://nvlabs.github.io/instant-ngp/?utm_source=chatgpt.com)).
     

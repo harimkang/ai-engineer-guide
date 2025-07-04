@@ -35,13 +35,13 @@ difficulty: medium
 ### 2.2 SlowFast – 이중 시간 해상도 경로
 
 ```mermaid
-graph TD;
-    A[Slow Pathway<br>(Low fps, Many Channels)] --> C[Fusion];
-    B[Fast Pathway<br>(High fps, Few Channels)] --> C;
-    C --> D[3D Head];
+graph TD
+    A["Slow Pathway<br/>(Low fps, Many Channels)"] --> C["Fusion"]
+    B["Fast Pathway<br/>(High fps, Few Channels)"] --> C
+    C --> D["3D Head"]
 ```
 
-- **Slow Path**: 8–32 fps 입력으로 정적 형태(appearance) 학습.
+- **Slow Path**: 8–32 fps 입력으로 정적 형태(appearance) 학습.
     
 - **Fast Path**: 8× 빠른 64–256 fps 입력, 채널 수 1/8로 경량화해 모션 세부 묘사([arxiv.org](https://arxiv.org/abs/1812.03982?utm_source=chatgpt.com)).
     

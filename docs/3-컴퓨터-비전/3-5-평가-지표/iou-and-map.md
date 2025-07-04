@@ -30,7 +30,7 @@ difficulty: medium
 
 |기호|수식|
 |:--|:--|
-|IoU|$\text{IoU} = \frac{|\text{Area}_{pred} \cap \text{Area}_{gt}|}{|\text{Area}_{pred} \cup \text{Area}_{gt}|}$|
+|IoU|$\text{IoU} = \frac{\lvert\text{Area}_{pred} \cap \text{Area}_{gt}\rvert}{\lvert\text{Area}_{pred} \cup \text{Area}_{gt}\rvert}$|
 
 - 0: 전혀 겹치지 않음, 1: 완벽 일치.
     

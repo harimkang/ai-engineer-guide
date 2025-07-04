@@ -1,5 +1,5 @@
 ---
-title: 멀티모달 모델 (CLIP, FLAVA, Flamingo)
+title: 멀티모달 모델 (CLIP, FLAVA, Flami, Flamingo)
 date: 2025-07-04
 tags:
   - 컴퓨터
@@ -35,14 +35,13 @@ difficulty: hard
     
 - **한계**: 어드버서리얼 공격 및 세부 위치(localization) 민감도가 낮다는 연구가 보고됨([arxiv.org](https://arxiv.org/abs/2402.07410?utm_source=chatgpt.com), [arxiv.org](https://arxiv.org/html/2410.02746v1?utm_source=chatgpt.com)).
     
-
 ### 2.2 FLAVA: 파운데이션 비전‑언어 모델
 
 ```mermaid
-graph TD;
-    A[Vision Encoder (ViT)] --> C[Shared Multimodal Transformer];
-    B[Text Encoder (BERT)] --> C;
-    C -->|MLM / MIM / ITM / Contrastive| D[Unified Embedding];
+graph TD
+    A["Vision Encoder (ViT)"] --> C["Shared Multimodal Transformer"]
+    B["Text Encoder (BERT)"] --> C
+    C -.->|"MLM / MIM / ITM / Contrastive"| D["Unified Embedding"]
 ```
 
 - **모듈**: (i) 개별 비전·언어 인코더, (ii) 초기 융합을 수행하는 Multimodal Transformer, (iii) 다중 손실(MLM, MIM, ITM, CLIP‑style)로 학습([arxiv.org](https://arxiv.org/abs/2112.04482?utm_source=chatgpt.com), [huggingface.co](https://huggingface.co/docs/transformers/en/model_doc/flava?utm_source=chatgpt.com)).

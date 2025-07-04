@@ -1,19 +1,7 @@
 ---
-title: 정확도, Top-K Error이진 분류 기준 **정확도**는
+title: 정확도, Top-K Error
 
-$$\texTop‑K 정확도는
-
-$$\text{Top-K Acc} = \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}[y_i \in \text{TopK}(\hat{p}_i)]$$
-
-로 정의되고, **Top‑K Error** $= 1 - \text{Top‑K Acc}$. ([scikit-learn.org](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.top_k_accuracy_score.html?utm_source=chatgpt.com))uracy} = \frac{TP + TN}{TP + FP + TN + FN}$$
-
-으로 참(T)·거짓(F), 양성(P)·음성(N)의 합계 대비 올바른 예측 횟수를 측정한다. ([en.wikipedia.org](https://en.wikipedia.org/wiki/Confusion_matrix?utm_source=chatgpt.com))
-
-다중 클래스에서는 샘플 수 $N$에 대해
-
-$$\text{Accuracy} = \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}[\hat{y}_i = y_i]$$
-
-와 같이 계산한다. ([developers.google.com](https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall?utm_source=chatgpt.com))-07-04
+date: 2025-07-04
 tags:
   - 컴퓨터
   - 비전
@@ -40,13 +28,13 @@ difficulty: easy
 
 이진 분류 기준 **정확도**는
 
-Accuracy=TP+TNTP+FP+TN+FN
+$$\text{Accuracy} = \frac{TP + TN}{TP + FP + TN + FN}$$
 
 으로 참(T)·거짓(F), 양성(P)·음성(N)의 합계 대비 올바른 예측 횟수를 측정한다. ([en.wikipedia.org](https://en.wikipedia.org/wiki/Confusion_matrix?utm_source=chatgpt.com))
 
 다중 클래스에서는 샘플 수 $N$에 대해
 
-Accuracy=1N∑i=1N1[y^i=yi]
+$$\text{Accuracy} = \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}[\hat{y}_i = y_i]$$
 
 와 같이 계산한다. ([developers.google.com](https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall?utm_source=chatgpt.com))
 
@@ -56,9 +44,9 @@ Accuracy=1N∑i=1N1[y^i=yi]
 
 Top‑K 정확도는
 
-Top-K  Acc=1N∑i=1N1[yi∈TopK(p^i)]
+$$\text{Top-K Acc} = \frac{1}{N}\sum_{i=1}^{N}\mathbf{1}[y_i \in \text{TopK}(\hat{p}_i)]$$
 
-로 정의되고, **Top‑K Error** $=1-\text{Top‑K Acc}$. ([scikit-learn.org](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.top_k_accuracy_score.html?utm_source=chatgpt.com))
+로 정의되고, **Top‑K Error** $= 1 - \text{Top‑K Accuracy}$ ([scikit-learn.org](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.top_k_accuracy_score.html?utm_source=chatgpt.com))
 
 - **K=1**일 때 Top‑1 정확도/에러는 일반 정확도/오류와 동일하다. ([stackoverflow.com](https://stackoverflow.com/questions/37668902/evaluation-calculate-top-n-accuracy-top-1-and-top-5?utm_source=chatgpt.com))
     
