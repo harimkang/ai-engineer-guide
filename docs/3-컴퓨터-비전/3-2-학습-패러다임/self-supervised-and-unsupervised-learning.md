@@ -27,19 +27,24 @@ difficulty: "hard"
 
 ```mermaid
 graph TD
-    subgraph 대조 학습 (SimCLR, MoCo)
-        A[이미지] --> B(Augmentation 1) --> C[인코더];
-        A --> D(Augmentation 2) --> E[인코더];
-        C -- 긍정 쌍 --> F{대조 손실<br>Contrastive Loss};
-        E -- 긍정 쌍 --> F;
-        G[다른 이미지들<br>(부정 쌍)] --> F;
+    subgraph Contrastive ["대조 학습 (SimCLR, MoCo)"]
+        A["이미지"] --> B["Augmentation 1"]
+        A --> D["Augmentation 2"]
+        B --> C["인코더"]
+        D --> E["인코더"]
+        C -.->|"긍정 쌍"| F["대조 손실<br>Contrastive Loss"]
+        E -.->|"긍정 쌍"| F
+        G["다른 이미지들<br>(부정 쌍)"] --> F
     end
-    subgraph 비-대조 학습 (BYOL)
-        H[이미지] --> I(Augmentation 1) --> J[온라인 인코더];
-        H --> K(Augmentation 2) --> L[타겟 인코더];
-        J -- 예측 --> M{유사도 손실};
-        L -- 타겟 --> M;
-        J -- EMA 업데이트 --> L;
+    
+    subgraph NonContrastive ["비-대조 학습 (BYOL)"]
+        H["이미지"] --> I["Augmentation 1"]
+        H --> K["Augmentation 2"]
+        I --> J["온라인 인코더"]
+        K --> L["타겟 인코더"]
+        J -.->|"예측"| M["유사도 손실"]
+        L -.->|"타겟"| M
+        J -.->|"EMA 업데이트"| L
     end
 ```
 

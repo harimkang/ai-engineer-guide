@@ -1,62 +1,136 @@
 ---
-title: "엣지·모바일 배포 (TFLite, CoreML)"
-date: "2025-07-02"
-tags: ["컴퓨터 비전", "배포", "최적화"]
-difficulty: "medium"
+title: 엣지·모바일 배포 (TFLite, CoreML)
+date: 2025-07-04
+tags:
+  - 컴퓨터
+  - 비전
+  - 배포
+  - 최적화
+  - Edge-AI
+  - TensorFlow-Lite
+  - Core-ML
+  - Mobile-Deployment
+difficulty: medium
 ---
 
 # 엣지·모바일 배포 (TFLite, CoreML)
 
 ## 1. 핵심 개념 (Core Concept)
 
-[해당 기술 주제의 핵심 개념을 1~3 문장으로 간결하게 요약합니다. 독자가 이 주제가 무엇인지 빠르게 파악할 수 있도록 돕습니다.]
+TensorFlow Lite(TFLite)와 Core ML은 각각 **Android·임베디드** 및 **iOS·macOS** 생태계를 대상으로 하는 경량 추론 런타임임. 두 프레임워크 모두 **모델 변환 → 최적화(양자화·프루닝) → 하드웨어 가속(NNAPI, GPU, ANE 등)** 단계를 거쳐 온‑디바이스 추론을 최소 지연·저전력으로 수행하도록 설계됨.
 
 ---
 
 ## 2. 상세 설명 (Detailed Explanation)
 
-[주제에 대한 깊이 있는 설명을 작성합니다. 필요한 경우 하위 섹션(###)을 사용하여 구조적으로 내용을 분리하고, 시각적 자료(Mermaid, 표, 이미지)를 적극적으로 활용합니다.]
+### 2.1 TensorFlow Lite 배포 파이프라인
 
-### 2.1 [소주제 1]
+- **모델 변환** – `tf.lite.TFLiteConverter.from_saved_model()`을 사용해 SavedModel을 `.tflite` 플랫버퍼로 직렬화.
+    
+- **양자화** – Post‑Training Integer/Float16 Quantization, Quantization‑Aware Training(QAT)를 지원하여 모델 크기를 최대 4× 줄이고 CPU·DSP‑NN 가속기 성능을 향상.
+    
+- **Delegate 아키텍처** – GPU, NNAPI, Hexagon, XNNPack, Metal(Apple) 등의 하드웨어 백엔드 선택 가능한 플러그인 구조.
+    
+- **LiteRT** – 2024년에 도입된 새로운 인터프리터 API로, 실행 그래프 캐시와 자동 스레딩으로 지연 시간을 추가 단축.
+    
+- **TFLite Micro** – < 256 KB Flash·RAM 환경을 대상으로 하는 포팅; CMSIS‑NN, ARC EM, ESP32 등 마이크로컨트롤러 전용 커널 포함.
+    
 
-[설명...]
+### 2.2 Core ML 배포 파이프라인
 
-### 2.2 [소주제 2]
+- **모델 변환** – `coremltools.convert()`로 PyTorch·TensorFlow 모델을 `.mlmodel` 생성, 빌드 시 `.mlmodelc`로 컴파일.
+    
+- **Compute Units** – `ANE` (Neural Engine), `GPU`, `CPU` 조합을 Xcode에서 선택; 런타임에서 자동 폴백 지원.
+    
+- **모델 최적화도구** – Palettization(클러스터 양자화), 8‑bit W8A8, 4‑bit Weight Quantization, 구조적 스파시티 적용 API.
+    
+- **ML Program/Neural Engine Back‑Deployment** – iOS 17 이후 ANE 코드 생성이 확장되어 비전‑프레임워크 없이도 Swift UI에서 호출 가능.
+    
 
-[설명...]
+### 2.3 TFLite vs Core ML 비교
+
+|특성|TensorFlow Lite|Core ML|
+|:--|:--|:--|
+|기본 타깃|Android, Linux, MCU|iOS, macOS, visionOS|
+|변환 툴|`TFLiteConverter`|`coremltools`|
+|기본 포맷|`.tflite` (FlatBuffer)|`.mlmodel`(protobuf) → `.mlmodelc`|
+|양자화|PTQ Int8/Float16, QAT|W8A8·W4A8, Palettization|
+|하드웨어 가속|NNAPI·GPU·Hexagon·EdgeTPU|ANE·GPU·CPU·Metal|
+|마이크로컨트롤러|**Lite Micro** 지원|공식 지원 없음|
+
+### 2.4 최적화 체크리스트
+
+1. **모델 구조 단순화** – Depthwise + Pointwise, MobileNet‑V3, EfficientNet‑Lite.
+    
+2. **연산 융합** – Conv+BN+ReLU, GEMM‑based Attention.
+    
+3. **하드웨어별 Delegate/Compute Unit 조정** – Android 12 NNAPI 1.3, iOS 17 ANE Batch 8.
+    
+4. **프로파일링** – TFLite Benchmark Tool, Xcode Metrics.
+    
 
 ---
 
 ## 3. 예시 (Example)
 
-[개념을 구체적으로 이해하는 데 도움이 되는 예시를 추가합니다. 코드, 다이어그램, 시나리오 등 다양한 형태가 될 수 있습니다.]
-
 ### 코드 예시 (Python)
 
-'''python
-# 관련 Python 코드 예시
-def example_function():
-    pass
-'''
+```python
+# TFLite Post‑Training Int8 Conversion
+import tensorflow as tf
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+converter.optimizations = [tf.lite.Optimize.DEFAULT]
+converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8]
+converter.representative_dataset = rep_dataset
+converter.inference_input_type = tf.uint8
+converter.inference_output_type = tf.uint8
+tflite_model = converter.convert()
+open("model_int8.tflite", "wb").write(tflite_model)
+```
+
+```python
+# PyTorch → Core ML 8‑bit Quantization
+import coremltools as ct
+import torch, torchvision
+model = torchvision.models.mobilenet_v3_small(pretrained=True).eval()
+example = torch.rand(1,3,224,224)
+traced = torch.jit.trace(model, example)
+mlmodel = ct.convert(traced, inputs=[ct.ImageType(shape=example.shape)], compute_units="ALL")
+mlmodel.save("mobilenetv3_w8a8.mlmodel")
+```
 
 ### 사용 사례 (Use Case)
 
-*   [언제, 왜 이 기술이 사용되는지에 대한 실제 시나리오]
+* **오프라인 번역 앱** – 한국어 ↔ 영어 Transformer를 TFLite Float16로 변환·GPU Delegate 사용 시 중급 휴대폰에서도 <100 ms 추론.  
+* **AR 실시간 메시 인식** – iPad Pro M4에서 Core ML ANE 실행, 4‑bit Quantization 모델을 통해 60 fps 유지.
 
 ---
 
 ## 4. 예상 면접 질문 (Potential Interview Questions)
 
-*   **Q. [이 주제와 관련된 핵심 질문]**
-    *   **A.** [질문에 대한 명확하고 간결한 답변]
-*   **Q. [첫 번째 질문에 대한 심화 질문 또는 꼬리 질문]**
-    *   **A.** [심화 질문에 대한 답변. 특정 조건이나 예외 상황을 포함할 수 있음]
-*   **Q. [A와 B의 차이점 또는 장단점을 묻는 비교 질문]**
-    *   **A.** [비교/대조 형식으로 답변. 표를 활용하면 효과적임]
+1. **TFLite PTQ와 QAT의 차이를 설명하고 성능 trade‑off를 논하라.**
+    
+2. **Core ML Weight Palettization이 ANE latency에 미치는 효과는?**
+    
+3. **Lite Micro가 MCU에서 Tensor Ops를 지원하기 위해 취하는 메모리 전략은?**
+    
+4. **NNAPI와 GPU Delegate를 동시에 사용할 수 없는 이유는?**
+    
+5. **`.mlmodel`을 `.mlmodelc`로 컴파일할 때 이루어지는 최적화 단계를 설명하라.**
+    
 
 ---
 
 ## 5. 더 읽어보기 (Further Reading)
 
-*   [공식 문서, 신뢰할 수 있는 블로그, 원 논문 등 참고할 만한 링크 목록]
-*   [링크 제목](https://example.com)
+- TensorFlow Lite Guide – [https://www.tensorflow.org/lite](https://www.tensorflow.org/lite)
+    
+- Google AI Edge LiteRT Docs – [https://ai.google.dev/edge](https://ai.google.dev/edge)
+    
+- Core ML Developer Site – [https://developer.apple.com/machine-learning/core-ml/](https://developer.apple.com/machine-learning/core-ml/)
+    
+- coremltools GitHub – [https://github.com/apple/coremltools](https://github.com/apple/coremltools)
+    
+- WWDC 2024 Session “Optimize Core ML Models”
+    
+- TFLite Micro GitHub – [https://github.com/tensorflow/tflite-micro](https://github.com/tensorflow/tflite-micro)

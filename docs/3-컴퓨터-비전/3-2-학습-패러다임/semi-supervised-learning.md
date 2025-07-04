@@ -39,14 +39,16 @@ difficulty: "medium"
 
 ```mermaid
 graph TD
-    subgraph Mean Teacher
-        A[입력 데이터] --> B(강한 Augmentation) --> C[학생 모델];
-        A --> D(약한 Augmentation) --> E[교사 모델];
-        C -- 예측값 --> F{일관성 손실 계산}; 
-        E -- 안정적인 예측값 (Pseudo-Label) --> F;
-        F -- 손실 전파 --> C;
-        C -- 가중치(θ) --> G(EMA 업데이트);
-        G --> E;
+    subgraph MeanTeacher ["Mean Teacher"]
+        A["입력 데이터"] --> B["강한 Augmentation"]
+        A --> D["약한 Augmentation"]
+        B --> C["학생 모델"]
+        D --> E["교사 모델"]
+        C -.->|"예측값"| F["일관성 손실 계산"]
+        E -.->|"안정적인 예측값 (Pseudo-Label)"| F
+        F -.->|"손실 전파"| C
+        C -.->|"가중치(θ)"| G["EMA 업데이트"]
+        G --> E
     end
 ```
 

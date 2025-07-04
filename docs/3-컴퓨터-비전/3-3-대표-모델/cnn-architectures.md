@@ -24,22 +24,23 @@ GoogLeNet은 2014년 ILSVRC(ImageNet Large Scale Visual Recognition Challenge)�
 
 ```mermaid
 graph TD;
-    subgraph Inception Module
-        Input --> Conv1x1;
-        Input --> Bottleneck3x3[1x1 Conv];
-        Input --> Bottleneck5x5[1x1 Conv];
-        Input --> MaxPool3x3[Max Pooling];
+    subgraph Inception ["Inception Module"]
+        Input["Input"] --> Conv1x1["1x1 Conv"]
+        Input --> Bottleneck3x3["1x1 Conv"]
+        Input --> Bottleneck5x5["1x1 Conv"] 
+        Input --> MaxPool3x3["Max Pooling"]
 
-        Bottleneck3x3 --> Conv3x3;
-        Bottleneck5x5 --> Conv5x5;
-        MaxPool3x3 --> Bottleneck_pool[1x1 Conv]
+        Bottleneck3x3 --> Conv3x3["3x3 Conv"]
+        Bottleneck5x5 --> Conv5x5["5x5 Conv"]
+        MaxPool3x3 --> Bottleneck_pool["1x1 Conv"]
 
-        Conv1x1 --> Concat;
-        Conv3x3 --> Concat;
-        Conv5x5 --> Concat;
-        Bottleneck_pool --> Concat;
+        Conv1x1 --> Concat["Concatenate"]
+        Conv3x3 --> Concat
+        Conv5x5 --> Concat
+        Bottleneck_pool --> Concat
+        
+        Concat --> Output["Output"]
     end
-    Concat --> Output;
 ```
 
 ### 2.2 ResNet (Residual Network)
@@ -51,11 +52,11 @@ ResNet은 2015년 ILSVRC에서 우승했으며, 네트워크가 깊어질수록 
 
 ```mermaid
 graph TD;
-    Input(x) --+--> Layer1;
-    Layer1 --> Activation1;
-    Activation1 --> Layer2;
-    Layer2 --+--> Output(F(x) + x);
-    Input -- Skip Connection --> Output;
+    Input["Input (x)"] --> Layer1["Layer 1"]
+    Layer1 --> Activation1["Activation"]
+    Activation1 --> Layer2["Layer 2"]
+    Layer2 --> Output["Output F(x) + x"]
+    Input -.->|"Skip Connection"| Output
 ```
 
 ### 2.3 DenseNet (Densely Connected Network)

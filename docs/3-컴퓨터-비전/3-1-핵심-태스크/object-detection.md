@@ -30,10 +30,10 @@ difficulty: "medium"
 
 ```mermaid
 graph TD;
-    A[이미지 입력] --> B(RPN: 영역 제안);
-    B --> C{후보 영역들 (RoIs)};
-    C --> D(분류 및 BBox 회귀);
-    D --> E[최종 탐지 결과];
+    A["이미지 입력"] --> B["RPN: 영역 제안"]
+    B --> C["후보 영역들 (RoIs)"]
+    C --> D["분류 및 BBox 회귀"]
+    D --> E["최종 탐지 결과"]
 ```
 
 ### 2.2 1-Stage Detectors (1단계 탐지기)
