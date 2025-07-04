@@ -1,2 +1,9 @@
 .env
 GEMINI.md
+
+
+
+# Ignore Smart Environment folder
+.smart-env
+.obsidian
+.DS_Store
