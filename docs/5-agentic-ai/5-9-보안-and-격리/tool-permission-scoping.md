@@ -65,7 +65,7 @@ sequenceDiagram
 
 ### 코드 예시 (Python Pseudo-code)
 
-'''python
+```python
 # 각 툴에 허용된 스코프를 정의
 # 실제 시스템에서는 외부 설정 파일이나 정책 엔진(예: OPA)으로 관리하는 것이 좋음
 TOOL_PERMISSIONS = {
@@ -116,7 +116,7 @@ def get_user_consent(user_id, message):
 # 에이전트의 호출 시뮬레이션
 execute_tool("user-123", "payment_processor", {"amount": 99.99})
 # execute_tool("user-123", "file_reader", {"path": "/etc/passwd"}) # -> PermissionError 발생
-'''
+```
 
 ---
 

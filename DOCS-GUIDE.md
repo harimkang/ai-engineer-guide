@@ -45,7 +45,7 @@
     | 내용 1 | 내용 2 | 내용 3 |
     | 내용 4 | 내용 5 | 내용 6 |
 
-3.  **이미지 (Image)**: 개념 설명에 이미지가 필수적인 경우, `docs/assets/images`에 이미지를 추가하고 아래와 같이 문서에 삽입합니다.
+3.  **이미지 (Image)**: 개념 설명에 이미지가 도움이 되는 경우, `docs/assets/images`에 이미지를 추가하고 아래와 같이 문서에 삽입합니다.
     ```markdown
     ![이미지 설명 텍스트](/docs/assets/images/sample-image.png)
     ```

@@ -50,7 +50,7 @@ AI 에이전트는 자율적으로 코드를 생성 및 실행하고, 외부 시
 
 [E2B](https://e2b.dev/)는 AI 에이전트를 위한 오픈소스 샌드박스 환경을 제공하는 도구입니다. 내부적으로 Firecracker 마이크로-VM을 사용하여 강력한 격리를 보장합니다.
 
-'''python
+```python
 # E2B SDK를 사용한 에이전트 샌드박싱 예시
 from e2b import Sandbox
 
@@ -73,7 +73,7 @@ print("--- Sandbox Output ---")
 print(stdout)
 print("--- Sandbox Error ---")
 print(stderr)
-'''
+```
 
 ### 사용 사례 (Use Case)
 
