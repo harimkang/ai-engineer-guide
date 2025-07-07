@@ -88,5 +88,5 @@ graph TD
 
 *   [LangChain Official Documentation](https://python.langchain.com/)
 *   [LangGraph Official Documentation](https://langchain-ai.github.io/langgraph/)
-*   [Google Agent Document](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document](https://www.anthropic.com/engineering/building-effective-agents)

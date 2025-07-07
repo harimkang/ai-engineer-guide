@@ -93,5 +93,5 @@ graph TD
 *   [Microsoft Semantic Kernel Documentation](https://learn.microsoft.com/en-us/semantic-kernel/overview/)
 *   [Marvin by Pydantic](https://www.askmarvin.ai/)
 *   [CrewAI Documentation](https://docs.crewai.com/)
-*   [Google Agent Document](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document](https://www.anthropic.com/engineering/building-effective-agents)

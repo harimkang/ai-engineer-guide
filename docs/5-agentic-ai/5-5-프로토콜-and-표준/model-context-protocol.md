@@ -86,4 +86,4 @@ graph TD
 
 *   [Model-Context-Protocol Official Site](https://modelcontextprotocol.io/)
 *   [Anthropic's Introduction to MCP](https://www.anthropic.com/news/model-context-protocol)
-*   [Anthropic Agent Document](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Anthropic Agent Document](https://www.anthropic.com/engineering/building-effective-agents)

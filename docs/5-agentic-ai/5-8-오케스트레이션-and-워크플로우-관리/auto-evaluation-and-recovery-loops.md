@@ -94,5 +94,5 @@ graph TD
 ## 5. 더 읽어보기 (Further Reading)
 
 *   [Reflexion: Language Agents with Verbal Reinforcement Learning (Paper)](https://arxiv.org/abs/2303.11366)
-*   [Anthropic Agent Document (Evaluator-Optimizer)](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
-*   [Google Agent Document (Feedback Loops)](/docs/assets/files/agentic-ai/google_agent.md)
+*   [Anthropic Agent Document (Evaluator-Optimizer)](https://www.anthropic.com/engineering/building-effective-agents)
+*   [Google Agent Document (Feedback Loops)](https://www.kaggle.com/whitepaper-agent-companion)

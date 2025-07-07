@@ -85,4 +85,4 @@ difficulty: "medium"
 
 *   [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 *   [NVIDIA NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails)
-*   [Anthropic Agent Document (Parallelization for Guardrails)](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Anthropic Agent Document (Parallelization for Guardrails)](https://www.anthropic.com/engineering/building-effective-agents)

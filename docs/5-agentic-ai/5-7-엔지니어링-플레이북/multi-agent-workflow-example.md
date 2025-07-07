@@ -152,5 +152,5 @@ print(final_state['messages'][-1].content)
 ## 5. 더 읽어보기 (Further Reading)
 
 *   [LangGraph Documentation](https://langchain-ai.github.io/langgraph/)
-*   [Google Agent Document (Multi-Agent Design Patterns)](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document (Orchestrator-workers)](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document (Multi-Agent Design Patterns)](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document (Orchestrator-workers)](https://www.anthropic.com/engineering/building-effective-agents)

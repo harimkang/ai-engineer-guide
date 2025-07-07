@@ -78,5 +78,5 @@ graph TD
 
 *   [LlamaIndex Official Documentation](https://docs.llamaindex.ai/en/stable/)
 *   [What is RAG? by LlamaIndex](https://www.llamaindex.ai/blog/what-is-rag)
-*   [Google Agent Document](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document](https://www.anthropic.com/engineering/building-effective-agents)

@@ -114,4 +114,4 @@ graph TD
 
 *   [OpenAI Function Calling](https://platform.openai.com/docs/guides/function-calling)
 *   [JSON-RPC 2.0 Specification](https://www.jsonrpc.org/specification)
-*   [Anthropic Agent Document (Appendix 2: Prompt Engineering your Tools)](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Anthropic Agent Document (Appendix 2: Prompt Engineering your Tools)](https://www.anthropic.com/engineering/building-effective-agents)

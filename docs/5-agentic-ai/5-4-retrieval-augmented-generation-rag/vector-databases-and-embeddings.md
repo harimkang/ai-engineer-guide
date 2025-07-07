@@ -75,5 +75,5 @@ LLM은 텍스트를 직접 이해하는 것이 아니라, 텍스트에 담긴 �
 
 *   [What is a Vector Database? by Milvus](https://milvus.io/docs/overview.md)
 *   [Google AI Explains: Vector Embeddings](https://www.youtube.com/watch?v=y_2rVq_g-wE)
-*   [Google Agent Document](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document](https://www.anthropic.com/engineering/building-effective-agents)

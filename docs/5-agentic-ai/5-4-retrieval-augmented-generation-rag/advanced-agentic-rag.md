@@ -88,5 +88,5 @@ graph TD
 
 *   [7 Advanced RAG Techniques by Anyscale](https://www.anyscale.com/blog/a-comprehensive-guide-for-building-rag-with-llms-part-1)
 *   [IBM Research: What is Agentic RAG?](https://research.ibm.com/blog/what-is-agentic-rag)
-*   [Google Agent Document](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document](https://www.anthropic.com/engineering/building-effective-agents)

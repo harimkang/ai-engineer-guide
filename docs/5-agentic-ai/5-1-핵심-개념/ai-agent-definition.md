@@ -84,5 +84,5 @@ graph TD
 *   [LLM Powered Autonomous Agents (Lilian Weng)](https://lilianweng.github.io/posts/2023-06-23-agent/)
 *   [LangChain Agents Documentation](https://python.langchain.com/docs/modules/agents/)
 *   [Building LLM applications for production (Chip Huyen)](https://huyenchip.com/2023/08/11/llm-stack.html#agentic_applications)
-*   [Google Agent Document](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document](https://www.anthropic.com/engineering/building-effective-agents)

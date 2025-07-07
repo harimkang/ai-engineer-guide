@@ -105,4 +105,4 @@ graph TD
 *   [LangSmith Documentation](https://docs.smith.langchain.com/)
 *   [PromptLayer Documentation](https://promptlayer.com/docs)
 *   [OpenTelemetry Documentation](https://opentelemetry.io/docs/)
-*   [Google Agent Document (AgentOps)](/docs/assets/files/agentic-ai/google_agent.md)
+*   [Google Agent Document (AgentOps)](https://www.kaggle.com/whitepaper-agent-companion)

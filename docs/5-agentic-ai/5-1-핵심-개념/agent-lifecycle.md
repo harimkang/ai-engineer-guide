@@ -107,5 +107,5 @@ graph TD
 *   [ReAct: Synergizing Reasoning and Acting in Language Models (Paper)](https://arxiv.org/abs/2210.03629)
 *   [Self-Correction and Self-Critique for Large Language Models (Blog)](https://txt.cohere.com/self-correction-and-self-critique-for-llms/)
 *   [Agentic Design Patterns (Blog)](https://www.intercom.com/blog/videos/agentic-design-patterns/)
-*   [Google Agent Document](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document](https://www.anthropic.com/engineering/building-effective-agents)

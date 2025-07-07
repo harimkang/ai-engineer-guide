@@ -126,4 +126,4 @@ os.remove(file_path)
 ## 5. 더 읽어보기 (Further Reading)
 
 *   [LangChain QA with RAG](https://python.langchain.com/docs/use_cases/question_answering/)
-*   [Anthropic Agent Document (Start with simple patterns)](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Anthropic Agent Document (Start with simple patterns)](https://www.anthropic.com/engineering/building-effective-agents)

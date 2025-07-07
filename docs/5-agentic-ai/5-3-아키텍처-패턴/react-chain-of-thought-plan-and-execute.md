@@ -91,5 +91,5 @@ ReAct (Reason + Act)는 CoT의 한계를 극복하기 위해, 추론과 행동�
 
 *   [ReAct: Synergizing Reasoning and Acting in Language Models (Paper)](https://arxiv.org/abs/2210.03629)
 *   [Chain-of-Thought Prompting Elicits Reasoning in Large Language Models (Paper)](https://arxiv.org/abs/2201.11903)
-*   [Google Agent Document](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document](https://www.anthropic.com/engineering/building-effective-agents)

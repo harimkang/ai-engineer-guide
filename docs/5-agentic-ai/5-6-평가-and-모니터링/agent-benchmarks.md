@@ -84,4 +84,4 @@ Google 백서에서 강조하듯, 공개 벤치마크는 유용한 출발점이�
 *   [Chatbot Arena Leaderboard](https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard)
 *   [AgentBench: Evaluating LLMs as Agents (Paper)](https://arxiv.org/abs/2308.03688)
 *   [AlpacaEval Leaderboard](https://huggingface.co/spaces/tatsu-lab/alpaca_eval)
-*   [Google Agent Document (Agent Evaluation)](/docs/assets/files/agentic-ai/google_agent.md)
+*   [Google Agent Document (Agent Evaluation)](https://www.kaggle.com/whitepaper-agent-companion)

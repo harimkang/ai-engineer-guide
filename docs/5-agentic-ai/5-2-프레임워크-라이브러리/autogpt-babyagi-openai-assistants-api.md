@@ -80,5 +80,5 @@ Google의 "Agents Companions V2" 문서에서 언급된 **AgentOps**의 관점�
 *   [OpenAI Assistants API Documentation](https://platform.openai.com/docs/assistants/overview)
 *   [AutoGPT GitHub Repository](https://github.com/Significant-Gravitas/AutoGPT)
 *   [BabyAGI GitHub Repository](https://github.com/yoheinakajima/babyagi)
-*   [Google Agent Document](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document](https://www.anthropic.com/engineering/building-effective-agents)

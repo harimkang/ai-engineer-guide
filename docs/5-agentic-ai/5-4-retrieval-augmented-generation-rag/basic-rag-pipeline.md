@@ -90,5 +90,5 @@ Generator는 최종적으로 선별된 문서(Context)와 사용자의 원본 �
 ## 5. 더 읽어보기 (Further Reading)
 
 *   [What is RAG? by Pinecone](https://www.pinecone.io/learn/retrieval-augmented-generation/)
-*   [Google Agent Document](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document](https://www.anthropic.com/engineering/building-effective-agents)

@@ -94,6 +94,6 @@ graph TD
 
 ## 5. 더 읽어보기 (Further Reading)
 
-*   [Google Agent Document (Multi-Agent Design Patterns)](/docs/assets/files/agentic-ai/google_agent.md)
-*   [Anthropic Agent Document (Orchestrator-workers)](/docs/assets/files/agentic-ai/anthropic_building_effective_ai_agents.md)
+*   [Google Agent Document (Multi-Agent Design Patterns)](https://www.kaggle.com/whitepaper-agent-companion)
+*   [Anthropic Agent Document (Orchestrator-workers)](https://www.anthropic.com/engineering/building-effective-agents)
 *   [LangGraph for Multi-Agent Workflows](https://langchain-ai.github.io/langgraph/concepts/multi_agent/)

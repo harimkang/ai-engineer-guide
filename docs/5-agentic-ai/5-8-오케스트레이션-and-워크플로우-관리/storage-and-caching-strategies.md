@@ -89,4 +89,4 @@ graph TD
 
 *   [LLM Powered Autonomous Agents - Part II: Memory (Lilian Weng)](https://lilianweng.github.io/posts/2023-06-23-agent/#memory)
 *   [LangChain Caching Documentation](https://python.langchain.com/docs/modules/model_io/llms/llm_caching)
-*   [Google Agent Document (Memory Management)](/docs/assets/files/agentic-ai/google_agent.md)
+*   [Google Agent Document (Memory Management)](https://www.kaggle.com/whitepaper-agent-companion)

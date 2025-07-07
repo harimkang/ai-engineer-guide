@@ -78,4 +78,4 @@ GPU는 비싼 자원이므로 효율적으로 사용하는 것이 매우 중요�
 
 *   [vLLM Project Documentation](https://docs.vllm.ai/en/latest/)
 *   [Serverless GPUs: The next frontier of computing (Modal Blog)](https://modal.com/blog/serverless-gpus)
-*   [Google Agent Document (Deployment Considerations)](/docs/assets/files/agentic-ai/google_agent.md)
+*   [Google Agent Document (Deployment Considerations)](https://www.kaggle.com/whitepaper-agent-companion)
