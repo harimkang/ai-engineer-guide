@@ -33,11 +33,11 @@ difficulty: "easy"
 
 ### 코드 예시 (Python)
 
-'''python
+```python
 # 관련 Python 코드 예시
 def example_function():
     pass
-'''
+```
 
 ### 사용 사례 (Use Case)
 
