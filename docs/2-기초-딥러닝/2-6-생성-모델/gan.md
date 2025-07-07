@@ -41,7 +41,7 @@ GAN은 학습이 불안정하고 모드 붕괴(Mode Collapse)와 같은 문제�
 ## 3. 예시 (Example)
 
 ### 코드 예시 (Python)
-'''python
+```python
 # 간단한 GAN 구현 예시 (PyTorch)
 import torch
 import torch.nn as nn
@@ -119,7 +119,7 @@ disc_optimizer = optim.Adam(disc.parameters(), lr=lr)
 # d_loss = d_loss_real + d_loss_fake
 # d_loss.backward()
 # disc_optimizer.step()
-'''
+```
 
 ### 사용 사례 (Use Case)
 *   **이미지 생성**: 존재하지 않는 사람 얼굴, 풍경, 사물 등 사실적인 이미지를 생성합니다.

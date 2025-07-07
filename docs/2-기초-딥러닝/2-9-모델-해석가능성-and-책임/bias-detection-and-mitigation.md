@@ -58,7 +58,7 @@ Bias 완화 기법은 데이터 처리, 모델 학습, 후처리 단계에 적�
 
 Microsoft의 `Fairlearn`은 Bias 탐지 및 완화 기능을 제공하는 대표적인 Python 라이브러리입니다.
 
-'''python
+```python
 from fairlearn.metrics import MetricFrame, demographic_parity_difference
 from fairlearn.reductions import ExponentiatedGradient, DemographicParity
 
@@ -87,7 +87,7 @@ print(metric_frame.by_group)
 mitigator = ExponentiatedGradient(LogisticRegression(), DemographicParity())
 mitigator.fit(X_train, y_train, sensitive_features=s_train)
 y_pred_mitigated = mitigator.predict(X_test)
-'''
+```
 
 ### 사용 사례 (Use Case)
 

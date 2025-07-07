@@ -66,7 +66,7 @@ graph TD
 
 ImageNet으로 미리 학습된 ResNet18 모델을 가져와, 새로운 분류 태스크에 맞게 파인튜닝하는 예시.
 
-'''python
+```python
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -98,7 +98,7 @@ optimizer = optim.Adam(params_to_update, lr=0.001)
 
 # 이후 학습 코드는 일반적인 PyTorch 학습 루프와 동일
 # ... (데이터 로더, 학습 루프 등)
-'''
+```
 
 ---
 

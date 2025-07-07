@@ -129,7 +129,7 @@ trainer.train()
     
 - TensorFlow Model Optimization Guide – Quantization ([tensorflow.org](https://www.tensorflow.org/model_optimization/guide/quantization/training?utm_source=chatgpt.com))
     
-- PyTorch Tutorial – Pruning �� torch.nn.utils.prune ([docs.pytorch.org](https://docs.pytorch.org/tutorials/intermediate/pruning_tutorial.html?utm_source=chatgpt.com))
+- PyTorch Tutorial – Pruning torch.nn.utils.prune ([docs.pytorch.org](https://docs.pytorch.org/tutorials/intermediate/pruning_tutorial.html?utm_source=chatgpt.com))
     
 - Intel OpenVINO POT User Guide ([community.intel.com](https://community.intel.com/t5/Blogs/Tech-Innovation/Artificial-Intelligence-AI/Model-Optimization-Pipeline-for-Inference-Speedup-with-OpenVINO/post/1335755?utm_source=chatgpt.com))
     

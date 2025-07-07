@@ -49,7 +49,7 @@ He 초기화는 ReLU 계열의 활성화 함수에 특화된 방법으로, Xavie
 
 ### 코드 예시 (PyTorch)
 
-'''python
+```python
 import torch.nn as nn
 
 # 선형 레이어 정의
@@ -61,7 +61,7 @@ nn.init.xavier_uniform_(layer_sigmoid.weight)
 
 # He 초기화 (ReLU와 함께 사용)
 nn.init.kaiming_uniform_(layer_relu.weight)
-'''
+```
 
 ---
 

@@ -42,7 +42,7 @@ GAT는 어텐션 메커니즘을 그래프에 도입하여, 각 노드가 이웃
 ## 3. 예시 (Example)
 
 ### 코드 예시 (Python)
-'''python
+```python
 # PyTorch Geometric을 이용한 GCN, GraphSAGE, GAT 구현 예시
 import torch
 import torch.nn.functional as F
@@ -114,7 +114,7 @@ class GAT(torch.nn.Module):
 # correct = float(pred[data.test_mask].eq(data.y[data.test_mask]).sum().item())
 # acc = correct / data.test_mask.sum().item()
 # print(f'Accuracy: {acc:.4f}')
-'''
+```
 
 ### 사용 사례 (Use Case)
 *   **노드 분류 (Node Classification)**: 소셜 네트워크에서 사용자의 관심사 예측, 논문 인용 네트워크에서 논문의 주제 분류.

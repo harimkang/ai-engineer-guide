@@ -34,7 +34,7 @@ SDXL은 Stable Diffusion의 개선된 버전으로, 더 큰 모델 크기와 향
 ## 3. 예시 (Example)
 
 ### 코드 예시 (Python)
-'''python
+```python
 # Stable Diffusion 모델을 사용하여 이미지 생성 예시 (Hugging Face Diffusers 라이브러리)
 from diffusers import DiffusionPipeline
 
@@ -50,7 +50,7 @@ image = pipeline(prompt).images[0]
 
 # 이미지 저장
 image.save("astronaut_horse.png")
-'''
+```
 
 ### 사용 사례 (Use Case)
 *   **텍스트-이미지 생성**: 주어진 텍스트 설명에 따라 이미지를 생성합니다. (예: "푸른 하늘 아래 평화로운 시골 풍경")

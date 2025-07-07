@@ -62,7 +62,7 @@ graph TD
 
 PyTorch의 `optim.lr_scheduler`를 사용한 워밍업과 코사인 어닐링 스케줄러 조합 예시.
 
-'''python
+```python
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -96,7 +96,7 @@ for epoch in range(total_epochs):
     current_lr = optimizer.param_groups[0]['lr']
     print(f"Epoch {epoch+1}, Current LR: {current_lr}")
 
-'''
+```
 *참고: PyTorch 1.10.0 이상에서는 `ChainedScheduler`를 사용하여 두 스케줄러를 더 쉽게 연결할 수 있음.*
 
 ---

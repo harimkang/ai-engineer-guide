@@ -20,7 +20,7 @@ PyTorch는 유연성과 Python 친화적인 API 덕분에 널리 사용되는 �
 1.  **`.to(device)`를 생활화**: 텐서와 모델을 올바른 장치(CPU/GPU)로 보내는 것은 필수. 코드 상단에 `device = "cuda" if torch.cuda.is_available() else "cpu"`를 정의하고, 모델과 데이터 텐서에 `.to(device)`를 일관되게 적용해야 함.
 2.  **`torch.no_grad()` 사용**: 추론(inference) 또는 검증(validation) 시에는 그래디언트 계산이 필요 없으므로, `with torch.no_grad():` 컨텍스트 매니저로 감싸서 불필요한 메모리 사용과 연산을 방지해야 함.
 3.  **재현성을 위한 시드 고정**: 실험의 재현성을 보장하기 위해 Python, NumPy, PyTorch의 무작위 시드를 고정하는 함수를 만들어 사용함.
-    '''python
+    ```python
     import torch
     import numpy as np
     import random
@@ -30,7 +30,7 @@ PyTorch는 유연성과 Python 친화적인 API 덕분에 널리 사용되는 �
         np.random.seed(seed)
         torch.manual_seed(seed)
         torch.cuda.manual_seed_all(seed)
-    '''
+    ```
 4.  **`nn.Module`을 상속받아 모델 클래스화**: 간단한 `nn.Sequential`도 유용하지만, 복잡한 모델이나 커스텀 로직이 필요할 경우 `nn.Module`을 상속받아 `__init__`에서 레이어를 정의하고 `forward` 메서드에서 데이터의 흐름을 구현하는 것이 표준적인 방식임.
 5.  **메모리 관리**:
     *   `del` 키워드로 더 이상 사용하지 않는 변수(특히 큰 텐서)를 명시적으로 삭제하고, `torch.cuda.empty_cache()`를 호출하여 캐시된 메모리를 해제할 수 있음 (단, `empty_cache`는 성능 저하를 유발할 수 있으므로 꼭 필요할 때만 사용).
@@ -70,7 +70,7 @@ graph TD
 
 ### PyTorch 학습 보일러플레이트 코드
 
-'''python
+```python
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
@@ -146,7 +146,7 @@ for epoch in range(EPOCHS):
 
 # --- 5. 모델 저장 (선택) ---
 # torch.save(model.state_dict(), "model.pth")
-'''
+```
 
 ---
 

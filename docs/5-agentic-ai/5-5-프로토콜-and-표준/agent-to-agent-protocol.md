@@ -1,11 +1,11 @@
 ---
-title: "에이전트-투-에이전트 (A2A) 프로토콜"
+title: "Agent-to-Agent (A2A) Protocol"
 date: "2025-07-02"
 tags: ["Agentic AI", "프로토콜"]
 difficulty: "medium"
 ---
 
-# 에이전트-투-에이전트 (A2A) 프로토콜
+# Agent-to-Agent (A2A) Protocol
 
 ## 1. 핵심 개념 (Core Concept)
 
@@ -33,11 +33,11 @@ difficulty: "medium"
 
 ### 코드 예시 (Python)
 
-'''python
+```python
 # 관련 Python 코드 예시
 def example_function():
     pass
-'''
+```
 
 ### 사용 사례 (Use Case)
 

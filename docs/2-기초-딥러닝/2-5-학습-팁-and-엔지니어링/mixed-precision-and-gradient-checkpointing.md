@@ -80,7 +80,7 @@ graph TD
 
 혼합 정밀도와 그라디언트 체크포인팅을 함께 적용하는 예시.
 
-'''python
+```python
 import torch
 import torch.nn as nn
 from torch.utils.checkpoint import checkpoint # 그라디언트 체크포인팅
@@ -129,7 +129,7 @@ for epoch in range(5):
     scaler.update()
 
     print(f"Epoch {epoch+1}, Loss: {loss.item()}")
-'''
+```
 
 ---
 

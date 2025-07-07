@@ -29,7 +29,7 @@ CLIP-Score는 텍스트-이미지 생성 모델에서 생성된 이미지가 주
 ## 3. 예시 (Example)
 
 ### 코드 예시 (Python)
-'''python
+```python
 # FID 계산 예시 (PyTorch 및 TorchMetrics 라이브러리 사용)
 import torch
 from torchmetrics.image.fid import FrechetInceptionDistance
@@ -56,7 +56,7 @@ fid.update(generated_images_uint8, real=False)
 # FID 값 계산
 fid_score = fid.compute()
 print(f"FID Score: {fid_score}")
-'''
+```
 
 ### 사용 사례 (Use Case)
 *   **생성 모델 성능 비교**: 다양한 생성 모델(GAN, VAE, Diffusion Model 등)의 이미지 생성 품질을 객관적으로 비교하고 순위를 매깁니다.

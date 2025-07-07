@@ -37,7 +37,7 @@ difficulty: "medium"
 ## 3. 예시 (Example)
 
 ### 코드 예시 (Python)
-'''python
+```python
 # PyTorch Geometric을 이용한 그래프 풀링 및 읽기 연산 예시
 import torch
 import torch.nn.functional as F
@@ -92,7 +92,7 @@ model = GNNWithPoolingAndReadout(in_channels=16, hidden_channels=32, out_channel
 graph_representation = model(data)
 
 print("Graph Representation (after pooling and readout):\n", graph_representation)
-'''
+```
 
 ### 사용 사례 (Use Case)
 *   **그래프 분류**: 분자 구조의 독성 예측, 소셜 네트워크의 사기 그래프 탐지.

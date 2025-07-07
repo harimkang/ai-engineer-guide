@@ -42,7 +42,7 @@ Optuna는 Python 기반의 자동 하이퍼파라미터 최적화 프레임워�
 
 PyTorch 모델의 학습률(learning rate)과 드롭아웃 비율(dropout rate)을 Optuna를 사용하여 탐색하는 예시.
 
-'''python
+```python
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -101,7 +101,7 @@ print(f"  Value: {trial.value}")
 print("  Params: ")
 for key, value in trial.params.items():
     print(f"    {key}: {value}")
-'''
+```
 
 ---
 

@@ -59,7 +59,7 @@ SiLU는 Swish 함수라고도 불리며, 입력값에 시그모이드(Sigmoid) �
 
 ### 코드 예시 (Python)
 
-'''python
+```python
 import torch
 import torch.nn.functional as F
 import numpy as np
@@ -84,7 +84,7 @@ plt.ylabel("Output")
 plt.grid(True)
 plt.legend()
 plt.show()
-'''
+```
 
 ---
 

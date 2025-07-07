@@ -35,7 +35,7 @@ difficulty: "medium"
 ## 3. 예시 (Example)
 
 ### 코드 예시 (Python)
-'''python
+```python
 # PyTorch Geometric을 이용한 간단한 GCN 기반 추천 시스템 예시
 import torch
 import torch.nn.functional as F
@@ -85,7 +85,7 @@ item_5_embedding = node_embeddings[5]
 
 similarity = torch.dot(user_0_embedding, item_5_embedding)
 print(f"Similarity between User 0 and Item 5: {similarity.item():.4f}")
-'''
+```
 
 ### 사용 사례 (Use Case)
 *   **영화/음악/상품 추천**: 사용자 선호도와 아이템 특징을 그래프로 모델링하여 개인화된 추천을 제공합니다.
