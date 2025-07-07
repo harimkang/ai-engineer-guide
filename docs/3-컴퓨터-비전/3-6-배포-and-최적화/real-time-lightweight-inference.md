@@ -39,10 +39,10 @@ TensorRT INT4 양자화와 스마트폰·PC SoC에 내장된 NPU(Neural Proc
 
 |SoC|NPU TOPS*|특이점|대표 지연|비고|
 |---|---|---|---|---|
-|**Snapdragon X Elite**|45 TOPS|Hexagon VX ‑ INT4/INT8 ISA|이미지 20장 < 20 초 생성 데모|Copilot+ 요구 사양 충족 ([anandtech.com](https://www.anandtech.com/show/21445/qualcomm-snapdragon-x-architecture-deep-dive?utm_source=chatgpt.com))|
-|**Intel Core Ultra Series 2**|48 TOPS|Xe‑Link NPU, OpenVINO 런타임|Dynamo AI 가드레일 < 10 ms|5.18× Ryzen 대비 추론 가속 ([intel.com](https://www.intel.com/content/www/us/en/ai-pc/business-showcase.html), [edc.intel.com](https://edc.intel.com/content/www/us/en/products/performance/benchmarks/intel-core-ultra-processors-series-2/?utm_source=chatgpt.com))|
+|**Snapdragon X Elite**|45 TOPS|Hexagon VX ‑ INT4/INT8 ISA|이미지 20장 < 20 초 생성 데모|Copilot+ 요구 사양 충족 ([anandtech.com](https://www.anandtech.com/show/21445/qualcomm-snapdragon-x-architecture-deep-dive))|
+|**Intel Core Ultra Series 2**|48 TOPS|Xe‑Link NPU, OpenVINO 런타임|Dynamo AI 가드레일 < 10 ms|5.18× Ryzen 대비 추론 가속 ([intel.com](https://www.intel.com/content/www/us/en/ai-pc/business-showcase.html), [edc.intel.com](https://edc.intel.com/content/www/us/en/products/performance/benchmarks/intel-core-ultra-processors-series-2/))|
 |**Apple M1 Max ANE**|18 TOPS|16‑core ANE, Unified Memory|Llama‑3.1‑8B 33 tokens/s|Core ML 최적화 가이드 ([machinelearning.apple.com](https://machinelearning.apple.com/research/core-ml-on-device-llama))|
-|**Samsung Exynos 2400**|45 TOPS|5‑core NPU v3|실시간 비전 < 30 ms|4 nm LP node ([semiconductor.samsung.com](https://semiconductor.samsung.com/processor/mobile-processor/exynos-2400/?utm_source=chatgpt.com))|
+|**Samsung Exynos 2400**|45 TOPS|5‑core NPU v3|실시간 비전 < 30 ms|4 nm LP node ([semiconductor.samsung.com](https://semiconductor.samsung.com/processor/mobile-processor/exynos-2400/))|
 
 *TOPS(Trillions Of Operations Per Second)는 INT8 기준 지표이며, INT4 실행 시 연산량이 절반이므로 실효 TOPS는 2× 올라감.
 
@@ -137,4 +137,4 @@ res = compiled([input_int4])[0]
     
 - Apple, _On‑Device Llama with Core ML_ (2024) ([machinelearning.apple.com](https://machinelearning.apple.com/research/core-ml-on-device-llama))
     
-- AnandTech, _Snapdragon X Architecture Deep Dive_ (2024) ([anandtech.com](https://www.anandtech.com/show/21445/qualcomm-snapdragon-x-architecture-deep-dive?utm_source=chatgpt.com))
+- AnandTech, _Snapdragon X Architecture Deep Dive_ (2024) ([anandtech.com](https://www.anandtech.com/show/21445/qualcomm-snapdragon-x-architecture-deep-dive))
