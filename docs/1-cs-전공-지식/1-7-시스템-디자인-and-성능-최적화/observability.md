@@ -30,8 +30,6 @@ graph TD
     A -- "특정 이벤트의 상세 내용" --> D{문제의<br>근본 원인<br>분석};
     B -- "시스템의 전반적 상태" --> D;
     C -- "요청의 전체 흐름" --> D;
-
-    style D fill:#ccf,stroke:#333,stroke-width:2px
 ```
 
 #### 가. 로그 (Logs): "무슨 일이 있었는가?"

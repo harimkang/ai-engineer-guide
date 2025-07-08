@@ -82,13 +82,6 @@ graph TD;
     A -- Tensor Parallelism --> B;
     C -- Tensor Parallelism --> D;
     B -- Pipeline Parallelism --> C;
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#f9f,stroke:#333,stroke-width:2px
-    style C fill:#ccf,stroke:#333,stroke-width:2px
-    style D fill:#ccf,stroke:#333,stroke-width:2px
-
-    linkStyle 2 stroke:red,stroke-width:2px,color:red;
 ```
 *위 다이어그램은 2개의 노드에서 파이프라인 병렬주의와 텐서 병렬주의를 함께 사용하는 예시를 보여줍니다. 전체적으로는 데이터 병렬주의를 적용하여 여러 데이터 배치를 동시에 처리할 수 있습니다.*
 

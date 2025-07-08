@@ -55,10 +55,6 @@ graph TD
 
     Gopher --> Performance
     Chinchilla --> Performance
-
-    style Chinchilla fill:#c8e6c9,stroke:#4caf50,stroke-width:2px
-    style Gopher fill:#ffcdd2,stroke:#f44336,stroke-width:2px
-    style Performance fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
 ```
 
 ### 2.3 파라미터와 연산량(FLOPs)의 관계

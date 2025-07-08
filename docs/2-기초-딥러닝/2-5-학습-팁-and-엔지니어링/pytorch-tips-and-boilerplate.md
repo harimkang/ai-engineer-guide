@@ -42,26 +42,26 @@ PyTorch는 유연성과 Python 친화적인 API 덕분에 널리 사용되는 �
 
 ```mermaid
 graph TD
-    A[시작] --> B{설정 & 초기화};
-    B --> C[데이터 로딩 (DataLoader)];
-    C --> D[모델, 손실함수, 옵티마이저 정의];
-    D --> E{학습 루프 (Epochs)};
-    E --> F{Train Loop (Batches)};
-    F --> G[데이터 to Device];
-    G --> H[옵티마이저 초기화 (zero_grad)];
-    H --> I[순전파 (Forward Pass)];
-    I --> J[손실 계산];
-    J --> K[역전파 (Backward Pass)];
-    K --> L[가중치 업데이트 (optimizer.step)];
-    L --> F;
-    F -- End of Batches --> M{Validation Loop (Batches)};
-    M -- with torch.no_grad() --> N[데이터 to Device];
-    N --> O[순전파 (Forward Pass)];
-    O --> P[손실/성능 지표 계산];
-    P --> M;
-    M -- End of Batches --> Q[Epoch 결과 출력 및 저장];
-    Q --> E;
-    E -- End of Epochs --> R[종료];
+    A[시작] --> B{설정 & 초기화}
+    B --> C[데이터 로딩 DataLoader]
+    C --> D[모델, 손실함수, 옵티마이저 정의]
+    D --> E{학습 루프 Epochs}
+    E --> F{Train Loop Batches}
+    F --> G[데이터 to Device]
+    G --> H[옵티마이저 초기화 zero_grad]
+    H --> I[순전파 Forward Pass]
+    I --> J[손실 계산]
+    J --> K[역전파 Backward Pass]
+    K --> L[가중치 업데이트 optimizer.step]
+    L --> F
+    F -->|End of Batches| M{Validation Loop Batches}
+    M -->|with torch.no_grad| N[데이터 to Device]
+    N --> O[순전파 Forward Pass]
+    O --> P[손실/성능 지표 계산]
+    P --> M
+    M -->|End of Batches| Q[Epoch 결과 출력 및 저장]
+    Q --> E
+    E -->|End of Epochs| R[종료]
 ```
 
 ---

@@ -48,13 +48,6 @@ graph TD
         E --> E2[Block E]
         F[GPU Memory Pool:<br/>Non-contiguous Blocks]
     end
-
-    style A fill:#ffcccc,stroke:#333,stroke-width:2px
-    style B fill:#ffcccc,stroke:#333,stroke-width:2px
-    style C fill:#ffcccc,stroke:#333,stroke-width:2px
-    style D fill:#cceeff,stroke:#333,stroke-width:2px
-    style E fill:#cceeff,stroke:#333,stroke-width:2px
-    style F fill:#ccffcc,stroke:#333,stroke-width:2px
 ```
 
 ### 2.3 KV 캐시 공유 (Cache Sharing)

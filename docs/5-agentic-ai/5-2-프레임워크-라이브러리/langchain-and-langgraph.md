@@ -45,10 +45,6 @@ graph TD
     C --> D{Evaluate Result};
     D -- Task Incomplete --> B;
     D -- Task Complete --> E[End];
-
-    style B fill:#ccffcc
-    style C fill:#ffffcc
-    style D fill:#ffcccc
 ```
 
 이러한 구조는 Anthropic이 제안한 '평가자-최적화(Evaluator-Optimizer)'나 Google의 '다중 에이전트(Multi-Agent)' 패턴처럼, 여러 에이전트가 서로 협력하고 결과를 평가하며 작업을 진행하는 복잡한 워크플로우를 구현하는 데 매우 효과적임.

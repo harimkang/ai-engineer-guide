@@ -71,33 +71,37 @@ CDN은 정적 콘텐츠(이미지, 동영상, CSS, JS 파일 등)를 사용자�
 
 **시스템 아키텍처**:
 ```mermaid
-graph TD;
+graph TD
     subgraph "사용자 디바이스"
-        User[<fa:fa-user> 사용자]
+        User["👤 사용자"]
     end
 
     subgraph "네트워크"
-        CDN[<fa:fa-cloud> CDN (정적 콘텐츠)]
+        CDN["☁️ CDN (정적 콘텐츠)"]
     end
 
     subgraph "애플리케이션 인프라"
-        LB(로드 밸런서)
+        LB("로드 밸런서")
         subgraph "웹/앱 서버 (Stateless)"
-            App1(앱 서버 1)
-            App2(앱 서버 2)
-            App3(...)
+            App1("앱 서버 1")
+            App2("앱 서버 2")
+            App3("...")
         end
-        Cache[<fa:fa-database> 캐시 계층 (Redis)]
-        DB[<fa:fa-database> 데이터베이스]
-        Storage[<fa:fa-archive> 오브젝트 스토리지<br>(원본 이미지/영상)]
+        Cache["🗄️ 캐시 계층 (Redis)"]
+        DB["🗄️ 데이터베이스"]
+        Storage["📦 오브젝트 스토리지<br/>(원본 이미지/영상)"]
     end
 
-    User --"이미지/영상 요청"--> CDN;
-    User --"API 요청 (피드, 댓글)"--> LB;
-    CDN --"Cache Miss 시"--> Storage;
-    LB --> App1 & App2 & App3;
-    App1 & App2 & App3 <--> Cache;
-    Cache --"Cache Miss / Write"--> DB;
+    User -->|"이미지/영상 요청"| CDN
+    User -->|"API 요청 (피드, 댓글)"| LB
+    CDN -->|"Cache Miss 시"| Storage
+    LB --> App1
+    LB --> App2
+    LB --> App3
+    App1 <--> Cache
+    App2 <--> Cache
+    App3 <--> Cache
+    Cache -->|"Cache Miss / Write"| DB
 ```
 
 ---

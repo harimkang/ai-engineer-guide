@@ -62,10 +62,6 @@ graph TD
 
     HBM_S -.-> BOTTLENECK
     HBM_P -.-> BOTTLENECK
-
-    style HBM_S fill:#ffcccc,stroke:#333,stroke-width:2px
-    style HBM_P fill:#ffcccc,stroke:#333,stroke-width:2px
-    style BOTTLENECK fill:#fff2cc,stroke:#d6b656,stroke-width:2px
 ```
 
 ---

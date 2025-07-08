@@ -57,13 +57,6 @@ graph TD
 
     E --> VDB
     C -.-> VDB
-
-    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    style D fill:#ffecec,stroke:#f44336,stroke-width:2px
-    style E fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style F fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
 ```
 
 ---

@@ -41,15 +41,15 @@ difficulty: "easy"
 graph TD
     subgraph "append(5)"
         direction LR
-        A1[1] --> A2[2] --> A3[3] --> A4[4] --> A5((5));
+        A1[1] --> A2[2] --> A3[3] --> A4[4] --> A5((5))
     end
     subgraph "insert(1, 5)"
         direction LR
-        B1[1] --> B2((5)) --> B3[2] --> B4[3] --> B5[4];
+        B1[1] --> B2((5)) --> B3[2] --> B4[3] --> B5[4]
     end
     
-    note for A1,A2,A3,A4,A5 "O(1) - 끝에 추가"
-    note for B1,B2,B3,B4,B5 "O(n) - 중간에 삽입 후 원소들 이동"
+    A5 -.-> NOTE1["O(1) - 끝에 추가"]
+    B2 -.-> NOTE2["O(n) - 중간에 삽입 후 원소들 이동"]
 ```
 
 ### 2.3 메모리 재할당 (Memory Reallocation)

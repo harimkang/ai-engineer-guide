@@ -52,13 +52,19 @@ Depthwise Separable Convolution의 총 연산량은 두 단계의 합으로, 표
 ```mermaid
 graph TD
     subgraph "Standard Convolution"
-        A[Input (H x W x C_in)] -->|KxKxC_in Conv (N filters)| B[Output (H' x W' x N)]
+        A["Input (H x W x C_in)"] -->|"K x K x C_in Conv (N filters)"| B["Output (H' x W' x N)"]
     end
 
     subgraph "Depthwise Separable Convolution"
-        C[Input (H x W x C_in)] -->|Depthwise Conv (KxKx1, C_in filters)| D[Feature Map (H' x W' x C_in)]
-        D -->|Pointwise Conv (1x1xC_in, N filters)| E[Output (H' x W' x N)]
+        C["Input (H x W x C_in)"] -->|"Depthwise Conv (K x K x 1, C_in filters)"| D["Feature Map (H' x W' x C_in)"]
+        D -->|"Pointwise Conv (1 x 1 x C_in, N filters)"| E["Output (H' x W' x N)"]
     end
+    
+    style A fill:#E6F3FF
+    style C fill:#E6F3FF
+    style B fill:#E6FFE6
+    style E fill:#E6FFE6
+    style D fill:#FFF2E6
 ```
 
 ### 3.1 MobileNet

@@ -48,11 +48,6 @@ graph TD
     end
 
     B -.-> Delta
-    
-    style W fill:#ffecec,stroke:#333,stroke-width:2px
-    style A fill:#e8f5e8,stroke:#333,stroke-width:2px
-    style B fill:#e8f5e8,stroke:#333,stroke-width:2px
-    style Delta fill:#fff2cc,stroke:#d6b656,stroke-width:2px
 ```
 
 #### 2. Adapter Tuning

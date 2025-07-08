@@ -27,23 +27,22 @@ difficulty: "easy"
 
 ```mermaid
 graph TD
-    subgraph Pre-trained Model (e.g., ResNet on ImageNet)
-        A[Input] --> B(Feature Extractor - Low Level)
-        B --> C(Feature Extractor - High Level)
-        C --> D(Classifier - 1000 classes)
+    subgraph "Pre-trained Model (e.g., ResNet on ImageNet)"
+        A[Input] --> B[Feature Extractor - Low Level]
+        B --> C[Feature Extractor - High Level]
+        C --> D[Classifier - 1000 classes]
     end
 
-    subgraph Fine-tuning Strategies
-        direction LR
-        subgraph Strategy 1: Feature Extraction
-            B1(Frozen) --> C1(Frozen) --> D1(New Classifier - Trainable)
-        end
-        subgraph Strategy 2: Fine-tuning All Layers
-            B2(Trainable - small LR) --> C2(Trainable - small LR) --> D2(New Classifier - Trainable)
-        end
+    subgraph "Strategy 1: Feature Extraction"
+        B1[Frozen] --> C1[Frozen] --> D1[New Classifier - Trainable]
     end
     
-    D -- Replace --> D1 & D2
+    subgraph "Strategy 2: Fine-tuning All Layers"
+        B2[Trainable - small LR] --> C2[Trainable - small LR] --> D2[New Classifier - Trainable]
+    end
+    
+    D -->|Replace| D1
+    D -->|Replace| D2
 ```
 
 1.  **전체 모델 파인튜닝 (Fine-tuning the entire model)**:

@@ -37,13 +37,6 @@ graph TD
 
     B --> Instruction
     B --> Response
-
-    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    style D fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style Instruction fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
-    style Response fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
 ```
 
 1.  **기반 모델 선택**: 파인튜닝의 목적과 가용 자원에 맞는 사전학습된 LLM을 선택합니다. (e.g., Llama, Mistral, Gemma)

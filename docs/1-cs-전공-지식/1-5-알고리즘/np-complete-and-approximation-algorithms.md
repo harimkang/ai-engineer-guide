@@ -29,11 +29,6 @@ graph TD;
     P --> NP_Complete;
     NP_Complete --> NP;
     NP_Complete -- "Intersection" --- NP_Hard;
-
-    style P fill:#cde4ff
-    style NP_Complete fill:#ffcdd2
-    style NP fill:#e1bee7
-    style NP_Hard fill:#fff9c4
 ```
 
 *   **P (Polynomial time)**

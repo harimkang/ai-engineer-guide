@@ -30,12 +30,6 @@ graph TD
     end
     
     PrefData --> B
-
-    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    style D fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style PrefData fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
 ```
 
 1.  **SFT 모델 준비 (SFT Model)**: 먼저 SFT를 통해 지시를 잘 따르는 기본 모델을 준비합니다.

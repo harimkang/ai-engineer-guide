@@ -51,10 +51,6 @@ graph TD
         C[1, 0] --> O3((1))
         D[1, 1] --> O4((0))
     end
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#9cf,stroke:#333,stroke-width:2px
-    style C fill:#9cf,stroke:#333,stroke-width:2px
-    style D fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 MLP는 은닉층을 통해 입력 공간을 비선형적으로 변환하여 XOR 문제를 해결함.

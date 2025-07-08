@@ -46,9 +46,6 @@ graph TD;
             B_Reg3(Registers)
         end
     end
-
-    style Process_A fill:#e6f7ff,stroke:#006d9c,stroke-width:2px
-    style Process_B fill:#fff0f6,stroke:#c51d8a,stroke-width:2px
 ```
 
 | 구분 | 프로세스 (Process) | 스레드 (Thread) |

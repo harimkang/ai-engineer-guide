@@ -41,15 +41,6 @@ graph TD
     end
 
     D -.-> G
-
-    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    style D fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style E fill:#fce4ec,stroke:#e91e63,stroke-width:2px
-    style F fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    style G fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
-    style H fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
 ```
 
 1.  **인덱싱 (Indexing)**: 검색 대상이 될 문서들을 미리 임베딩하여 **벡터 데이터베이스(Vector Database)**에 저장합니다. 이 과정은 한 번만 수행하면 됩니다.

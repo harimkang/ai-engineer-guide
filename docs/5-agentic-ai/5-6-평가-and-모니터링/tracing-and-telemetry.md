@@ -60,13 +60,6 @@ graph TD
     A -.-> T_A
     B -.-> T_B
     C -.-> T_C
-
-    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-    style C fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-    style T_A fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    style T_B fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    style T_C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
 ```
 
 ---

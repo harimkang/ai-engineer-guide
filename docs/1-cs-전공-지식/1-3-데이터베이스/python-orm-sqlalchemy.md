@@ -23,20 +23,20 @@ SQLAlchemy는 크게 **Core**와 **ORM** 두 가지 구성 요소로 나뉩니�
 *   **ORM**: Core를 기반으로 하며, 사용자가 정의한 파이썬 클래스(모델)를 데이터베이스 테이블에 매핑하여 객체 지향적인 방식으로 데이터를 관리할 수 있게 해주는 고수준 인터페이스입니다.
 
 ```mermaid
-graph TD;
+graph TD
     subgraph "Application Layer"
-        A[Python Application]
+        A["Python Application"]
     end
     subgraph "SQLAlchemy"
-        ORM(ORM) --> Core(Core)
+        ORM["ORM"] --> Core["Core"]
     end
     subgraph "Database Layer"
-        DB[(Database)]
+        DB[("Database")]
     end
     
-    A --> ORM;
-    Core --> DBAPI[DBAPI (psycopg2, mysql-connector)];
-    DBAPI --> DB;
+    A --> ORM
+    Core --> DBAPI["DBAPI (psycopg2, mysql-connector)"]
+    DBAPI --> DB
 ```
 
 #### ORM의 핵심 개념

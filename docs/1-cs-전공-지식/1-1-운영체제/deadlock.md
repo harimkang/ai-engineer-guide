@@ -29,8 +29,6 @@ graph TD;
     end
 
     A & B & C & D --> E((Deadlock));
-
-    style E fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 1.  **상호 배제 (Mutual Exclusion)**: 한 번에 하나의 프로세스만 자원을 사용할 수 있습니다. 즉, 자원은 공유될 수 없습니다.

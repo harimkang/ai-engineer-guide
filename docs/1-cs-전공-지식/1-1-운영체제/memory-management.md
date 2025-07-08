@@ -37,9 +37,6 @@ graph TD;
     VA_A -->|MMU| PA(Physical Memory<br>e.g., 16GB);
     VA_B -->|MMU| PA;
     PA <--> SWAP(Disk Swap Space);
-
-    style PA fill:#dae8fc,stroke:#6c8ebf,stroke-width:2px
-    style SWAP fill:#f5f5f5,stroke:#333,stroke-width:2px
 ```
 
 ### 2.2 페이징 (Paging)

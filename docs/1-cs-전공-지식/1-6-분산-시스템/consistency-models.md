@@ -67,9 +67,6 @@ graph TD
 
     Strong --- Acc;
     Eventual --- Perf;
-
-    style Strong fill:#ffcdd2
-    style Eventual fill:#c8e6c9
 ```
 
 | 구분 | 강한 일관성 (Strong) | 순차 일관성 (Sequential) | 인과적 일관성 (Causal) | 최종 일관성 (Eventual) |

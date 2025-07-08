@@ -42,13 +42,6 @@ graph TD
 
     Retriever -.-> Context
     Context -.-> Generator
-
-    style User fill:#fce4ec,stroke:#e91e63,stroke-width:2px
-    style Retriever fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-    style VectorDB fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style Generator fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    style Answer fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
-    style Context fill:#fff3e0,stroke:#f57c00,stroke-width:2px
 ```
 
 **RAG의 주요 구성 요소:**

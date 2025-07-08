@@ -41,8 +41,6 @@ graph TD
         direction LR
         A[Start LR] -->|Epochs| B(End LR)
     end
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#ccf,stroke:#333,stroke-width:2px
 ```
 *위 그래프는 코사인 함수의 형태를 단순화하여 표현한 것임.*
 

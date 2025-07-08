@@ -25,15 +25,17 @@ difficulty: "medium"
 힙은 완전 이진 트리의 특성상 배열을 사용하여 효율적으로 구현할 수 있으며, 데이터의 삽입과 삭제(가장 우선순위 높은 값)가 모두 **O(log n)**의 시간 복잡도를 가집니다.
 
 ```mermaid
-graph TD;
+graph TD
     subgraph "최소 힙 (Min Heap) 예시"
-        A(10) --> B(20);
-        A --> C(15);
-        B --> D(30);
-        B --> E(25);
-        C --> F(40);
+        A(10) --> B(20)
+        A --> C(15)
+        B --> D(30)
+        B --> E(25)
+        C --> F(40)
     end
-    note for A,B,C,D,E,F "모든 부모는 자식보다 작거나 같다"
+    
+    NOTE["모든 부모는 자식보다 작거나 같다"]
+    A -.-> NOTE
 ```
 
 ### 2.2 우선순위 큐 (Priority Queue)

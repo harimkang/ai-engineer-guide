@@ -50,15 +50,6 @@ graph TD
         J[Load Q, K, V blocks<br/>from HBM to SRAM] --> K[Fused Kernel:<br/>Compute Attention Output]
         K --> L[Write final Output<br/>block to HBM]
     end
-
-    style A fill:#ffcccc,stroke:#333,stroke-width:2px
-    style C fill:#ffcccc,stroke:#333,stroke-width:2px
-    style D fill:#ffcccc,stroke:#333,stroke-width:2px
-    style F fill:#ffcccc,stroke:#333,stroke-width:2px
-    style G fill:#ffcccc,stroke:#333,stroke-width:2px
-    style I fill:#ffcccc,stroke:#333,stroke-width:2px
-    style J fill:#ccffcc,stroke:#333,stroke-width:2px
-    style L fill:#ccffcc,stroke:#333,stroke-width:2px
 ```
 
 ### 2.3 해결책 2: RoPE 스케일링 - 위치 인코딩 확장

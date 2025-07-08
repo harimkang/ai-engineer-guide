@@ -35,11 +35,6 @@ graph TD
     Provider --> Client
     Client --> LLM
     LLM --> User
-
-    style User fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-    style Client fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-    style LLM fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style Provider fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
 ```
 
 ### 2.2 주요 특징

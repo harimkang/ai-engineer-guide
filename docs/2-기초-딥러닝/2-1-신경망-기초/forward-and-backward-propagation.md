@@ -61,27 +61,27 @@ difficulty: "medium"
 신경망의 학습 과정을 순전파와 역전파로 나누어 시각적으로 표현하면 다음과 같음.
 
 ```mermaid
-graph TD;
+graph TD
     subgraph "Forward Propagation (예측)"
-        A[Input] --> B{Layer 1: z¹=W¹x+b¹};
-        B --> C{a¹=g(z¹)};
-        C --> D{Layer 2: z²=W²a¹+b²};
-        D --> E{a²=g(z²)};
-        E --> F[Output];
+        A[Input] --> B["Layer 1: z¹=W¹x+b¹"]
+        B --> C["a¹=g(z¹)"]
+        C --> D["Layer 2: z²=W²a¹+b²"]
+        D --> E["a²=g(z²)"]
+        E --> F[Output]
     end
 
     subgraph "Backward Propagation (학습)"
-        G[Loss] --> H{∂Loss/∂a²};
-        H --> I{∂Loss/∂z²};
-        I --> J{∂Loss/∂W², ∂Loss/∂b²};
-        J --> K{∂Loss/∂a¹};
-        K --> L{∂Loss/∂z¹};
-        L --> M{∂Loss/∂W¹, ∂Loss/∂b¹};
+        G[Loss] --> H["∂Loss/∂a²"]
+        H --> I["∂Loss/∂z²"]
+        I --> J["∂Loss/∂W², ∂Loss/∂b²"]
+        J --> K["∂Loss/∂a¹"]
+        K --> L["∂Loss/∂z¹"]
+        L --> M["∂Loss/∂W¹, ∂Loss/∂b¹"]
     end
 
-    F -- "compare with true label" --> G;
-    M -- "update weights" --> B;
-    J -- "update weights" --> D;
+    F -->|"compare with true label"| G
+    M -->|"update weights"| B
+    J -->|"update weights"| D
 ```
 
 ---

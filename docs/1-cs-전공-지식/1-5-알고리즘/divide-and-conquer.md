@@ -32,9 +32,6 @@ graph TD;
     D --> F(Combine Solutions);
     E --> F;
     F --> G(Final Solution);
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style G fill:#ccf,stroke:#333,stroke-width:2px
 ```
 
 ### 2.2 분할 정복의 장단점

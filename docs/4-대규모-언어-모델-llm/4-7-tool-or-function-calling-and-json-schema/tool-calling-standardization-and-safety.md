@@ -45,13 +45,6 @@ graph TD
     F --> C
     C --> B
     B --> G[Final Response]
-
-    style B fill:#f9f9ff,stroke:#333,stroke-width:2px
-    style C fill:#ccccff,stroke:#333,stroke-width:2px
-    style D fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style E fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style F fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style G fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
 ```
 
 ### 2.2 안전 가드 (Safety Guardrails)

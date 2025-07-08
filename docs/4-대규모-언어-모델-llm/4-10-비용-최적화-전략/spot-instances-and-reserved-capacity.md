@@ -50,9 +50,6 @@ graph TD
         B[On-Demand: Unpredictable Spikes];
         C[Spot: Batch Jobs / Training];
     end
-    style A fill:#ccffcc
-    style B fill:#ffffcc
-    style C fill:#cce5ff
 ```
 
 *   **Baseline (RI)**: 서비스의 최소 요구 트래픽을 예측하여 예약 인스턴스로 커버함.

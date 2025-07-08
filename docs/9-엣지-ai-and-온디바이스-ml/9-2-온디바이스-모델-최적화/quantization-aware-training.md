@@ -39,10 +39,6 @@ graph TD
         C_qat --> FQ3["Fake Quantize"]
         FQ3 --> D_qat["출력"]
     end
-
-    style FQ1 fill:#f9f,stroke:#333,stroke-width:2px
-    style FQ2 fill:#f9f,stroke:#333,stroke-width:2px
-    style FQ3 fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 1.  **순전파 (Forward Pass)**: 가중치와 활성화 값은 부동소수점(FP32)에서 정수(INT8)로 양자화되었다가, 다시 부동소수점으로 역양자화됩니다. `(FP32 -> INT8 -> FP32)` 이 과정을 통해 모델은 양자화로 인해 발생할 수 있는 정보 손실(오차)을 미리 경험합니다.

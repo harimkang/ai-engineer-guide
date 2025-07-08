@@ -32,12 +32,6 @@ graph TD
 
     A -.-> M1
     D -.-> M2
-
-    style A fill:#cce5ff,stroke:#333,stroke-width:2px
-    style B fill:#ccffcc,stroke:#333,stroke-width:2px
-    style C fill:#ffffcc,stroke:#333,stroke-width:2px
-    style D fill:#ffcccc,stroke:#333,stroke-width:2px
-    style E fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
 ```
 
 ### 2.1 1단계: 인지 (Perception / Observation)

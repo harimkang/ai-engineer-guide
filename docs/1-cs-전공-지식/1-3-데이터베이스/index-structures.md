@@ -21,26 +21,29 @@ B-Tree(Balanced Tree)는 자식 노드를 2개 이상 가질 수 있는 균형 �
 
 #### B+Tree 구조 및 특징
 ```mermaid
-graph TD;
+graph TD
     subgraph "B+Tree"
-        Root --> Branch1;
-        Root --> Branch2;
-        Branch1 --> L1 & L2;
-        Branch2 --> L3 & L4;
+        Root --> Branch1
+        Root --> Branch2
+        Branch1 --> L1
+        Branch1 --> L2
+        Branch2 --> L3
+        Branch2 --> L4
     end
 
     subgraph "Nodes"
-        Root("Root<br>(Keys Only)")
-        Branch1("Branch<br>(Keys Only)")
-        Branch2("Branch<br>(Keys Only)")
-        L1("Leaf<br>(Keys + Data Pointers)")
-        L2("Leaf<br>(Keys + Data Pointers)")
-        L3("Leaf<br>(Keys + Data Pointers)")
-        L4("Leaf<br>(Keys + Data Pointers)")
+        Root["Root<br/>(Keys Only)"]
+        Branch1["Branch<br/>(Keys Only)"]
+        Branch2["Branch<br/>(Keys Only)"]
+        L1["Leaf<br/>(Keys + Data Pointers)"]
+        L2["Leaf<br/>(Keys + Data Pointers)"]
+        L3["Leaf<br/>(Keys + Data Pointers)"]
+        L4["Leaf<br/>(Keys + Data Pointers)"]
     end
     
-    L1 <--> L2 <--> L3 <--> L4;
-    note for L1,L2,L3,L4 "리프 노드는 Linked List로 연결"
+    L1 <--> L2
+    L2 <--> L3
+    L3 <--> L4
 ```
 
 *   **구조**:

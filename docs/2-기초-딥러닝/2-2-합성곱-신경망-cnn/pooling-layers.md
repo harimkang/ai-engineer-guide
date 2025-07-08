@@ -46,28 +46,39 @@ difficulty: "easy"
 
 ```mermaid
 graph TD
-    subgraph Input Feature Map (4x4)
-        direction LR
+    subgraph "Input Feature Map (4x4)"
         A1[1] --- A2[1] --- A3[2] --- A4[4]
         B1[5] --- B2[6] --- B3[7] --- B4[8]
         C1[3] --- C2[2] --- C3[1] --- C4[0]
         D1[1] --- D2[2] --- D3[3] --- D4[4]
+        
+        A1 --- B1
+        A2 --- B2
+        A3 --- B3
+        A4 --- B4
+        B1 --- C1
+        B2 --- C2
+        B3 --- C3
+        B4 --- C4
+        C1 --- D1
+        C2 --- D2
+        C3 --- D3
+        C4 --- D4
     end
 
-    subgraph Output after Max Pooling (2x2)
-        direction LR
+    subgraph "Max Pooling Output (2x2)"
         O1[6] --- O2[8]
         O3[3] --- O4[4]
+        O1 --- O3
+        O2 --- O4
     end
 
-    subgraph Output after Average Pooling (2x2)
-        direction LR
+    subgraph "Average Pooling Output (2x2)"
         O1_avg[3.25] --- O2_avg[5.25]
         O3_avg[2.0] --- O4_avg[2.0]
+        O1_avg --- O3_avg
+        O2_avg --- O4_avg
     end
-
-    Input Feature Map -->|Max Pooling| Output after Max Pooling
-    Input Feature Map -->|Average Pooling| Output after Average Pooling
 ```
 
 ---

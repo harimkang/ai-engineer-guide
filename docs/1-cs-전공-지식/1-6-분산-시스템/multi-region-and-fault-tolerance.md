@@ -43,15 +43,18 @@ difficulty: "hard"
 ```mermaid
 graph TD
     subgraph "Active-Active"
-        LB1(Load Balancer) --> S1_A(Server 1<br>Active);
-        LB1 --> S2_A(Server 2<br>Active);
+        LB1(Load Balancer) --> S1_A(Server 1<br/>Active)
+        LB1 --> S2_A(Server 2<br/>Active)
     end
+
     subgraph "Active-Passive"
-        LB2(Load Balancer) --> S3_A(Server 3<br>Active);
-        S3_A -.-> S4_P(Server 4<br>Passive/Standby);
-        LB2 -.-> S4_P;
-        note for S4_P "장애 시 활성화"
+        LB2(Load Balancer) --> S3_A(Server 3<br/>Active)
+        S3_A -.-> S4_P(Server 4<br/>Passive/Standby)
+        LB2 -.-> S4_P
     end
+    
+    NOTE["장애 시 활성화"]
+    S4_P -.-> NOTE
 ```
 
 | 구분 | Active-Active | Active-Passive (Active-Standby) |

@@ -46,14 +46,6 @@ graph TD
     G --> I[롤백<br/>Canary 트래픽 차단]
     H --> J[배포 완료]
     I --> K[원인 분석]
-
-    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-    style C fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style D fill:#ffecec,stroke:#f44336,stroke-width:2px
-    style G fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    style H fill:#e8f5e8,stroke:#4caf50,stroke-width:2px
-    style I fill:#ffecec,stroke:#f44336,stroke-width:2px
 ```
 
 이 방식을 통해 만약 새로운 모델에 문제가 있더라도, 소수의 사용자에게만 영향을 미치므로 전체 서비스의 안정성을 해치지 않고 롤백(Rollback)할 수 있음.

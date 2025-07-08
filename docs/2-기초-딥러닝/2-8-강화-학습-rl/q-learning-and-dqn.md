@@ -64,7 +64,6 @@ graph TD;
 
         Loss --> MainNet;
     end
-    style TargetNet fill:#f9f,stroke:#333,stroke-width:2px
 ```
 
 ---
