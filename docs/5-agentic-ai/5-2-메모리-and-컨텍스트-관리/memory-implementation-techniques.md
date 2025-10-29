@@ -11,15 +11,18 @@ difficulty: "medium"
 
 벡터 DB(FAISS/Milvus/Chroma/pgvector)와 요약·축출(Eviction) 전략을 조합해 확장 가능한 에이전트 메모리를 구축합니다. 핵심은 스키마·인덱싱·검색·요약·보안·운영 자동화를 일관된 계약으로 묶는 것입니다.
 
+- **핵심 비유(Analogy)**: 에이전트의 기억을 관리하는 '디지털 도서관'을 짓는 것과 같습니다. **Vector DB**는 책의 내용을 기반으로 유사한 책을 빠르게 찾을 수 있는 '스마트 검색 시스템'이고, **축출(Eviction) 전략**은 오래되거나 중요하지 않은 책을 서고에서 빼내 공간을 확보하는 '장서 관리 규칙'입니다.
+
 ---
 
 ## 2. 상세 설명 (Detailed Explanation)
 
 ### 2.1 Vector DB 선택과 스키마 설계
 - 선택 가이드(간단):
-  - 로컬·경량 PoC: FAISS/Chroma
-  - 운영/분산: Milvus/Weaviate/Elastic+ANN
-  - 기존 DB 통합: Postgres + pgvector
+  - **FAISS/Chroma**: 경량이며, 로컬 환경 또는 PoC(Proof of Concept)에 적합합니다.
+  - **Milvus/Weaviate**: 분산 환경에서 대규모 데이터를 다루는 운영(Production) 시스템에 적합합니다.
+  - **Postgres + pgvector**: 기존에 사용하던 PostgreSQL 데이터베이스와 통합이 중요할 때 유리합니다.
+  - **Elasticsearch + ANN**: 기존 검색 엔진 인프라를 활용하면서 벡터 검색 기능을 추가하고 싶을 때 좋은 선택입니다.
 - 스키마(권장 필드): `id, owner(user/project), session_id, ts, text, embedding, metadata(tags, source, importance, pii_masked)`
 - 임베딩: 동일 모델/차원 유지, 주기적 재임베딩 계획 수립(모델 교체 시)
 
