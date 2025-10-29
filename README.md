@@ -24,6 +24,8 @@
 
 > 💡 **빠른 탐색**: 각 섹션을 클릭하여 해당 문서로 바로 이동하세요!
 
+[전체 목차 바로가기 → docs/index.md](docs/index.md)
+
 ### 🖥️ [1. CS 전공 지식](docs/1-cs-전공-지식/)
 - [1.1 운영체제](docs/1-cs-전공-지식/1-1-운영체제/) - 프로세스/스레드, 동시성, 메모리 관리, 스케줄링
 - [1.2 네트워크](docs/1-cs-전공-지식/1-2-네트워크/) - OSI/TCP-IP, TCP/UDP, HTTP, DNS, 보안
@@ -36,13 +38,13 @@
 ### 🧠 [2. 기초 딥러닝](docs/2-기초-딥러닝/)
 - [2.1 신경망 기초](docs/2-기초-딥러닝/2-1-신경망-기초/) - 퍼셉트론, 활성화 함수, 최적화
 - [2.2 CNN](docs/2-기초-딥러닝/2-2-합성곱-신경망-cnn/) - 합성곱, 풀링, ResNet, EfficientNet
-- [2.3 RNN/LSTM](docs/2-기초-딥러닝/2-3-순환-and-시퀀스-모델-선택/) - 순환 신경망, 시퀀스 모델링
-- [2.4 트랜스포머](docs/2-기초-딥러닝/2-4-트랜스포머-and-어텐션/) - 어텐션, 인코더-디코더
-- [2.5 학습 최적화](docs/2-기초-딥러닝/2-5-학습-팁-and-엔지니어링/) - 정규화, 하이퍼파라미터 튜닝
+- [2.3 순환 & 시퀀스 모델 (선택)](docs/2-기초-딥러닝/2-3-순환-and-시퀀스-모델-선택/) - 순환 신경망, 시퀀스 모델링
+- [2.4 트랜스포머 & 어텐션](docs/2-기초-딥러닝/2-4-트랜스포머-and-어텐션/) - 어텐션, 인코더-디코더
+- [2.5 학습 팁 & 엔지니어링](docs/2-기초-딥러닝/2-5-학습-팁-and-엔지니어링/) - 정규화, 하이퍼파라미터 튜닝
 - [2.6 생성 모델](docs/2-기초-딥러닝/2-6-생성-모델/) - VAE, GAN, Diffusion
 - [2.7 그래프 신경망](docs/2-기초-딥러닝/2-7-그래프-신경망-gnn/) - GNN 기초와 응용
 - [2.8 강화학습](docs/2-기초-딥러닝/2-8-강화-학습-rl/) - Q-Learning, Policy Gradient
-- [2.9 모델 해석성](docs/2-기초-딥러닝/2-9-모델-해석가능성-and-책임/) - XAI, 편향성 분석
+- [2.9 모델 해석가능성 & 책임](docs/2-기초-딥러닝/2-9-모델-해석가능성-and-책임/) - XAI, 편향성 분석
 
 ### 👁️ [3. 컴퓨터 비전](docs/3-컴퓨터-비전/)
 - [3.1 핵심 태스크](docs/3-컴퓨터-비전/3-1-핵심-태스크/) - 분류, 객체 탐지, 세그멘테이션
@@ -50,33 +52,34 @@
 - [3.3 대표 모델](docs/3-컴퓨터-비전/3-3-대표-모델/) - YOLO, R-CNN, ViT
 - [3.4 멀티모달](docs/3-컴퓨터-비전/3-4-비디오-3d-멀티모달/) - 비디오, 3D, 텍스트-이미지
 - [3.5 평가 지표](docs/3-컴퓨터-비전/3-5-평가-지표/) - mAP, IoU, F1-Score
-- [3.6 배포 최적화](docs/3-컴퓨터-비전/3-6-배포-and-최적화/) - 경량화, 양자화, 추론 가속
+- [3.6 배포 & 최적화](docs/3-컴퓨터-비전/3-6-배포-and-최적화/) - 경량화, 양자화, 추론 가속
 
 ### 🤖 [4. 대규모 언어 모델 (LLM)](docs/4-대규모-언어-모델-llm/)
 - [4.1 트랜스포머 심화](docs/4-대규모-언어-모델-llm/4-1-트랜스포머-심화/) - Scaled Dot-Product Attention
-- [4.2 사전 학습](docs/4-대규모-언어-모델-llm/4-2-사전-학습-목표/) - Masked LM, Next Token Prediction
-- [4.3 파인튜닝](docs/4-대규모-언어-모델-llm/4-3-파인튜닝-and-정렬/) - LoRA, QLoRA, PEFT
-- [4.4 응용 태스크](docs/4-대규모-언어-모델-llm/4-4-응용-and-태스크/) - 요약, 번역, QA, 코드 생성
-- [4.5 대표 모델](docs/4-대규모-언어-모델-llm/4-5-대표-모델-and-벤치마크/) - GPT, BERT, T5, PaLM
-- [4.6 서빙/배포](docs/4-대규모-언어-모델-llm/4-6-서빙-and-배포/) - vLLM, TensorRT-LLM, 배치 처리
-- [4.7 Tool Calling](docs/4-대규모-언어-모델-llm/4-7-tool-or-function-calling-and-json-schema/) - Function Calling, JSON Schema
-- [4.8 평가/모니터링](docs/4-대규모-언어-모델-llm/4-8-평가-프레임워크-and-모니터링/) - BLEU, ROUGE, 환각 탐지
-- [4.9 컨텍스트 확장](docs/4-대규모-언어-모델-llm/4-9-context-확장-and-최적화/) - RoPE, ALiBi, Longformer
-- [4.10 비용 최적화](docs/4-대규모-언어-모델-llm/4-10-비용-최적화-전략/) - 모델 압축, 캐싱 전략
+- [4.2 사전 학습 목표](docs/4-대규모-언어-모델-llm/4-2-사전-학습-목표/) - Masked LM, Next Token Prediction
+- [4.3 파인튜닝 & 정렬](docs/4-대규모-언어-모델-llm/4-3-파인튜닝-and-정렬/) - LoRA, QLoRA, PEFT
+- [4.4 응용 & 태스크](docs/4-대규모-언어-모델-llm/4-4-응용-and-태스크/) - 요약, 번역, QA, 코드 생성
+- [4.5 대표 모델 & 벤치마크](docs/4-대규모-언어-모델-llm/4-5-대표-모델-and-벤치마크/) - GPT, BERT, T5, PaLM
+- [4.6 서빙 & 배포](docs/4-대규모-언어-모델-llm/4-6-서빙-and-배포/) - vLLM, TensorRT-LLM, 배치 처리
+- [4.7 Tool/Function Calling & JSON Schema](docs/4-대규모-언어-모델-llm/4-7-tool-or-function-calling-and-json-schema/) - Function Calling, JSON Schema
+- [4.8 평가 프레임워크 & 모니터링](docs/4-대규모-언어-모델-llm/4-8-평가-프레임워크-and-모니터링/) - BLEU, ROUGE, 환각 탐지
+- [4.9 컨텍스트 확장 & 최적화](docs/4-대규모-언어-모델-llm/4-9-context-확장-and-최적화/) - RoPE, ALiBi, Longformer
+- [4.10 비용 최적화 전략](docs/4-대규모-언어-모델-llm/4-10-비용-최적화-전략/) - 모델 압축, 캐싱 전략
 
 <details>
 <summary><strong>📋 전체 목차 펼쳐보기</strong></summary>
 
 ### 🎯 [5. Agentic AI](docs/5-agentic-ai/)
-- [5.1 핵심 개념](docs/5-agentic-ai/5-1-핵심-개념/) - Agent, Tool, Planning, Memory
-- [5.2 프레임워크](docs/5-agentic-ai/5-2-프레임워크-라이브러리/) - LangChain, AutoGPT, CrewAI
-- [5.3 아키텍처 패턴](docs/5-agentic-ai/5-3-아키텍처-패턴/) - ReAct, Chain-of-Thought, Tree-of-Thoughts
-- [5.4 RAG 시스템](docs/5-agentic-ai/5-4-retrieval-augmented-generation-rag/) - 검색 증강 생성, Vector DB, 하이브리드 검색
-- [5.5 프로토콜](docs/5-agentic-ai/5-5-프로토콜-and-표준/) - OpenAI Function Calling, Anthropic MCP, A2A, ACP
-- [5.6 평가/모니터링](docs/5-agentic-ai/5-6-평가-and-모니터링/) - Agent 성능 측정, 디버깅
-- [5.7 엔지니어링](docs/5-agentic-ai/5-7-엔지니어링-플레이북/) - Prompt Engineering, 에러 처리
-- [5.8 워크플로우](docs/5-agentic-ai/5-8-오케스트레이션-and-워크플로우-관리/) - Multi-Agent 시스템, 오케스트레이션
-- [5.9 보안/격리](docs/5-agentic-ai/5-9-보안-and-격리/) - 샌드박스, 권한 관리
+- [5.1 시스템 설계](docs/5-agentic-ai/5-1-시스템-설계/) - 에이전트 정의, RPA 루프, 구성요소
+- [5.2 메모리 & 컨텍스트 관리](docs/5-agentic-ai/5-2-메모리-and-컨텍스트-관리/) - 단기/장기/일화 메모리, 하이브리드 검색
+- [5.3 핵심 추론 패턴](docs/5-agentic-ai/5-3-핵심-추론-패턴/) - CoT, ReAct, ToT, Reflexion
+- [5.4 Retrieval-Augmented Generation (RAG)](docs/5-agentic-ai/5-4-retrieval-augmented-generation-rag/) - 쿼리 변환, 멀티스텝 검색
+- [5.5 프롬프트 엔지니어링 & 평가](docs/5-agentic-ai/5-5-프롬프트-엔지니어링-and-평가/) - 자동 평가, 회귀 테스트
+- [5.6 AgentOps: 운영 & 자동화](docs/5-agentic-ai/5-6-agentops-운영-and-자동화/) - 텔레메트리, 리플레이, 오케스트레이션
+- [5.7 LLM 아키텍처 & 최적화](docs/5-agentic-ai/5-7-llm-아키텍처-and-최적화/) - PEFT, 양자화, 서빙 스택
+- [5.8 데이터 & 인프라](docs/5-agentic-ai/5-8-데이터-and-인프라/) - 합성 데이터, MLOps, 인프라 구성
+- [5.9 보안 & 프로토콜](docs/5-agentic-ai/5-9-보안-and-프로토콜/) - 프롬프트 인젝션, 표준 프로토콜(MCP/A2A/ACP)
+- [5.10 트렌드 & 생태계](docs/5-agentic-ai/5-10-트렌드-and-생태계/) - 프레임워크, 벤치마크, 에이전트 동향
 
 ### ⚙️ [6. MLOps & 배포](docs/6-mlops-and-배포/)
 - [6.1 ML 파이프라인](docs/6-mlops-and-배포/6-1-ml-파이프라인-전반/) - 데이터 전처리, 모델 학습, 배포
@@ -91,7 +94,7 @@
 - [7.3 오케스트레이션](docs/7-데이터-엔지니어링-and-파이프라인/7-3-오케스트레이션/) - Airflow, Prefect, Dagster
 - [7.4 데이터 웨어하우스](docs/7-데이터-엔지니어링-and-파이프라인/7-4-데이터-웨어하우스-and-레이크/) - Snowflake, BigQuery, 데이터 레이크
 
-### 🛡️ [8. 책임 AI & 윤리](docs/8-책임-ai-윤리-보안/)
+### 🛡️ [8. 책임 AI · 윤리 · 보안](docs/8-책임-ai-윤리-보안/)
 - [8.1 편향성 & 공정성](docs/8-책임-ai-윤리-보안/8-1-bias-and-fairness/) - 알고리즘 편향, 공정성 지표
 - [8.2 개인정보 보호](docs/8-책임-ai-윤리-보안/8-2-개인정보-and-프라이버시/) - 차분 프라이버시, 연합 학습
 - [8.3 규제 & 거버넌스](docs/8-책임-ai-윤리-보안/8-3-규제-and-거버넌스/) - GDPR, AI Act, 모델 거버넌스
@@ -139,8 +142,9 @@ docs/
 ├── 7-데이터-엔지니어링-and-파이프라인/ # 데이터 엔지니어링
 ├── 8-책임-ai-윤리-보안/        # AI 윤리
 ├── 9-엣지-ai-and-온디바이스-ml/ # 엣지 AI
-├── 부록/                      # 참고 자료
-└── assets/                   # 이미지, 파일 리소스
+└── 부록/                      # 참고 자료
+
+
 ```
 
 ### 3. 학습 방법
