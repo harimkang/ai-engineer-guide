@@ -44,14 +44,14 @@ difficulty: "medium"
 
 ```mermaid
 flowchart LR
-  U[User/API] --> GW[Gateway(FastAPI)]
+  U["User/API"] --> GW["Gateway(FastAPI)"]
   GW --> ORC[Orchestrator]
-  ORC --> SVC[vLLM/TGI]
+  ORC --> SVC["vLLM/TGI"]
   ORC --> Q[Queue]
-  ORC --> DB[(Postgres/pgvector)]
+  ORC --> DB(["Postgres/pgvector"])
   ORC --> REDIS[(Redis)]
-  ORC --> OBJ[(S3/MinIO)]
-  ORC --> OTL[OTel/Logs]
+  ORC --> OBJ(["S3/MinIO"])
+  ORC --> OTL["OTel/Logs"]
 ```
 
 ---

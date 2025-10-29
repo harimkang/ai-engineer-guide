@@ -60,10 +60,10 @@ sequenceDiagram
 ### 3.2 데이터 인덱싱(문서+이미지)
 ```mermaid
 flowchart LR
-  PDF[문서(PDF)] --> CH[페이지/영역 청킹]
+  PDF["문서(PDF)"] --> CH["페이지/영역 청킹"]
   IMG[이미지] --> CH
-  CH --> EMB[멀티모달 임베딩]
-  EMB --> VDB[Vector DB]
+  CH --> EMB["멀티모달 임베딩"]
+  EMB --> VDB["Vector DB"]
 ```
 
 ---

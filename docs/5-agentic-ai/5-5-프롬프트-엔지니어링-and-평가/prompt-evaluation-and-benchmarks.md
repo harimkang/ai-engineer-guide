@@ -55,10 +55,10 @@ difficulty: "medium"
 ```mermaid
 flowchart LR
   D[Dataset] --> R[Runner]
-  P[Prompt/Model Ver.] --> R
-  R --> S[Scorer\n(규칙/LLM Judge)]
-  S --> G[Gating\n(통과/보류)]
-  S --> B[Dashboard/Logs]
+  P["Prompt/Model Ver."] --> R
+  R --> S["Scorer<br>(규칙/LLM Judge)"]
+  S --> G["Gating<br>(통과/보류)"]
+  S --> B["Dashboard/Logs"]
 ```
 
 ### 3.2 의사코드

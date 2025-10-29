@@ -51,12 +51,12 @@ difficulty: "medium"
 ### 3.1 파이프라인 다이어그램
 ```mermaid
 flowchart LR
-  S[Sources] --> C[정제/표준화]
-  C --> SY[합성(Self-play/ask/HyDE)]
+  S[Sources] --> C["정제/표준화"]
+  C --> SY["합성(Self-play/ask/HyDE)"]
   SY --> A[증강]
-  A --> F[필터링\n(룰+Judge)]
-  F --> D[분할/버전/카달로그]
-  D --> T[학습/평가/회귀]
+  A --> F["필터링<br>(룰+Judge)"]
+  F --> D["분할/버전/카달로그"]
+  D --> T["학습/평가/회귀"]
 ```
 
 ### 3.2 합성 루프(의사코드)

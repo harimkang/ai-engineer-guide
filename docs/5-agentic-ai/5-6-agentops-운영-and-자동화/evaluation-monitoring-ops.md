@@ -45,11 +45,11 @@ difficulty: "medium"
 ### 3.1 모니터링 파이프라인
 ```mermaid
 flowchart LR
-  E[Events\n(Traces/Logs)] --> A[Aggregator]
-  A --> M[Metrics/KPIs]
+  E["Events<br>(Traces/Logs)"] --> A[Aggregator]
+  A --> M["Metrics/KPIs"]
   M --> D[Dashboard]
   M --> G[Gating]
-  G -->|fail| FB[Fallback/Rollback]
+  G -->|fail| FB["Fallback/Rollback"]
   G -->|pass| DEP[Deploy]
 ```
 

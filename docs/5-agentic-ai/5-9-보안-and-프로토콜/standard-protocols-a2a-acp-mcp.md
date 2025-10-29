@@ -29,10 +29,10 @@ difficulty: "medium"
 
 ```mermaid
 flowchart LR
-  LLM[Client/LLM] -->|list tools/resources| S[MCP Server]
-  LLM -->|call tool(params)| S
-  LLM -->|read resource(uri)| S
-  S --> LOG[Audit/Policy]
+  LLM["Client/LLM"] -->|"list tools/resources"| S["MCP Server"]
+  LLM -->|"call tool(params)"| S
+  LLM -->|"read resource(uri)"| S
+  S --> LOG["Audit/Policy"]
 ```
 
 ### 2.3 운영과의 연계(→ 5-6), 프롬프트/툴 스키마 연계(→ 5-5/5-9)

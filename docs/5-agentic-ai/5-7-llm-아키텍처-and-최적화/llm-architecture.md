@@ -23,10 +23,10 @@ difficulty: "medium"
 ```mermaid
 flowchart TD
   X[Tokens] --> E[Embedding]
-  E --> B1[Block 1\n(Self-Attn + MLP)]
-  B1 --> B2[Block 2]
-  B2 --> BN[...]
-  BN --> H[LM Head]
+  E --> B1["Block 1<br>(Self-Attn + MLP)"]
+  B1 --> B2["Block 2"]
+  B2 --> BN["..."]
+  BN --> H["LM Head"]
 ```
 
 ### 2.2 효율적 어텐션과 Mixture-of-Experts(MoE)
