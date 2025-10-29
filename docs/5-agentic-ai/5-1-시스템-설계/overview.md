@@ -37,7 +37,7 @@ Agentic AI는 “목표를 입력하면 스스로 계획하고(Plan) 도구를 �
 ```mermaid
 flowchart LR
   subgraph Agent[A: Agent]
-    P[Plan]\n(LLM) --> A1[Act]\n(Tool Calls)
+    P["Plan<br>(LLM)"] --> A1["Act<br>(Tool Calls)"]
     A1 --> O[Observe]
     O --> P
   end

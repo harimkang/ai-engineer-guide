@@ -9,7 +9,7 @@ difficulty: "medium"
 
 ## 1. 핵심 개념 (Core Concept)
 
-에이전트는 추론→계획→행동(RPA)을 반복하고, 결과를 반성(Reflection/Reflexion)하여 다음 스텝을 개선합니다. 루프에 “평가·가드레일”을 삽입하면 안정성이 크게 높아집니다.
+에이전트는 추론(Reasoning)→계획(Planning)→행동(Acting)의 순환(이하 RPA 루프)을 반복하고, 결과를 반성(Reflection/Reflexion)하여 다음 스텝을 개선합니다. 이 루프에 “평가·가드레일”을 삽입하면 안정성이 크게 높아집니다.
 
 ---
 
@@ -20,7 +20,7 @@ difficulty: "medium"
 ```mermaid
 flowchart TD
   R[Reasoning] --> P[Planning]
-  P --> A[Acting\n(Tool Calls)]
+  P --> A["Acting<br>(Tool Calls)"]
   A --> O[Observation]
   O --> R
 ```

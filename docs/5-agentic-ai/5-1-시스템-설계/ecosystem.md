@@ -1,8 +1,8 @@
 ---
-title: "에코시스템: OpenDevin, AutoGen, CrewAI, LangGraph, LlamaIndex, MemGPT, AirOps"
+title: "에코시스템: MetaGPT, OpenDevin, AutoGen, CrewAI, LangGraph, LlamaIndex"
 date: "2025-10-29"
-tags: ["Agentic AI", "Ecosystem", "Frameworks"]
-difficulty: "easy"
+tags: ["Agentic AI", "Ecosystem", "Frameworks", "MetaGPT", "MCP"]
+difficulty: "medium"
 ---
 
 # 에코시스템 개요
@@ -16,22 +16,26 @@ difficulty: "easy"
 ## 2. 상세 설명 (Detailed Explanation)
 
 ### 2.1 오케스트레이션/워크플로우
-- LangGraph(LangChain 차세대 오케스트레이션): 상태 머신·브랜치 제어에 강점
-- CrewAI: 역할 기반 멀티-에이전트, 실무 템플릿 풍부
-- AutoGen: 대화형 멀티-에이전트 프레임, 커스텀 대화 규약 정의 용이
+- **LangGraph (LangChain)**: 상태 머신(State Machine) 기반으로 에이전트의 순환, 분기, 상태 공유를 제어하는 데 강점이 있습니다.
+- **CrewAI**: 역할 기반(Role-based) 멀티-에이전트 협업에 특화되어 있으며, 실무적인 팀 구성 템플릿이 풍부합니다.
+- **AutoGen (Microsoft)**: 유연한 대화형 멀티-에이전트 프레임워크로, 복잡한 대화 패턴과 워크플로우를 직접 정의할 수 있습니다.
 
 ### 2.2 데이터/문서 중심 에이전트
-- LlamaIndex: 문서 인덱싱·RAG 파이프라인, 노드·리트리버 조합 유연
-- MemGPT: 장기/단기 메모리 관리, 요약·교체 정책 내장
+- **LlamaIndex**: 문서 인덱싱 및 RAG(Retrieval-Augmented Generation) 파이프라인 구축에 강점을 가집니다. 데이터 로딩, 인덱싱, 검색, 합성을 위한 다양한 컴포넌트를 제공합니다.
+- **MemGPT**: LLM의 제한된 컨텍스트 창 문제를 해결하기 위해 가상 메모리 관리 기법을 도입하여, 장기/단기 기억을 효율적으로 관리합니다.
 
-### 2.3 개발자·운영 에이전트
-- OpenDevin: 개발 워크플로우(코드 편집/실행/테스트) 특화
-- AirOps 등: 운영/자동화 도구 집합, 모니터링·템플릿 제공
+### 2.3 개발자/운영 에이전트
+- **MetaGPT**: 가상 소프트웨어 회사를 시뮬레이션하는 멀티-에이전트 프레임워크입니다. Product Manager, Architect, Engineer 등 역할이 부여된 에이전트들이 표준 운영 절차(SOP)에 따라 협업하여 요구사항 분석부터 코드 작성까지 전체 개발 프로세스를 자동화합니다.
+- **OpenDevin**: 코드 작성, 실행, 디버깅 등 개발자의 작업을 자동화하는 데 특화된 오픈소스 에이전트입니다.
 
-### 2.4 선택 기준(Practitioner Tips)
-- 제약: 조직 보안·네트워크·비용·언어 모델 제약을 먼저 확인
-- 필요: 상태 머신·대화형·RAG·역할 협업 등 핵심 요구 충족 여부
-- 교체 용이성: 프롬프트/툴/평가 스키마를 프레임워크 바깥에 정의
+### 2.4 주요 프로토콜 및 연구 동향
+- **Google Agents Companion**: Google이 제시하는 에이전트 개발의 청사진입니다. 에이전트의 생명주기를 관리하는 'Agent Ops', 다중 에이전트 협업, 향상된 RAG(Agentic RAG) 등 엔터프라이즈 환경에서 에이전트를 안정적으로 구축하고 운영하기 위한 핵심 개념을 포함합니다.
+- **MCP (Model Context Protocol)**: AI 모델과 외부 도구/데이터를 연결하는 표준화된 방법을 제공하는 오픈소스 프로토콜입니다. 'AI를 위한 USB-C'를 표방하며, 각기 다른 도구에 대한 커스텀 통합 없이 일관된 인터페이스로 에이전트의 능력을 확장할 수 있게 해줍니다.
+
+### 2.5 선택 기준 (Practitioner Tips)
+- **제약**: 조직의 보안, 네트워크, 비용, 사용 가능한 LLM 등 기술 외적 제약 조건을 먼저 확인합니다.
+- **필요**: 구현하려는 작업이 상태 머신, 역할 기반 협업, 데이터 증강(RAG) 중 어디에 가까운지 핵심 요구사항을 정의합니다.
+- **교체 용이성**: 프롬프트, 툴 스키마, 평가 기준 등 핵심 로직을 특정 프레임워크에 종속되지 않도록 외부에서 정의하고 주입하는 방식을 고려합니다.
 
 ---
 
