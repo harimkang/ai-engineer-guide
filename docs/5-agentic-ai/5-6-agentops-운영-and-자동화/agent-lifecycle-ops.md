@@ -39,7 +39,7 @@ flowchart LR
 
 ### 2.3 로그/트레이싱/PII 보호
 - 구조화 로그: `trace_id`, `span_id`, `user_id(scope)`, `attempt`, `tool_calls[]`, `cost`, `latency`
-- 트레이싱: OpenTelemetry/LangSmith 등으로 단계별 스팬 기록(프롬프트, 툴, 리랭커)
+- 트레이싱: OpenTelemetry(텔레메트리 데이터의 생성·수집을 위한 오픈소스 표준), LangSmith(LangChain 기반 에이전트의 디버깅·추적에 특화된 플랫폼) 등으로 단계별 스팬 기록(프롬프트, 툴, 리랭커)
 - PII: 민감정보 마스킹·접근제어(프로젝트/역할), 샘플링 비율 분리(운영/개발)
 
 ### 2.4 캐시 전략

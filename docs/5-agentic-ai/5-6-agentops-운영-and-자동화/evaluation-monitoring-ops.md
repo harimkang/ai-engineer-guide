@@ -24,7 +24,7 @@ difficulty: "medium"
 - 온라인: 실사용 일부 샘플 심사(Privacy 보호), 비용 버짓 관리
 
 ### 2.3 Telemetry/Tracing
-- 도구: OpenTelemetry, LangSmith, PromptLayer 등
+- 도구: OpenTelemetry, LangSmith, PromptLayer(LLM 애플리케이션의 프롬프트 관리, 로깅, 분석을 위한 플랫폼) 등
 - 스팬: 프롬프트 구성, 리트리버/리랭커, 툴 호출, LLM 생성 단계로 분할
 - 실패 재현: `trace_id`로 궤적 검색 → 리플레이 러너로 재현(5-6 라이프사이클 참조)
 
