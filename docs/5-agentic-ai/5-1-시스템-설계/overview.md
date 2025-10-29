@@ -31,23 +31,31 @@ Agentic AI는 “목표를 입력하면 스스로 계획하고(Plan) 도구를 �
 - Evaluator/Judge: LLM-as-a-Judge, 규칙 기반 검사, 안전성/일관성 평가
 - 각 컴포넌트의 입력/출력 계약(Contract)을 명시하면 결합도를 낮추고 테스트가 쉬워집니다.
 
-### 2.3 에이전트 간 상호작용
+### 2.3 에이전트 간 상호작용 (Multi-Agent Collaboration)
 
-- 단일 에이전트로 시작해도, 역할 특화(Researcher/Writer/Reviewer) 에이전트를 조합하면 품질·속도를 끌어올릴 수 있습니다.
-- A2A/ACP를 통해 메시지 포맷, 상태 공유, 책임 분배를 명시합니다(예: 코디네이터-워커 패턴).
+단일 에이전트로 해결하기 어려운 복잡한 문제는 여러 에이전트가 역할을 분담하여 협업하는 **멀티-에이전트 시스템(Multi-Agent System)** 으로 더 효과적으로 해결할 수 있습니다. 이러한 협업의 핵심은 정해진 통신 규약입니다.
+
+- **A2A (Agent-to-Agent) 통신**: '리서처', '작성자', '리뷰어' 등 각기 다른 역할을 맡은 에이전트들이 서로 메시지를 주고받으며 공동의 목표를 달성하는 상호작용 자체를 의미합니다.
+- **ACP (Agent Communication Protocol)**: 에이전트 간의 원활한 통신을 위한 표준 규약, 즉 '공통 언어'입니다. ACP는 메시지의 형식, 상태 공유 방법, 역할 분배 규칙 등을 정의하여, 마치 회사에서 팀원들이 정해진 프로세스에 따라 협업하는 것과 같은 효과를 냅니다.
+
+이러한 구조는 보통 '코디네이터' 에이전트가 전체 작업을 조율하고 '워커' 에이전트들에게 작업을 분배하는 **코디네이터-워커 패턴**으로 구현됩니다.
 
 ```mermaid
-flowchart LR
-  subgraph Agent[A: Agent]
-    P["Plan<br>(LLM)"] --> A1["Act<br>(Tool Calls)"]
-    A1 --> O[Observe]
-    O --> P
-  end
-  subgraph Orchestrator[Orchestration Layer]
-    R[Router] --> W1[Worker 1]
-    R --> W2[Worker 2]
-  end
-  Agent <-- A2A/ACP --> Orchestrator
+graph TD
+    subgraph Multi-Agent System
+        C[Coordinator]
+        R[Researcher]
+        W[Writer]
+        V[Reviewer]
+    end
+
+    C -- "리서치 요청" --> R
+    R -- "자료 전달" --> C
+    C -- "초안 작성 요청" --> W
+    W -- "초안 전달" --> C
+    C -- "검토 요청" --> V
+    V -- "피드백 전달" --> C
+    C -- "수정 요청" --> W
 ```
 
 ---
