@@ -42,6 +42,10 @@ difficulty: "medium"
 - JSON Schema 기반 매개변수·응답 정의, 엄격 검증 + 자동 교정 프롬프트
 - 실패 정책: 재시도(백오프), 폴백, 서킷 브레이커, 비용 한도
 
+### 2.7 피드백 메커니즘 (RLHF vs. Synthetic Feedback)
+- **RLHF (Reinforcement Learning from Human Feedback)**: 사람이 직접 생성한 선호도 데이터(예: 답변 A가 B보다 낫다)를 바탕으로 보상 모델을 학습시키고, 이 보상 모델을 강화학습의 목표로 삼아 LLM을 파인튜닝하는 방식입니다. 모델의 응답을 인간의 가치에 더 잘 부합하도록 정렬(Align)하는 데 효과적입니다.
+- **Synthetic Feedback (RLAIF)**: RLHF의 확장판으로, 사람 대신 더 강력한 AI 모델(LLM-as-a-Judge)이 피드백을 생성(Synthetic Feedback)하여 보상 모델을 학습시킵니다. 이를 RLAIF(Reinforcement Learning from AI Feedback)라고도 부릅니다. 사람의 개입을 최소화하여 피드백 루프를 자동화하고 확장성을 높일 수 있는 장점이 있습니다.
+
 ---
 
 ## 3. 예시 (Example)
