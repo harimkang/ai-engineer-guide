@@ -259,60 +259,71 @@
 
 ## 5. Agentic AI
 
-### 5.1 핵심 개념
+### 5.1 Agentic AI 시스템 설계
 
-* AI 에이전트 정의 (자율성, 재계획, 툴 사용)
-* 에이전트 라이프사이클 (인지 → 계획 → 실행 → 반성)
+* AI 에이전트 정의 (LLM-based, Autonomous, Goal-driven)
+* RPA 루프(Reasoning/Planning/Acting), Reflection/Self-critique/Re-asking
+* 구성 요소: Model, Tools, Orchestration, Memory, Context Manager, Evaluator
+* 에이전트 간 상호작용: A2A, ACP
+* Ecosystem: OpenDevin, AutoGen, CrewAI, LangGraph, LlamaIndex, MemGPT, AirOps
 
-### 5.2 프레임워크·라이브러리
+### 5.2 메모리 & 컨텍스트 관리
 
-* LangChain & LangGraph
-* LlamaIndex (gpt\_index)
-* Semantic Kernel, Marvin, CrewAI
-* AutoGPT, BabyAGI, OpenAI Assistants API
+* 단기/장기/일화 메모리, RAG 메모리
+* 컨텍스트 관리: Sliding window, Summarization, Embedding clustering, Attention window 최적화
+* 하이브리드 검색(BM25+Vector)·임계값 튜닝, Contextual grounding & relevance feedback
+* 구현: Vector DB(FAISS/Milvus/Chroma), Eviction/Summarization, Hierarchical Memory Graph
 
-### 5.3 아키텍처·패턴
+### 5.3 핵심 추론 패턴
 
-* ReAct, Chain-of-Thought, Plan-and-Execute
-* 멀티 에이전트 협업 (A2A, 역할 분담)
-* 메모리 & 장기 컨텍스트
+* Zero-shot / Few-shot
+* CoT, ReAct, ToT, GoT, Reflexion
 
 ### 5.4 Retrieval-Augmented Generation (RAG)
 
-* 기본 RAG 파이프라인 (Retriever, Re-Ranker, Generator)
-* 벡터 데이터베이스 & 임베딩 (FAISS, pgvector, Milvus)
-* 고급·Agentic RAG (다중 스텝, 툴 기반 보강)
+* 파이프라인: Retriever, Re-Ranker, Generator
+* 고급·Agentic RAG: 쿼리 변환(재작성/분해), Multi-step Retrieval, Tool 기반 보강(SQL/웹)
+* 기반 기술: 임베딩, 벡터 데이터베이스
 
-### 5.5 프로토콜 & 표준
+### 5.5 프롬프트 엔지니어링 & 평가
 
-* 모델-컨텍스트-프로토콜 (MCP)
-* 에이전트-투-에이전트 (A2A) 프로토콜
-* JSON-RPC & 툴 스키마
+* 설계·최적화: A/B, Grid Search, Prompt Tuning vs Instruction Tuning, Human/Synthetic Feedback
+* Function/Tool calling 프롬프트 스키마(→ 5.9 툴 스키마)
+* 자동 평가 파이프라인(LLM-as-a-Judge), BLEU/ROUGE/정확도/추론 깊이
+* 환각 탐지·일관성 검사, 지연/비용 평가(→ 5.6/5.8), 프롬프트 회귀 테스트
 
-### 5.6 평가 & 모니터링
+### 5.6 AgentOps: 운영 & 자동화
 
-* AgentBench, Arena, AlpacaEval
-* 트레이싱 & 텔레메트리 (LangSmith, PromptLayer)
-* 안전장치 & 가드레일 (프롬프트 인젝션, 레드 팀)
+* 라이프사이클: 실행→피드백→개선, 트레이싱·텔레메트리, 리플레이/롤아웃·실패 재현 파이프라인
+* 오케스트레이션: 멀티-에이전트(코디네이터/워커), 툴/인텐트 라우팅, LangGraph·CrewAI
+* 평가/모니터링: 궤적 기반 평가(T-Eval), 툴 호출 성공률·추론 정확도, 성능 대시보드
 
-### 5.7 엔지니어링 플레이북
+### 5.7 LLM 아키텍처 & 최적화
 
-* 간단한 RAG 에이전트 구축 (Python + LangChain)
-* 멀티 에이전트 워크플로우 예제 (LangGraph)
-* 배포 고려사항 (서버리스, 컨테이너, GPU)
+* 트랜스포머/어텐션/포지셔널 인코딩, Decoder-only vs Encoder-Decoder, MoE/희소 어텐션/KV 캐시
+* 파인튜닝: PEFT(LoRA/QLoRA), SFT/DPO
+* 추론/서빙: 양자화(INT8/INT4), vLLM/Ollama/TGI
+* 상세는 4장(LLM) 교차 참조
 
-### 5.8 오케스트레이션 & 워크플로우 관리
+### 5.8 데이터 & 인프라
 
-* 스케줄러/코디네이터 패턴
-* 평가 루프 & 자동 리트라이
-* 자동 평가 루프 (Reflexion, Critic Agent)
-* 스토리지 & 캐시 전략
+* 데이터 엔지니어링: 합성 데이터(Self-play/ask), 증강·필터링, Instruction vs Dialogue
+* 인프라: Python 스택(Hydra/Pydantic/Typer/FastAPI), MLOps(Ray/W&B/MLflow), Docker/Supabase/Redis
+* CI/CD·자동화: 평가 파이프라인, 재현성(설정 버전/시드), 데이터셋 분할·메트릭 트래킹
+* 에이전트 인프라: 프롬프트 캐시, DataPart/TextPart, 컨텍스트 리미터, 응답 평가기, 지연·비용 최적화기
 
-### 5.9 보안 & 격리
+### 5.9 보안 & 프로토콜
 
-* 툴 권한 스코프 제한
-* 샌드박스·컨테이너 격리
-* 정책 기반 인가 & 감사 로그
+* 보안/가드레일: 프롬프트 인젝션, 샌드박스·컨테이너, 최소 권한, 정책 기반 인가(OPA), 감사 로그·레드팀
+* 위협모델: PII/시크릿 보호, 네트워크 이그레스·SSRF, 공급망 리스크, 권한 위임 모델
+* 표준 프로토콜: A2A, ACP, MCP
+* 툴 스키마: JSON-RPC·OpenAPI, 프롬프트 스키마 연계(→ 5.5)
+
+### 5.10 트렌드 & 생태계
+
+* Agents Companion(2024), GenAIOps/PromptOps/AgentOps
+* 멀티모달 에이전트, Arena/AgentBench/AlpacaEval, LLM-as-a-Judge
+* 주요 프레임워크: OpenDevin, AutoGen, CrewAI, LangGraph, LlamaIndex, MemGPT, AirOps
 
 ---
 
