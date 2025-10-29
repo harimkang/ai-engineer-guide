@@ -153,8 +153,8 @@ Success in the LLM space isn't about building the most sophisticated system. It'
 When implementing agents, we try to follow three core principles:
 
 1. Maintain **simplicity** in your agent's design.
-2. Prioritize **transparency** by explicitly showing the agent’s planning steps.
-3. Carefully craft your agent-computer interface (ACI) through thorough tool **documentation and testing**.
+1. Prioritize **transparency** by explicitly showing the agent’s planning steps.
+1. Carefully craft your agent-computer interface (ACI) through thorough tool **documentation and testing**.
 
 Frameworks can help you get started quickly, but don't hesitate to reduce abstraction layers and build with basic components as you move to production. By following these principles, you can create agents that are not only powerful but also reliable, maintainable, and trusted by their users.
 

@@ -1,0 +1,18 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        # Preserve Markdown's two-space line breaks for .md files
+        args: ["--markdown-linebreak-ext=md"]
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.17
+    hooks:
+      - id: mdformat
+        # Format Markdown consistently across the docs
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-frontmatter
+        files: ^docs/.*\.md$
