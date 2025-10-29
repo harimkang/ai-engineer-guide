@@ -18,14 +18,14 @@ INT8/INT4 양자화, KV 캐시, 연속 배칭 등으로 지연·비용을 줄이
 ### 2.1 양자화(Quantization)와 정확도 관리
 - PTQ/QAT: 사후 양자화(PTQ)는 빠르고 쉬움, 학습 기반(QAT)은 정확도 보존↑
 - 포맷: INT8(일반) / INT4(메모리 절감 극대화) / FP8(Ampere/Hopper 최적화)
-- 기법: GPTQ/AWQ(가중치), KV 캐시 8b/4b, QLoRA(NF4)로 학습 메모리 절감
+- 기법: GPTQ(one-shot 양자화), AWQ(중요 가중치 보호) 등 가중치 양자화, KV 캐시 8b/4b, QLoRA(NF4)로 학습 메모리 절감
 - 주의: 캘리브레이션 데이터 필요, 정밀도 하락 시 민감 레이어 제외(예: Embedding/LM Head)
 
 ### 2.2 배칭/스케줄링/캐시
 - 연속 배칭(Continuous Batching): 서로 다른 요청을 디코딩 단계에서 합쳐 처리 → GPU 유휴시간↓
 - PagedAttention(vLLM): KV 캐시를 페이지로 관리해 단편화/스왑 오버헤드↓
 - 프리픽스/컨텍스트 캐시: 공통 지시문/시스템 프롬프트를 캐시 공유
-- Speculative/Lookahead Decoding: Draft 모델/토큰으로 검증 가속
+- Speculative/Lookahead Decoding: 가벼운 Draft 모델로 여러 토큰 후보를 미리 생성하고, 큰 메인 모델이 이를 한 번에 검증하여 디코딩 속도를 높이는 기법.
 
 ### 2.3 병렬화·스케일링
 - 텐서 병렬(TP)·파이프라인 병렬(PP)·데이터 병렬(DP) 조합
