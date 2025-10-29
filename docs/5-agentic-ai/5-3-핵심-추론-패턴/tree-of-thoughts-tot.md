@@ -1,84 +1,112 @@
 ---
 title: "생각의 트리 (Tree-of-Thoughts, ToT)"
 date: "2025-10-29"
-tags: ["Agentic AI", "Reasoning", "ToT"]
+tags: ["Agentic AI", "Reasoning", "ToT", "Search Algorithms"]
 difficulty: "hard"
 ---
 
-# Tree-of-Thoughts (ToT)
+# 생각의 트리 (Tree-of-Thoughts, ToT)
 
 ## 1. 핵심 개념 (Core Concept)
 
-여러 후보 생각을 분기·탐색하여 전체 탐색 공간에서 더 나은 경로를 선택합니다. 빔서치/DFS/휴리스틱 평가를 결합해 품질을 높이되, 비용·지연이 증가하므로 제한된 예산 하에 동작하도록 설계합니다.
+Tree-of-Thoughts (ToT)는 단일 추론 경로(CoT)에 의존하는 대신, **여러 가능한 해결 경로를 트리(Tree) 형태로 동시에 탐색**하고 각 경로의 유효성을 평가하여 최적의 해결책을 찾아내는 고급 추론 패턴입니다. 이는 마치 체스 선수가 여러 가능한 수를 두고, 각 수에 대한 다음 몇 수를 미리 내다본 뒤 가장 유리한 수를 선택하는 것과 같습니다. ToT는 복잡하고 정답이 명확하지 않은 문제에서 잘못된 경로에 빠질 위험을 줄이고, 더 창의적이거나 견고한 해결책을 찾는 데 강점을 가집니다.
+
+*Note: 아래 다이어그램을 위한 이미지를 `docs/images/tree-of-thoughts-diagram.png` 에 추가해주세요.*
+![Tree of Thoughts Diagram](../../images/tree-of-thoughts-diagram.png)
 
 ---
 
 ## 2. 상세 설명 (Detailed Explanation)
 
-### 2.1 분기 생성·평가·프루닝 전략
-- 분기 생성: 현재 상태에서 k개의 다음 단계 후보(생각)를 생성
-- 평가: 휴리스틱(규칙/스코어 함수) 또는 외부 평가 모듈로 각 분기 점수화(세부 평가는 5-5 참조)
-- 프루닝: 빔서치 상위 b개 유지, 불량 분기는 즉시 제거(Early Stopping)
+ToT는 크게 4가지 단계로 구성됩니다.
 
-### 2.2 비용·지연 vs 품질 트레이드오프
-- 파라미터: 최대 깊이 d, 빔 폭 b, 총 노드 제한 N_max
-- 최적화: 사전 휴리스틱으로 불필요 분기 억제, 중간 요약으로 토큰 절약
+1.  **분해 (Decomposition)**: 해결해야 할 복잡한 문제를 여러 단계로 나눌 수 있는 중간 단계로 분해합니다.
+2.  **생성 (Generation)**: 각 단계에서, 현재 상태로부터 가능한 다음 '생각'(중간 해결책)들을 여러 개(k개) 생성합니다.
+3.  **평가 (Evaluation)**: 생성된 각각의 생각들이 얼마나 유망한지, 즉 최종 목표에 도달할 가능성이 얼마나 높은지를 평가합니다. 이 평가는 휴리스틱 규칙이나 LLM 평가자를 통해 점수화될 수 있습니다.
+4.  **탐색 (Search)**: 평가 점수를 바탕으로, 다음 단계에서 어떤 생각(가지)을 더 탐색할지 결정합니다. 이 과정에서 탐색 알고리즘이 사용됩니다.
+    - **BFS (너비 우선 탐색)**: 모든 가지를 한 단계씩 동시에 탐색합니다. 최단 경로를 찾는 데 유리합니다.
+    - **DFS (깊이 우선 탐색)**: 가장 유망해 보이는 가지 하나를 끝까지 탐색합니다. 빠른 해답 도출에 유리합니다.
+    - **빔 서치 (Beam Search)**: 각 단계에서 가장 점수가 높은 상위 `b`개의 가지만 남기고 나머지는 버리는(Pruning) 실용적인 방식입니다. 비용과 탐색 품질 사이의 균형을 맞춥니다.
 
-### 2.3 의사코드
+### 의사코드 (빔 서치 기반)
+
 ```python
-def tot_search(problem, beam=3, depth=4):
+def tot_search(problem, beam_width=3, max_depth=4):
+    # 시작 노드(문제 자체)로 초기화
     frontier = [initial_state(problem)]
-    for t in range(depth):
+
+    # 정해진 깊이까지 트리 탐색
+    for depth in range(max_depth):
         candidates = []
+        # 현재 탐색 대상인 모든 노드에 대해
         for state in frontier:
-            branches = llm.propose_branches(state, k=beam)
-            for br in branches:
-                score = evaluate(br)  # 룰/외부 평가 모듈(세부는 5-5)
-                candidates.append((br, score))
-        frontier = topk(candidates, k=beam)
-    return select_best(frontier)
+            # 1. 생성: 다음 단계의 생각들을 여러 개 생성
+            next_thoughts = llm.propose_next_thoughts(state, k=beam_width)
+            
+            # 2. 평가: 생성된 각 생각의 점수화
+            for thought in next_thoughts:
+                score = evaluate(thought) # LLM 평가자 또는 휴리스틱
+                candidates.append((thought, score))
+        
+        # 3. 탐색 (가지치기): 점수가 높은 상위 b개만 다음 탐색 대상으로 남김
+        candidates.sort(key=lambda x: x[1], reverse=True)
+        frontier = [c[0] for c in candidates[:beam_width]]
+
+    # 최종적으로 가장 좋은 경로(생각)를 선택
+    return select_best_path(frontier)
 ```
 
 ---
 
-## 3. 예시 (Example)
+## 3. 예상 면접 질문 및 모범 답안
 
-- 빔서치 기반 단계적 계획 생성(여행 일정/코딩 전략/실험 계획 등).
+### Q1. ToT가 효과적인 문제 유형과 그 한계는 무엇인가요?
 
-```mermaid
-flowchart TD
-  S[Start] --> A1[Plan v1]
-  S --> A2[Plan v2]
-  A1 --> B1[Detail v1a]
-  A1 --> B2[Detail v1b]
-  A2 --> B3[Detail v2a]
-  B1 --> C1[Score=0.7]
-  B2 --> C2[Score=0.5]
-  B3 --> C3[Score=0.8]
-  C1 --> D[Keep]
-  C2 --> X[Prune]
-  C3 --> D
-```
+**A.** ToT는 **하나의 정답 경로가 명확하지 않고 탐색 공간이 넓은 복잡한 문제**에 효과적입니다. 예를 들어, 전략 게임, 수학 증명, 창의적인 글쓰기 등 다양한 가능성을 탐색해야 하는 문제에 강점을 보입니다. 반면, **탐색할 가지가 기하급수적으로 늘어나 발생하는 막대한 비용과 지연 시간**이 가장 큰 한계입니다.
 
----
+**[추가 설명]**
+- **효과적인 문제 유형**:
+  1.  **계획/전략 수립**: 여러 대안을 동시에 고려하고 최적의 계획을 찾아야 하는 문제 (예: 복잡한 여행 일정 짜기, 프로젝트 스케줄링).
+  2.  **창의적 생성**: 다양한 아이디어나 플롯을 탐색해야 하는 글쓰기, 브레인스토밍.
+  3.  **복잡한 추론**: 여러 가설을 세우고 검증해야 하는 수학 문제나 논리 퍼즐.
+- **한계**:
+  1.  **비용 및 지연**: 각 단계에서 여러 개의 생각을 생성하고 평가해야 하므로, LLM 호출 횟수가 CoT에 비해 훨씬 많아져 비용과 시간이 크게 증가합니다.
+  2.  **평가자의 성능 의존성**: 각 생각의 유망성을 평가하는 '평가자'의 성능이 전체 결과의 질을 좌우합니다. 평가자가 실수로 좋은 가지를 잘라내면(pruning), 최적의 해를 찾지 못할 수 있습니다.
+  3.  **합성 능력의 부재**: ToT는 여러 경로를 '탐색'하는 데는 강하지만, 서로 다른 경로에서 얻은 통찰을 '종합'하는 능력은 없습니다. 이는 GoT(Graph-of-Thoughts)와의 차이점입니다.
 
-## 4. 예상 면접 질문 (Potential Interview Questions)
+### Q2. 빔 폭(beam width)과 깊이(depth)는 어떻게 정하며, 탐색 실패 시 대처(fallback) 전략은 무엇인가요?
 
-- ToT가 효과적인 문제 유형과 한계는?
-- 빔 폭/깊이를 어떻게 정하는가? 실패 시 폴백 전략은?
-- 평가자 바이어스는 어떻게 완화하는가?
+**A.** 빔 폭(`b`)과 깊이(`d`)는 **품질과 비용의 트레이드오프 관계**에 있어, 실험을 통해 문제의 복잡도와 예산에 맞는 최적값을 찾아야 합니다. 탐색 실패 시(모든 가지가 막다른 길일 때)의 대처 전략으로는, **이전에 전정(pruning)했던 다른 가지를 탐색하는 '백트래킹'** 이나, 더 간단한 **CoT 같은 추론 방식으로 전환**하는 방법이 있습니다.
+
+**[추가 설명]**
+- **`b`와 `d` 결정 방법**:
+  - **경험적 튜닝**: 작은 값(예: `b=2`, `d=3`)에서 시작하여, 검증용 데이터셋(validation set)에서 작업 성공률과 비용을 측정하며 점진적으로 값을 조정합니다. 성공률이 더 이상 오르지 않거나 예산을 초과하는 지점이 해당 문제의 최적값일 가능성이 높습니다.
+  - **직관적 가이드**: 문제의 각 단계에서 가능한 좋은 선택지가 많을수록 `b`를 늘리고, 문제를 푸는 데 필요한 단계가 길수록 `d`를 늘립니다.
+- **실패 시 대처 전략**:
+  1.  **백트래킹 (Backtracking)**: 현재 탐색 중인 모든 경로가 막혔을 때, 한 단계 이전으로 돌아가 당시에는 점수가 낮아 버려졌던 다른 경로를 이어서 탐색합니다.
+  2.  **다양성 증가 후 재시도**: 모든 경로가 비슷한 이유로 실패한다면, 생각 생성 단계의 온도(temperature)를 높여 더 다양하고 창의적인 생각들을 생성한 뒤 다시 탐색을 시작합니다.
+  3.  **단순한 방식으로 전환**: ToT 탐색이 예산을 초과하거나 계속 실패하면, 더 저렴한 CoT나 ReAct 방식으로 전환하여 '최선은 아니지만 합리적인' 답변을 내놓도록 합니다.
+
+### Q3. ToT에서 평가자(Evaluator)의 편향은 어떻게 완화할 수 있나요?
+
+**A.** 평가자의 편향은 **1) 더 우수한 상위 모델을 평가자로 사용**하고, **2) 여러 명의 평가자를 두어 다수결로 결정**하며, **3) 주관성을 줄이는 구체적이고 객관적인 평가 기준(루브릭)을 제공**함으로써 완화할 수 있습니다.
+
+**[추가 설명]**
+1.  **우수 모델 사용**: 생각 생성에는 작은 모델을 쓰더라도, 중요한 판단을 내리는 평가자 역할에는 GPT-4나 Claude Opus와 같이 가장 성능이 좋은 모델을 사용하여 편향을 줄입니다.
+2.  **평가자 앙상블 (Ensemble of Evaluators)**: 단일 LLM에 의존하는 대신, 여러 다른 모델(예: GPT-4, Claude, Gemini)이나 다른 성격(예: '낙관적 평가자', '비관적 평가자')을 가진 프롬프트를 사용하여 평가를 진행합니다. 최종 점수는 각 평가자 점수의 평균이나 다수결로 결정하여 한 모델의 편향이 전체에 미치는 영향을 줄입니다.
+3.  **구체적인 평가 루브릭 (Specific Rubric)**: 평가자에게 "이 생각이 좋은가?" 와 같이 모호하게 질문하는 대신, 구체적인 평가 항목을 담은 루브릭을 제공합니다.
+    - **루브릭 예시**: `"다음 생각을 아래 각 항목에 대해 1~5점으로 평가해줘: 1. 진행도: 최종 목표에 얼마나 가까워졌는가? 2. 실행 가능성: 이 생각이 막다른 길이 아닌가? 3. 확신도: 이 경로가 성공할 확률은 얼마인가?"` 와 같이 평가 기준을 세분화하면, 평가의 일관성과 객관성이 높아집니다.
+4.  **인간 피드백을 통한 보정 (Human-in-the-Loop)**: 주기적으로 사람이 직접 생각들을 평가하고, LLM 평가자의 점수와 비교합니다. 점수 차이가 큰 경우, 그 원인을 분석하여 LLM 평가 프롬프트에 예시(few-shot examples)로 제공함으로써 사람의 판단과 유사해지도록 보정(calibrate)할 수 있습니다.
 
 ---
 
 ## 5. 더 읽어보기 (Further Reading)
 
-- docs/references/anthropic/building-effective-agents.md
-- docs/references/openai/a-practical-guide-to-building-agents-3.pdf
-- docs/references/google/Agents_Companion_v2.pdf
+- [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](https://arxiv.org/abs/2305.10601)
 
 ---
 
 ## 6. See also
 
-- 그래프형 추론: 5-3 → [graph-of-thoughts-got](./graph-of-thoughts-got.md)
-- 평가/운영: 5-5/5-6 → [prompt-evaluation-and-benchmarks](../5-5-프롬프트-엔지니어링-and-평가/prompt-evaluation-and-benchmarks.md), [evaluation-monitoring-ops](../5-6-agentops-운영-and-자동화/evaluation-monitoring-ops.md)
+- [Graph-of-Thoughts (GoT)](./graph-of-thoughts-got.md)
+- [평가 및 운영](../5-5-프롬프트-엔지니어링-and-평가/prompt-evaluation-and-benchmarks.md)

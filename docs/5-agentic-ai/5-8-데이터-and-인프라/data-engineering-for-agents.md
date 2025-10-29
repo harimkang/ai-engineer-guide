@@ -1,98 +1,92 @@
 ---
-title: "에이전트를 위한 데이터 엔지니어링: 합성·증강·필터링"
+title: "에이전트를 위한 데이터 엔지니어링: 수집, 합성, 품질 관리"
 date: "2025-10-29"
-tags: ["Agentic AI", "Data", "Engineering"]
-difficulty: "medium"
+tags: ["Agentic AI", "Data Engineering", "Synthetic Data", "LLMOps"]
+difficulty: "hard"
 ---
 
 # 에이전트를 위한 데이터 엔지니어링
 
 ## 1. 핵심 개념 (Core Concept)
 
-에이전트 데이터는 “수집 → 정제/표준화 → 합성/증강 → 필터링/품질관리 → 버전/추적 → 학습/평가/회귀”의 수명주기를 가집니다. 합성(Self-play/Self-ask)과 품질 관리(룰 + LLM Judge)를 결합해 유효한 데이터를 꾸준히 확보하는 것이 핵심입니다.
+AI 에이전트의 성능은 전적으로 데이터의 품질에 달려있습니다. **"Garbage In, Garbage Out (쓰레기를 넣으면 쓰레기가 나온다)"** 원칙이 그 어느 때보다 중요합니다. 에이전트를 위한 데이터 엔지니어링은 **1) RAG를 위한 소스 데이터, 2) 파인튜닝을 위한 학습 데이터, 3) 테스트를 위한 평가 데이터**를 체계적으로 수집, 정제, 생성, 관리하는 전 과정을 의미합니다. 특히, 고품질의 데이터가 부족할 때 LLM을 활용해 데이터를 생성하는 **합성 데이터(Synthetic Data)** 기술과, 생성된 데이터의 품질을 관리하는 자동화된 파이프라인 구축이 핵심입니다.
+
+*Note: 아래 다이어그램을 위한 이미지를 `docs/images/agent-data-flywheel.png` 에 추가해주세요.*
+![Agent Data Flywheel Diagram](../../images/agent-data-flywheel.png)
 
 ---
 
-## 2. 상세 설명 (Detailed Explanation)
+## 2. 에이전트 데이터의 종류와 라이프사이클
 
-### 2.1 스키마 정의(Contract-first)
-- 공통 스키마: {id, input, context, tools[], expected_output, rubric, meta(tags, source, pii, ts)}
-- 태스크별 확장: 분류(label/evidence), 요약(length_limit/citations), 툴콜(params/result)
-- 장점: 파이프라인 단계 간 결합도↓, 검증·로깅·게이팅 일관성↑
+### 2.1 소스 데이터 (Source Data for RAG)
 
-### 2.2 수집/정제/표준화
-- 소스: 위키/문서/이슈/티켓/로그/데이터베이스/크롤링
-- 정제: 포맷 정규화(HTML→MD, PDF→텍스트), 섹션/표/코드 분리, 언어 태깅
-- 표준화: 문서/섹션 ID, 출처 URL/Commit, 버전(semver/date)
+- **목적**: 에이전트가 답변의 근거로 삼을 지식 베이스를 구축합니다.
+- **라이프사이클**:
+  1.  **수집**: 내부 문서(Confluence, Google Drive), 데이터베이스, 웹사이트 등 다양한 소스로부터 원본 데이터를 수집합니다.
+  2.  **정제 및 표준화**: HTML 태그 제거, PDF에서 텍스트 추출 등 포맷을 정규화하고, 문서 ID, 출처 URL, 버전 등의 메타데이터를 부여합니다.
+  3.  **청킹 및 임베딩**: 정제된 문서를 RAG에 적합한 크기로 쪼개고(Chunking), 벡터로 변환하여 Vector DB에 색인합니다.
 
-### 2.3 합성 데이터(Self-play/Self-ask)
-- Self-ask: 복합 질문을 하위질문 분해 → 검색/툴 호출 → 최종 답 생성
-- Self-play: 역할 쌍(질문자/답변자/리뷰어)로 데이터 생성, Reviewer가 루브릭 채점
-- HyDE: 가설 문서 생성 후 검색 후보 확장(RAG 데이터 강화)
+### 2.2 학습 데이터 (Training Data for Fine-tuning)
 
-### 2.4 증강/필터링/중복 제거
-- 증강: 동의어 치환, 형식 변환(JSON↔표), 요약/확장, 잡음 주입으로 견고성↑
-- 필터링: 룰(금지어/스키마/길이/언어) + LLM Judge(근거/정확/간결)
-- 중복 제거: 해시/MinHash/문장 임베딩 근접, 군집 후 대표 추출(MMR)
+- **목적**: 모델이 특정 도메인의 스타일, 지식, 선호를 배우도록 파인튜닝(SFT, DPO 등)에 사용합니다.
+- **라이프사이클**:
+  1.  **수집**: 사람이 직접 작성한 데이터, 또는 운영 중인 에이전트의 성공적인 궤적 로그를 수집합니다.
+  2.  **합성 및 증강**: 데이터가 부족할 경우, LLM을 활용해 데이터를 생성(합성)하거나, 기존 데이터를 변형(증강)하여 양을 늘립니다.
+      - **합성 (Synthesis)**: LLM에게 역할(질문자/답변자)을 부여하여 대화 데이터를 생성(Self-play)하거나, 복잡한 질문을 하위 질문으로 분해하여 데이터(Self-ask)를 만듭니다.
+      - **증강 (Augmentation)**: 기존 데이터의 단어를 유의어로 바꾸거나, 문장 구조를 변경하여 다양성을 확보합니다.
+  3.  **필터링 및 품질 관리**: 규칙 기반(욕설, 개인정보 필터) 및 LLM-as-a-Judge(논리성, 사실성 평가)를 통해 저품질의 합성/증강 데이터를 걸러냅니다.
 
-### 2.5 Instruction vs Dialogue 데이터셋
-- Instruction: 입력→출력(단일 턴), 평가·튜닝 안정적, 스키마 강제 용이
-- Dialogue/Agent: 다중 턴 + 툴 I/O + 궤적(Thought/Action/Obs). 추적·리플레이 필수
+### 2.3 평가 데이터 (Evaluation Data for Testing)
 
-### 2.6 분할·버전·추적
-- 분할: 학습/검증/홀드아웃/회귀(골든셋) 분리, 시간/도메인 분할로 누설 방지
-- 버전: dataset_v, schema_v, prompt_v와 연계, 데이터 카드(Data Card) 작성
-- 추적: MLflow/W&B/데이터 카탈로그에 메타데이터·지표·샘플 로그 기록
+- **목적**: 모델과 프롬프트의 성능을 측정하고, 변경으로 인한 성능 저하(회귀)가 없는지 검증합니다.
+- **라이프사이클**:
+  1.  **구축 (Curation)**: 가장 중요하고 대표적인 질문과 이상적인 답변으로 구성된 '골든 데이터셋'을 수작업으로 구축합니다. 일반적인 케이스와 엣지 케이스를 모두 포함해야 합니다.
+  2.  **분할 (Splitting)**: 데이터 누설을 방지하기 위해 학습/검증/테스트셋으로 엄격히 분리합니다. 특히, 시간에 따라 데이터 분포가 변하는 경우, 과거 데이터로 학습하고 미래 데이터로 테스트하는 '시간 기반 분할'이 필수적입니다.
+  3.  **버전 관리**: 모든 데이터셋은 명확한 버전(예: `golden_v1.2`)으로 관리하여, 모든 실험과 평가가 재현 가능하도록 보장합니다.
 
 ---
 
-## 3. 예시 (Example)
+## 3. 예상 면접 질문 및 모범 답안
 
-### 3.1 파이프라인 다이어그램
-```mermaid
-flowchart LR
-  S[Sources] --> C["정제/표준화"]
-  C --> SY["합성(Self-play/ask/HyDE)"]
-  SY --> A[증강]
-  A --> F["필터링<br>(룰+Judge)"]
-  F --> D["분할/버전/카달로그"]
-  D --> T["학습/평가/회귀"]
-```
+### Q1. 합성 데이터(Synthetic Data)에 포함될 수 있는 편향을 어떻게 완화할 수 있나요?
 
-### 3.2 합성 루프(의사코드)
-```python
-def synthesize(seed, k=3):
-    items = []
-    for _ in range(k):
-        plan = llm.decompose(seed)
-        ctx = retrieve(plan)
-        out = llm.answer(seed, ctx)
-        score = judge(out, rubric)
-        if score >= 3.5:
-            items.append({"input": seed, "context": ctx, "expected_output": out})
-    return dedup(items)
-```
+**A.** 합성 데이터의 편향은 **1) 다양한 시드(Seed) 데이터 사용, 2) 강력한 LLM 심판(Judge)을 통한 필터링, 3) 실제 사람의 데이터와 혼합 사용**을 통해 완화할 수 있습니다. 합성 데이터 생성에 사용되는 LLM 자체의 편향을 완전히 제거하기는 어렵기 때문에, 다층적인 검증과 희석 전략이 중요합니다.
 
----
+**[추가 설명]**
+1.  **다양한 시드 데이터**: 데이터 생성의 시작점이 되는 시드 프롬프트가 다양해야 결과물의 다양성도 확보됩니다. 특정 관점에 치우치지 않은, 넓은 범위의 시드를 사용해야 합니다.
+2.  **편향성 검증 루브릭**: 데이터를 필터링하는 LLM 심판에게 '정확성'뿐만 아니라, '고정관념 포함 여부', '특정 그룹에 대한 편향된 시각' 등 편향성을 검사하는 구체적인 평가 기준(Rubric)을 제공해야 합니다.
+3.  **실제 데이터와 혼합**: 100% 합성 데이터에만 의존하는 것은 위험합니다. 소량이라도 사람이 직접 검수한 고품질의 실제 데이터를 섞어주면, 합성 데이터의 편향을 희석하고 모델의 안정성을 높일 수 있습니다.
 
-## 4. 예상 면접 질문 (Potential Interview Questions)
+### Q2. 데이터 누설(Data Leakage)을 방지하기 위한 데이터 분할 전략은 무엇인가요?
 
-- 합성 데이터의 편향을 낮추는 방법은?
-- 데이터 누설을 방지하기 위한 분할 전략은?
-- 다중 턴/툴 I/O 궤적 데이터의 스키마는 어떻게 정의하는가?
+**A.** 데이터의 특성에 맞는 분할 전략을 사용해야 합니다. 데이터 포인트가 서로 독립적이라면 **무작위 분할**도 괜찮지만, 시간적 순서나 그룹핑(예: 동일한 사용자)이 중요하다면 **시간 기반 분할**이나 **그룹 기반 분할**을 사용해야만 데이터 누설을 막고 모델의 실제 성능을 올바르게 평가할 수 있습니다.
 
----
+**[추가 설명]**
+- **데이터 누설 문제**: 테스트셋에 있어야 할 정보가 학습셋에 포함되면, 모델이 정답을 미리 엿본 것과 같아 평가 점수가 비정상적으로 높게 나옵니다. 하지만 이런 모델은 실제 세상의 새로운 데이터에 대해서는 성능이 매우 낮게 나타납니다.
+- **분할 전략**:
+  - **시간 기반 분할**: 과거 데이터로 학습하고, 미래 데이터로 테스트합니다. (예: 1월~6월 데이터로 학습, 7월 데이터로 테스트)
+  - **그룹 기반 분할**: 특정 사용자의 모든 대화 기록은 학습셋 아니면 테스트셋, 둘 중 한 곳에만 포함되도록 분할합니다. 이를 통해 모델이 특정 사용자의 말투에 과적합되는 것을 방지하고, 처음 보는 사용자에 대한 일반화 성능을 측정할 수 있습니다.
+  - **중복 제거**: 분할 전에, 내용이 거의 동일한 데이터들을 해시나 임베딩 유사도를 통해 찾아내어 제거하는 과정이 반드시 선행되어야 합니다.
 
-## 5. 더 읽어보기 (Further Reading)
+### Q3. 에이전트의 다중 턴 및 도구 사용 궤적(Trajectory) 데이터는 어떤 스키마로 정의해야 할까요?
 
-- docs/references/anthropic/building-effective-agents.md
-- docs/references/google/Agents_Companion_v2.pdf
-- docs/references/openai/a-practical-guide-to-building-agents-3.pdf
+**A.** 궤적 데이터는 **세션 단위의 최상위 정보**와, 그 안의 **각 턴(Turn)별 상세 정보를 담은 리스트** 형태의 계층적 스키마로 정의하는 것이 가장 좋습니다. 각 턴은 에이전트의 `thought`, `action`, `observation`을 구조화된 객체로 포함해야 합니다.
+
+**[추가 설명]**
+- **최상위 (세션) 스키마**:
+  - `session_id`, `initial_query`, `final_outcome` (성공/실패), `final_answer`, `metadata` (사용자 ID, 타임스탬프 등)
+  - `turns`: 아래의 턴 객체들이 담길 리스트
+- **턴(Turn/Step) 스키마**:
+  - `turn_number`: 턴의 순서 (예: 1, 2, 3, ...)
+  - `thought`: 해당 턴에서 에이전트의 계획이나 내부 추론 과정 (문자열)
+  - `action`: 에이전트가 수행한 행동. `{"tool_name": "search", "parameters": {"query": "..."}}` 와 같이 구조화된 객체.
+  - `observation`: 행동의 결과. `{"status": "success", "output": "..."}` 와 같이 구조화된 객체.
+- **장점**: 이렇게 구조화된 로그는 나중에 특정 도구가 실패한 궤적만 필터링하거나, 성공적인 `(thought, action)` 쌍만 추출하여 파인튜닝 데이터로 사용하는 등, 프로그래밍 방식의 분석과 재활용을 매우 용이하게 합니다.
 
 ---
 
-## 6. 운영 팁 & See also
+## 4. See also
 
-- 평가/게이팅: 5-5 → [prompt-evaluation-and-benchmarks](../5-5-프롬프트-엔지니어링-and-평가/prompt-evaluation-and-benchmarks.md)
-- RAG 인덱싱: 5-4 → [embeddings-and-vector-dbs](../5-4-retrieval-augmented-generation-rag/embeddings-and-vector-dbs.md)
-- 메모리/압축: 5-2 → [memory-architecture](../5-2-메모리-and-컨텍스트-관리/memory-architecture.md)
+- [RAG 인덱싱](../5-4-retrieval-augmented-generation-rag/embeddings-and-vector-dbs.md)
+- [파인튜닝 및 적응](../5-7-llm-아키텍처-and-최적화/fine-tuning-and-adaptation.md)
+- [평가 및 벤치마크](../5-5-프롬프트-엔지니어링-and-평가/prompt-evaluation-and-benchmarks.md)

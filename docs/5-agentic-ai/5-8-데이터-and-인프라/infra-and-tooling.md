@@ -1,89 +1,86 @@
 ---
-title: "인프라 & 툴링: Python 스택, MLOps, DB/캐시"
+title: "인프라 & 툴링: Python 스택, MLOps, 서빙, 관찰 가능성"
 date: "2025-10-29"
-tags: ["Agentic AI", "Infra", "Tooling"]
-difficulty: "medium"
+tags: ["Agentic AI", "Infra", "Tooling", "MLOps", "Observability"]
+difficulty: "hard"
 ---
 
 # 인프라 & 툴링
 
 ## 1. 핵심 개념 (Core Concept)
 
-구성/비밀/스토리지/큐/캐시/서빙/관찰성까지 아우르는 “계약 우선 인프라”를 설계합니다. Python 스택(Hydra/Pydantic/Typer/FastAPI) + 실험/스케줄(Ray/Airflow/MLflow/W&B) + 데이터·캐시·메시징(ObjStore/PG/Redis/Kafka) + 서빙(vLLM/TGI/Ollama) + 관찰성(Prom/Grafana/OTel) 조합을 권장합니다.
+안정적인 AI 에이전트 서비스는 애플리케이션 코드뿐만 아니라, 그를 둘러싼 견고한 인프라 위에서 동작합니다. 에이전트를 위한 인프라는 **개발/실험, 데이터/상태, 컴퓨팅/서빙, 관찰 가능성**이라는 네 가지 핵심 계층으로 구성됩니다. 각 계층에 적합한 도구를 선택하고, 이들 간의 인터페이스(계약)를 표준화하여, 확장 가능하고 운영이 용이한 시스템을 구축하는 것이 목표입니다.
+
+*Note: 아래 다이어그램을 위한 이미지를 `docs/images/llm-infra-stack-diagram.png` 에 추가해주세요.*
+![LLM Infra Stack Diagram](../../images/llm-infra-stack-diagram.png)
 
 ---
 
-## 2. 상세 설명 (Detailed Explanation)
+## 2. 인프라 스택의 4계층
 
-### 2.1 구성·비밀 관리
-- 구성: Hydra(계층 설정), Pydantic(검증), 환경별 오버레이(dev/stg/prod)
-- 비밀: Vault/AWS SSM/GCP Secret Manager, 최소권한·순환 키, KMS 암호화
+### 2.1 개발 및 실험 (Development & Experimentation)
+- **역할**: 코드와 설정을 관리하고, 실험을 추적하며, 파이프라인을 자동화합니다.
+- **주요 도구**:
+  - **설정 관리**: Hydra, Pydantic (계층적이고 검증 가능한 설정 관리)
+  - **실험 추적**: MLflow, W&B (모든 실험의 파라미터, 지표, 아티팩트 기록 및 비교)
+  - **워크플로우 자동화**: Airflow, Prefect, Ray (데이터 처리, 학습, 평가 등 복잡한 파이프라인 스케줄링)
 
-### 2.2 저장소·데이터베이스·캐시
-- 오브젝트 스토어: 문서/리포트/아티팩트 저장(S3/GCS/MinIO)
-- 관계형: Postgres(메타데이터/로그/권한), pgvector로 RAG/메모리 통합 가능
-- 캐시: Redis(응답/툴 결과/레이트 리밋/분산 락), TTL/무효화 설계
+### 2.2 데이터 및 상태 관리 (Data & State Management)
+- **역할**: 에이전트의 지식(문서), 기억(메타데이터), 그리고 빠른 접근을 위한 캐시와 비동기 작업을 처리합니다.
+- **주요 도구**:
+  - **오브젝트 스토리지**: S3, GCS, MinIO (문서, 모델 아티팩트 등 대용량 파일 저장)
+  - **데이터베이스**: PostgreSQL + pgvector (메타데이터, 로그, RAG 인덱스를 한 번에 관리), Milvus/Weaviate (대규모 전용 벡터 DB)
+  - **캐시**: Redis (LLM 응답, 툴 결과, 세션 정보 등 휘발성 데이터 고속 저장)
+  - **메시지 큐**: Kafka, RabbitMQ, SQS (비동기 작업 요청, 에이전트 간 통신)
 
-### 2.3 메시징·오케스트레이션
-- 큐/스트림: Kafka/Kinesis/SQS(비동기 작업, 재시도/데드레터)
-- 워크플로우: Airflow/Prefect(스케줄/의존/관찰), Ray(대규모 병렬/분산)
+### 2.3 컴퓨팅 및 서빙 (Compute & Serving)
+- **역할**: LLM 모델을 효율적으로 실행(추론)하고, 사용자 요청을 받아 처리하며, 외부와 안전하게 통신합니다.
+- **주요 도구**:
+  - **LLM 서빙**: vLLM, TGI, Ollama, TensorRT-LLM (양자화, 연속 배칭 등으로 추론 최적화)
+  - **API 게이트웨이**: FastAPI, Nginx (사용자 인증, 라우팅, 레이트 리미팅)
+  - **보안**: Vault, AWS/GCP Secret Manager (API 키 등 비밀 정보 관리)
 
-### 2.4 서빙·네트워킹
-- 서빙: vLLM/TGI/Ollama/TensorRT-LLM(5-7 참조), FastAPI 게이트웨이(OpenAI API 호환)
-- 네트워크: egress 제한(웹 검색/툴 화이트리스트), 프록시, IAM/사내망
-- 레이트 리밋: 사용자/테넌트/툴 단위 토큰/초, 비용 버짓 연계
-
-### 2.5 관찰성·로깅·추적
-- 메트릭: Prometheus → Grafana 대시보드, 알림 라우팅
-- 추적: OpenTelemetry/LangSmith, 스팬 표준(프롬프트 구성/리트리버/툴/LLM)
-- 로깅: 구조화 JSON, PII 마스킹, 장기 보존/컬럼나 지표화
-
-### 2.6 에이전트 런타임 구성요소
-- 프롬프트 캐시/컨텍스트 리미터/응답 평가기/비용 최적화기/서킷 브레이커
-- 스키마 레지스트리(툴/프롬프트/평가), 피처 플래그, A/B·롤아웃 도우미
-
-```mermaid
-flowchart LR
-  U["User/API"] --> GW["Gateway(FastAPI)"]
-  GW --> ORC[Orchestrator]
-  ORC --> SVC["vLLM/TGI"]
-  ORC --> Q[Queue]
-  ORC --> DB(["Postgres/pgvector"])
-  ORC --> REDIS[(Redis)]
-  ORC --> OBJ(["S3/MinIO"])
-  ORC --> OTL["OTel/Logs"]
-```
+### 2.4 관찰 가능성 (Observability)
+- **역할**: 시스템 전반의 상태를 파악하고, 문제가 발생했을 때 신속하게 원인을 찾을 수 있도록 데이터를 수집, 시각화, 경보합니다.
+- **주요 도구**:
+  - **표준**: OpenTelemetry (로그, 추적, 메트릭을 통합하는 표준. OTel을 사용하면 특정 벤더에 종속되지 않음)
+  - **추적 (Tracing)**: Jaeger, LangSmith (단일 요청이 여러 시스템을 거치는 과정을 시각화)
+  - **메트릭 (Metrics)**: Prometheus (시계열 데이터 수집) + Grafana (시각화 대시보드)
+  - **로깅 (Logging)**: ELK Stack, Loki (구조화된 로그 검색 및 분석)
 
 ---
 
-## 3. 예시 (Example)
+## 3. 예상 면접 질문 및 모범 답안
 
-### 3.1 MLflow/W&B 메트릭 트래킹
-- 실험 런에 성능/비용/지연/스키마 위반률 기록, 아티팩트(리포트/샘플) 업로드
-- 대조군/변경군 비교, 회귀 알림을 CI와 연동
+### Q1. 실험의 재현성(Reproducibility)을 보장하기 위한 핵심 요소는 무엇인가요?
 
-### 3.2 Redis 캐시 키 설계
-- 키 = hash(prompt_tpl) + hash(context) + versions(model/prompt/index/tool)
-- 개인화/세션 의존 컨텍스트는 키 분리, TTL은 데이터/도메인에 맞춰 설정
+**A.** 재현성을 위해서는 실험 결과에 영향을 미치는 **모든 것을 버전으로 관리하고 기록**해야 합니다. 핵심 요소는 **1) 코드/로직 버전** (프롬프트, 비즈니스 로직), **2) 모델 버전** (LLM, 임베딩 모델), **3) 데이터 버전** (RAG 인덱스, 학습 데이터셋), 그리고 **4) 설정값** (temperature, top_k 등 하이퍼파라미터)입니다. 이 '버전 세트'를 MLflow 같은 실험 추적 도구에 모두 기록해야 합니다.
+
+**[추가 설명]**
+Git으로 코드/프롬프트를, DVC 등으로 데이터/인덱스를, 모델 레지스트리로 모델을, YAML 파일로 설정값을 버전 관리하고, 각 실험 실행 시 이 모든 버전 ID와 랜덤 시드(seed)를 함께 기록해야, 나중에 누구라도 특정 실험을 완벽하게 재현할 수 있습니다. 자세한 내용은 `agent-lifecycle-ops.md` 문서를 참고하세요.
+
+### Q2. 다중 테넌트(Multi-tenant) 환경에서 권한과 사용량 제한(Rate Limit)은 어떻게 설계해야 하나요?
+
+**A.** **권한**은 API 게이트웨이에서 API 키를 통해 테넌트 ID와 역할을 식별하고, 내부의 모든 로직이 이 테넌트 ID를 기반으로 데이터에 접근하도록 설계합니다. **사용량 제한**은 레디스(Redis) 같은 분산 캐시를 활용한 토큰 버킷 알고리즘으로 구현하며, 테넌트별로 분당 요청 수, 월간 총 사용 토큰 등을 독립적으로 제어합니다.
+
+**[추가 설명]**
+- **권한 (Authorization)**: `SELECT * FROM documents WHERE tenant_id = ?` 와 같이, 모든 DB 쿼리와 파일 접근 로직에 테넌트 ID를 강제하는 것이 핵심입니다. 이를 통해 A사 고객이 B사 고객의 데이터를 절대 볼 수 없도록 원천적으로 차단합니다.
+- **사용량 제한 (Rate Limiting)**: 각 테넌트마다 '토큰 버킷'을 할당하고, 요청이 들어올 때마다 토큰을 소모시킵니다. 버킷이 비면 `429 Too Many Requests` 에러를 반환합니다. API 응답 헤더에 `X-RateLimit-Remaining` 같은 정보를 포함하여 클라이언트가 자신의 남은 사용량을 알 수 있게 해주는 것이 좋습니다.
+
+### Q3. 시스템의 로그, 추적, 메트릭을 어떤 표준으로 통합하여 관리하는 것이 좋은가요?
+
+**A.** 업계 표준인 **OpenTelemetry(OTel)**를 사용하는 것이 가장 좋습니다. OTel은 특정 벤더에 종속되지 않는 단일 표준 API를 통해 **추적(Traces), 메트릭(Metrics), 로그(Logs)** 를 모두 수집하고 내보낼 수 있게 해줍니다. 이를 통해 전체 시스템의 관찰 가능성을 일관된 방식으로 확보할 수 있습니다.
+
+**[추가 설명]**
+- **문제점**: 표준 없이는, LLM 서빙 프레임워크는 프로메테우스 메트릭을, 벡터 DB는 자체 로그를, API 게이트웨이는 다른 형식의 추적 데이터를 생성하여 파편화된 데이터를 관리하기 어렵습니다.
+- **OTel의 해결책**:
+  - **추적**: 사용자의 단일 요청이 API 게İ이트웨이, 오케스트레이터, RAG, LLM 등 여러 컴포넌트를 거치는 전체 과정을 하나의 'Trace'로 묶어 시각화해줍니다. 병목 구간이나 에러 발생 지점을 찾는 데 매우 강력합니다.
+  - **메트릭/로그**: 모든 컴포넌트가 OTel SDK를 통해 표준화된 형식의 메트릭과 로그를 생성하도록 합니다. 특히, 모든 로그에 `trace_id`를 포함시켜, 특정 요청 과정에서 발생한 모든 로그를 한 번에 필터링하여 볼 수 있게 하는 것이 중요합니다.
 
 ---
 
-## 4. 예상 면접 질문 (Potential Interview Questions)
+## 4. See also
 
-- 실험 재현성 확보의 핵심 포인트는?
-- 다중 테넌트 환경에서 권한/레이트 리밋을 어떻게 설계하는가?
-- 로그/추적/메트릭을 어떤 표준으로 합치는가?
-
----
-
-## 5. 더 읽어보기 (Further Reading)
-
-- docs/references/anthropic/building-effective-agents.md
-
----
-
-## 6. See also
-
-- CI/CD 자동화: 5-8 → [ci-cd-and-automation](./ci-cd-and-automation.md)
-- 서빙 최적화: 5-7 → [inference-optimization-and-serving](../5-7-llm-아키텍처-and-최적화/inference-optimization-and-serving.md)
-- AgentOps 운영: 5-6 → [agent-lifecycle-ops](../5-6-agentops-운영-and-자동화/agent-lifecycle-ops.md)
+- [CI/CD 및 자동화](./ci-cd-and-automation.md)
+- [추론 최적화 및 서빙](../5-7-llm-아키텍처-and-최적화/inference-optimization-and-serving.md)
+- [에이전트 라이프사이클 운영](../5-6-agentops-운영-and-자동화/agent-lifecycle-ops.md)
