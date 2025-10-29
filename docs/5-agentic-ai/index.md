@@ -15,7 +15,7 @@ difficulty: "easy"
 
 - 5-1 시스템 설계: [개요](./5-1-시스템-설계/overview.md), [구성요소](./5-1-시스템-설계/components.md), [RPA 루프](./5-1-시스템-설계/core-loop-rpa.md), [에이전트 상호작용/프로토콜](./5-1-시스템-설계/agent-interaction-and-protocols.md), [에코시스템](./5-1-시스템-설계/ecosystem.md)
 - 5-2 메모리/컨텍스트: [메모리 아키텍처](./5-2-메모리-and-컨텍스트-관리/memory-architecture.md), [컨텍스트 압축/관리](./5-2-메모리-and-컨텍스트-관리/context-compression-management.md), [구현 기법](./5-2-메모리-and-컨텍스트-관리/memory-implementation-techniques.md)
-- 5-3 핵심 추론 패턴: [기본 프롬프트](./5-3-핵심-추론-패턴/basic-prompting.md), [CoT](./5-3-핵심-추론-패턴/chain-of-thought-cot.md), [ToT](./5-3-핵심-추론-패턴/tree-of-thoughts-tot.md), [GoT](./5-3-핵심-추론-패턴/graph-of-thoughts-got.md), [ReAct](./5-3-핵심-추론-패턴/react.md), [Reflexion](./5-3-핵심-추론-패턴/reflexion.md)
+- 5-3 핵심 추론 패턴: [CoT](./5-3-핵심-추론-패턴/chain-of-thought-cot.md), [ToT](./5-3-핵심-추론-패턴/tree-of-thoughts-tot.md), [GoT](./5-3-핵심-추론-패턴/graph-of-thoughts-got.md), [ReAct](./5-3-핵심-추론-패턴/react.md), [Reflexion](./5-3-핵심-추론-패턴/reflexion.md)
 - 5-4 RAG: [기본 파이프라인](./5-4-retrieval-augmented-generation-rag/basic-rag-pipeline.md), [임베딩/벡터DB](./5-4-retrieval-augmented-generation-rag/embeddings-and-vector-dbs.md), [에이전틱 RAG](./5-4-retrieval-augmented-generation-rag/advanced-agentic-rag.md)
 - 5-5 프롬프트/평가: [설계·최적화](./5-5-프롬프트-엔지니어링-and-평가/prompt-design-optimization.md), [평가/벤치마크](./5-5-프롬프트-엔지니어링-and-평가/prompt-evaluation-and-benchmarks.md)
 - 5-6 AgentOps: [라이프사이클·운영](./5-6-agentops-운영-and-자동화/agent-lifecycle-ops.md), [오케스트레이션](./5-6-agentops-운영-and-자동화/orchestration-workflow-management.md), [평가/모니터링](./5-6-agentops-운영-and-자동화/evaluation-monitoring-ops.md)
@@ -44,4 +44,3 @@ difficulty: "easy"
 ## 참고
 
 섹션별 상세 링크는 각 문서의 "더 읽어보기"와 "See also"를 참고하세요.
-

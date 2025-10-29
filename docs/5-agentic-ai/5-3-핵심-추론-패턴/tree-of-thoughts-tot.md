@@ -17,7 +17,7 @@ difficulty: "hard"
 
 ### 2.1 분기 생성·평가·프루닝 전략
 - 분기 생성: 현재 상태에서 k개의 다음 단계 후보(생각)를 생성
-- 평가: 휴리스틱(규칙/스코어 함수) 또는 LLM-as-a-Judge로 각 분기 점수화
+- 평가: 휴리스틱(규칙/스코어 함수) 또는 외부 평가 모듈로 각 분기 점수화(세부 평가는 5-5 참조)
 - 프루닝: 빔서치 상위 b개 유지, 불량 분기는 즉시 제거(Early Stopping)
 
 ### 2.2 비용·지연 vs 품질 트레이드오프
@@ -33,7 +33,7 @@ def tot_search(problem, beam=3, depth=4):
         for state in frontier:
             branches = llm.propose_branches(state, k=beam)
             for br in branches:
-                score = evaluate(br)  # 룰/LLM Judge
+                score = evaluate(br)  # 룰/외부 평가 모듈(세부는 5-5)
                 candidates.append((br, score))
         frontier = topk(candidates, k=beam)
     return select_best(frontier)
