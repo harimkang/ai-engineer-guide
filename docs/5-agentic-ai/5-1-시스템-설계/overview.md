@@ -20,6 +20,8 @@ Agentic AI는 “목표를 입력하면 스스로 계획하고(Plan) 도구를 �
 - 실행 결과(Observation)를 기록·요약하여 컨텍스트를 최신 상태로 유지하고, 필요 시 계획을 수정합니다.
 - 내부적으로 LLM 추론 엔진, 외부 Tool/Function, 메모리/컨텍스트 관리자, 오케스트레이션 레이어로 구성됩니다.
 
+![AI Agent Concepts](../../images/agent-components-new.png)
+
 ### 2.2 구성 요소와 경계
 
 - Model(LLM): 추론·계획 수립·결과 해석의 핵심 엔진
@@ -79,6 +81,7 @@ flowchart LR
 - docs/references/anthropic/effective-context-engineering-for-ai-agents.md
 - docs/references/google/Agents_Companion_v2.pdf
 - docs/references/openai/a-practical-guide-to-building-agents-3.pdf
+- https://learn.microsoft.com/ko-kr/copilot/security/developer/agent-components
 
 ---
 
