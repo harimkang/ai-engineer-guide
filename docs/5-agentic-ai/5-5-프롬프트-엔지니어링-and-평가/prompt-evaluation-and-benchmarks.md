@@ -1,7 +1,7 @@
 ---
 title: '프롬프트 및 에이전트 평가: 자동화, 지표, 벤치마크'
 date: '2025-10-29'
-tags: [Agentic AI, Evaluation, LLMOps, Benchmarks, LLM-as-a-Judge]
+tags: [Agentic-AI, Evaluation, LLMOps, Benchmarks, LLM-as-a-Judge]
 difficulty: hard
 ---
 

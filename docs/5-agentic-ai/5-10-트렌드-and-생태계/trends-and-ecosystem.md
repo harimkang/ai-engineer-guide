@@ -1,7 +1,7 @@
 ---
 title: '트렌드 & 생태계: 연구 키워드, 프레임워크, 벤치마크'
 date: '2025-10-29'
-tags: [Agentic AI, Trends, Ecosystem]
+tags: [Agentic-AI, Trends, Ecosystem]
 difficulty: easy
 ---
 

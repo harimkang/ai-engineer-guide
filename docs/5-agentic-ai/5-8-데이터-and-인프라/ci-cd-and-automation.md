@@ -1,7 +1,7 @@
 ---
 title: 'CI/CD & 자동화: 평가 파이프라인, 재현성, 게이팅'
 date: '2025-10-29'
-tags: [Agentic AI, LLMOps, CI/CD, Automation, GitHub Actions]
+tags: [Agentic-AI, LLMOps, CI/CD, Automation, GitHub Actions]
 difficulty: hard
 ---
 

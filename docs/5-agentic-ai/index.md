@@ -1,7 +1,7 @@
 ---
 title: 'Agentic AI: 개요 & 로드맵'
 date: '2025-10-29'
-tags: [Agentic AI, Guide, Roadmap]
+tags: [Agentic-AI, Guide, Roadmap]
 difficulty: easy
 ---
 

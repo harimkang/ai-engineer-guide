@@ -1,7 +1,11 @@
 ---
 title: '에이전트를 위한 데이터 엔지니어링: 수집, 합성, 품질 관리'
-date: '2025-10-29'
-tags: [Agentic AI, Data Engineering, Synthetic Data, LLMOps]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - Data-Engineering
+  - Synthetic-Data
+  - LLMOps
 difficulty: hard
 ---
 

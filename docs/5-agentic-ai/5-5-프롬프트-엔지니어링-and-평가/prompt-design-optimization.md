@@ -1,7 +1,11 @@
 ---
 title: '프롬프트 설계 및 최적화: 해부학, 패턴, 튜닝, 피드백'
-date: '2025-10-29'
-tags: [Agentic AI, Prompt Engineering, Optimization, Prompt Tuning]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - Prompt-Engineering
+  - Optimization
+  - Prompt-Tuning
 difficulty: medium
 ---
 

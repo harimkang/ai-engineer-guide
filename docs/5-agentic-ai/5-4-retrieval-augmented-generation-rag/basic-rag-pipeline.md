@@ -1,7 +1,7 @@
 ---
 title: '기본 RAG 파이프라인: 청킹, 검색, 재정렬, 생성'
 date: '2025-10-29'
-tags: [Agentic AI, RAG, Pipeline, Chunking, Retrieval]
+tags: [Agentic-AI, RAG, Pipeline, Chunking, Retrieval]
 difficulty: medium
 ---
 

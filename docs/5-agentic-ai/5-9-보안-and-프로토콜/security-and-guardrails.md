@@ -1,7 +1,11 @@
 ---
 title: '보안 & 가드레일: 프롬프트 인젝션, 격리, 권한, 감사'
-date: '2025-10-29'
-tags: [Agentic AI, Security, Guardrails, Prompt Injection]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - Security
+  - Guardrails
+  - Prompt-Injection
 difficulty: hard
 ---
 

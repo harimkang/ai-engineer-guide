@@ -1,7 +1,7 @@
 ---
 title: '컨텍스트 압축 및 관리: Summarization, Clustering, Re-ranking'
 date: '2025-10-29'
-tags: [Agentic AI, Context Management, RAG, Summarization, Re-ranking]
+tags: [Agentic-AI, Context Management, RAG, Summarization, Re-ranking]
 difficulty: hard
 ---
 
@@ -24,19 +24,19 @@ ______________________________________________________________________
 
 ```mermaid
 flowchart TD
-    subgraph 1. 후보군 생성 (Candidate Generation)
+    subgraph candidate["1. 후보군 생성"]
         A[대화 기록] --> C
         B[문서/지식 베이스] --> C{하이브리드 검색}
     end
-    subgraph 2. 필터링 및 재정렬 (Filtering & Re-ranking)
-        C -- "Top-K 후보" --> D[중복 제거 / 관련성 필터링]
-        D -- "필터링된 후보" --> E[Cross-Encoder/LLM 리랭커]
+    subgraph filtering["2. 필터링 및 재정렬"]
+        C -- Top-K 후보 --> D[중복 제거 / 관련성 필터링]
+        D -- 필터링된 후보 --> E[Cross-Encoder/LLM 리랭커]
     end
-    subgraph 3. 압축 및 포맷팅 (Compression & Formatting)
-        E -- "최종 순위" --> F[요약 또는 선택적 추출]
-        F -- "압축된 정보" --> G[프롬프트 템플릿에 맞게 포맷팅]
+    subgraph compression["3. 압축 및 포맷팅"]
+        E -- 최종 순위 --> F[요약 또는 선택적 추출]
+        F -- 압축된 정보 --> G[프롬프트 템플릿에 맞게 포맷팅]
     end
-    subgraph 4. 예산 관리 및 최종 구성 (Budgeting & Final Assembly)
+    subgraph budgeting["4. 예산 관리 및 최종 구성"]
         G --> H{토큰 예산 분배}
         H --> I[최종 컨텍스트 구성]
     end

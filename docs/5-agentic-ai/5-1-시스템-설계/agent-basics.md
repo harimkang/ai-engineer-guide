@@ -1,7 +1,7 @@
 ---
 title: 에이전트 기본 개념 (LLM-based, Autonomous, Goal-driven)
 date: '2025-10-29'
-tags: [Agentic AI, System Design, Basics]
+tags: [Agentic-AI, System Design, Basics]
 difficulty: easy
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: '파인튜닝 & 적응: PEFT(LoRA/QLoRA), SFT, DPO'
 date: '2025-10-29'
-tags: [Agentic AI, LLM, Fine-tuning, LoRA, DPO]
+tags: [Agentic-AI, LLM, Fine-tuning, LoRA, DPO]
 difficulty: hard
 ---
 

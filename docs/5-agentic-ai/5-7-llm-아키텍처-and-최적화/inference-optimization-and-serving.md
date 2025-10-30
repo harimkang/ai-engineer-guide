@@ -1,7 +1,7 @@
 ---
 title: '추론 최적화 & 서빙: 양자화, vLLM, TGI, Ollama'
 date: '2025-10-29'
-tags: [Agentic AI, LLM, Serving, Optimization, vLLM]
+tags: [Agentic-AI, LLM, Serving, Optimization, vLLM]
 difficulty: hard
 ---
 

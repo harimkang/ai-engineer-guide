@@ -1,7 +1,10 @@
 ---
 title: Agentic AI 시스템 설계 개요
-date: '2025-10-29'
-tags: [Agentic AI, System Design, Overview]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - System-Design
+  - Overview
 difficulty: medium
 ---
 
@@ -43,11 +46,14 @@ ______________________________________________________________________
 
 ```mermaid
 graph TD
-    subgraph Multi-Agent System
-        C[Coordinator]
-        R[Researcher]
-        W[Writer]
-        V[Reviewer]
+    subgraph "Multi-Agent System"
+        C[Coordinator] --> R[Researcher]
+        R --> C
+        C --> W[Writer]
+        W --> C
+        C --> V[Reviewer]
+        V --> C
+        C --> W
     end
 
     C -- "리서치 요청" --> R

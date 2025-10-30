@@ -1,7 +1,7 @@
 ---
 title: '메모리 구현 기술: Vector DB, Eviction, 계층적 메모리'
 date: '2025-10-29'
-tags: [Agentic AI, Memory, Vector DB, Eviction, Graph Memory]
+tags: [Agentic-AI, Memory, Vector DB, Eviction, Graph Memory]
 difficulty: hard
 ---
 
@@ -51,9 +51,9 @@ ______________________________________________________________________
 
 ```mermaid
 graph TD
-    D1(Decision: "Use GPT-4") -- caused_by --> F1(Feedback: "GPT-3.5 is too slow")
-    F1 -- came_from --> U1(User: "Alex")
-    D1 -- led_to --> T1(Task: "Refactor agent")
+    D1[Decision: Use GPT-4] -->|caused_by| F1[Feedback: GPT-3.5 is too slow]
+    F1 -->|came_from| U1[User: Alex]
+    D1 -->|led_to| T1[Task: Refactor agent]
 ```
 
 ______________________________________________________________________

@@ -1,7 +1,10 @@
 ---
 title: '주요 구성 요소: Model, Tools, Orchestration, Memory, Evaluator'
-date: '2025-10-29'
-tags: [Agentic AI, Components, Architecture]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - Components
+  - Architecture
 difficulty: medium
 ---
 
@@ -66,14 +69,14 @@ ______________________________________________________________________
 
 ```mermaid
 flowchart TD
-    A[User: "최신 AI 트렌드 요약해줘"] --> B{Orchestrator};
-    B --> C[Router(LLM): '웹 검색' 필요];
-    C --> D[Tool: WebSearch("최신 AI 트렌드")];
-    D -- "검색 결과" --> B;
-    B --> E[Model(LLM): 결과 요약];
-    E -- "요약 초안" --> F{Evaluator};
-    F -- "검증 통과" --> G[Final Output];
-    B -- 모든 과정 기록 --> H[(Memory)];
+    A[User: 최신 AI 트렌드 요약해줘] --> B{Orchestrator}
+    B --> C[Router LLM: 웹 검색 필요]
+    C --> D[Tool: WebSearch]
+    D -- 검색 결과 --> B
+    B --> E[Model LLM: 결과 요약]
+    E -- 요약 초안 --> F{Evaluator}
+    F -- 검증 통과 --> G[Final Output]
+    B -- 모든 과정 기록 --> H[(Memory)]
 ```
 
 ______________________________________________________________________

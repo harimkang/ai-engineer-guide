@@ -1,7 +1,7 @@
 ---
 title: 생각의 사슬 (Chain-of-Thought, CoT)
 date: '2025-10-29'
-tags: [Agentic AI, Reasoning, CoT, Prompt Engineering]
+tags: [Agentic-AI, Reasoning, CoT, Prompt Engineering]
 difficulty: easy
 ---
 

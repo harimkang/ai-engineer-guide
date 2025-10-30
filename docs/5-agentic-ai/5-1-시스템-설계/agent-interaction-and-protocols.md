@@ -1,7 +1,7 @@
 ---
 title: '에이전트 간 상호작용: 패턴과 프로토콜'
 date: '2025-10-29'
-tags: [Agentic AI, Multi-Agent, Protocols, A2A, ACP]
+tags: [Agentic-AI, Multi-Agent, Protocols, A2A, ACP]
 difficulty: hard
 ---
 

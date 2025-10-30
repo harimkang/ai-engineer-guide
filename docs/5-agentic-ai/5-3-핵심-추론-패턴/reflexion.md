@@ -1,7 +1,7 @@
 ---
 title: Reflexion (자기 반성·자기 수정 에이전트)
 date: '2025-10-29'
-tags: [Agentic AI, Reasoning, Reflection, Self-Critique]
+tags: [Agentic-AI, Reasoning, Reflection, Self-Critique]
 difficulty: hard
 ---
 

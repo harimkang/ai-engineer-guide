@@ -1,7 +1,12 @@
 ---
 title: 임베딩 및 벡터 데이터베이스 심화
-date: '2025-10-29'
-tags: [Agentic AI, RAG, Embeddings, Vector DB, HNSW]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - RAG
+  - Embeddings
+  - Vector-DB
+  - HNSW
 difficulty: hard
 ---
 

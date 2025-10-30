@@ -1,7 +1,7 @@
 ---
 title: 생각의 그래프 (Graph-of-Thoughts, GoT)
 date: '2025-10-29'
-tags: [Agentic AI, Reasoning, GoT, Graph Reasoning]
+tags: [Agentic-AI, Reasoning, GoT, Graph Reasoning]
 difficulty: hard
 ---
 

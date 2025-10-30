@@ -1,7 +1,7 @@
 ---
 title: '평가 및 모니터링 (운영): 궤적, 텔레메트리, 대시보드'
 date: '2025-10-29'
-tags: [Agentic AI, AgentOps, Monitoring, Evaluation, Observability]
+tags: [Agentic-AI, AgentOps, Monitoring, Evaluation, Observability]
 difficulty: hard
 ---
 

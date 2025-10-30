@@ -1,7 +1,7 @@
 ---
 title: '표준 통신 프로토콜: A2A, ACP, MCP'
 date: '2025-10-29'
-tags: [Agentic AI, Protocols, MCP]
+tags: [Agentic-AI, Protocols, MCP]
 difficulty: medium
 ---
 

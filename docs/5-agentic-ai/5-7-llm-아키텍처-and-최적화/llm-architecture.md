@@ -1,7 +1,7 @@
 ---
 title: 'LLM 아키텍처 핵심: Transformer, Attention, KV 캐시'
 date: '2025-10-29'
-tags: [Agentic AI, LLM, Architecture, Transformer, Attention]
+tags: [Agentic-AI, LLM, Architecture, Transformer, Attention]
 difficulty: hard
 ---
 

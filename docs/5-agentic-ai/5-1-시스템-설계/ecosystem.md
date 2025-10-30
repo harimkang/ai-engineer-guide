@@ -1,7 +1,7 @@
 ---
 title: '에이전트 생태계: LangGraph, CrewAI, LlamaIndex, MetaGPT 등'
 date: '2025-10-29'
-tags: [Agentic AI, Ecosystem, Frameworks, LangGraph, CrewAI, LlamaIndex]
+tags: [Agentic-AI, Ecosystem, Frameworks, LangGraph, CrewAI, LlamaIndex]
 difficulty: medium
 ---
 

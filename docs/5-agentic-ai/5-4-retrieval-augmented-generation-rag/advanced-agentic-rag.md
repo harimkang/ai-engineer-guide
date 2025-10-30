@@ -1,7 +1,11 @@
 ---
 title: '고급·Agentic RAG: 쿼리 변환, 다중 스텝, 툴 보강'
-date: '2025-10-29'
-tags: [Agentic AI, RAG, Agentic RAG, Query Transformation]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - RAG
+  - Agentic-RAG
+  - Query-Transformation
 difficulty: hard
 ---
 

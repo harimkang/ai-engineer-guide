@@ -1,7 +1,7 @@
 ---
 title: 핵심 추론 패턴
 date: '2025-10-29'
-tags: [Agentic AI, Reasoning, Prompting, CoT, ReAct, ToT, GoT]
+tags: [Agentic-AI, Reasoning, Prompting, CoT, ReAct, ToT, GoT]
 difficulty: easy
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: '에이전트 라이프사이클 운영: CI, 섀도우, 카나리, 롤백'
 date: '2025-10-29'
-tags: [Agentic AI, AgentOps, LLMOps, CI/CD, Canary]
+tags: [Agentic-AI, AgentOps, LLMOps, CI/CD, Canary]
 difficulty: hard
 ---
 

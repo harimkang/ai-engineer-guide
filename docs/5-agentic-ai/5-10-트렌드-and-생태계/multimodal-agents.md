@@ -1,7 +1,7 @@
 ---
 title: '멀티모달 에이전트: 텍스트·비전·오디오 통합'
 date: '2025-10-29'
-tags: [Agentic AI, Multimodal, VLM, Audio]
+tags: [Agentic-AI, Multimodal, VLM, Audio]
 difficulty: medium
 ---
 

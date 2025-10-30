@@ -1,7 +1,7 @@
 ---
 title: '오케스트레이션 & 워크플로우 관리: 멀티-에이전트, 라우팅, 신뢰성 패턴'
 date: '2025-10-29'
-tags: [Agentic AI, AgentOps, Orchestration, Workflow, LangGraph]
+tags: [Agentic-AI, AgentOps, Orchestration, Workflow, LangGraph]
 difficulty: hard
 ---
 

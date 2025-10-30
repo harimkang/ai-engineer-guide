@@ -1,7 +1,11 @@
 ---
 title: 생각의 트리 (Tree-of-Thoughts, ToT)
-date: '2025-10-29'
-tags: [Agentic AI, Reasoning, ToT, Search Algorithms]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - Reasoning
+  - ToT
+  - Search-Algorithms
 difficulty: hard
 ---
 

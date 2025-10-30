@@ -1,7 +1,7 @@
 ---
 title: '인프라 & 툴링: Python 스택, MLOps, 서빙, 관찰 가능성'
 date: '2025-10-29'
-tags: [Agentic AI, Infra, Tooling, MLOps, Observability]
+tags: [Agentic-AI, Infra, Tooling, MLOps, Observability]
 difficulty: hard
 ---
 

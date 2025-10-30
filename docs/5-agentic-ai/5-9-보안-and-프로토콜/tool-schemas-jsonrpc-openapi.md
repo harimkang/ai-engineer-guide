@@ -1,7 +1,11 @@
 ---
 title: '툴 스키마: JSON-RPC & OpenAPI'
-date: '2025-10-29'
-tags: [Agentic AI, Tool Schema, JSON-RPC, OpenAPI]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - Tool-Schema
+  - JSON-RPC
+  - OpenAPI
 difficulty: medium
 ---
 

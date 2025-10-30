@@ -1,7 +1,11 @@
 ---
 title: ReAct (Reason + Act)
-date: '2025-10-29'
-tags: [Agentic AI, Reasoning, Tool Use, ReAct]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - Reasoning
+  - Tool-Use
+  - ReAct
 difficulty: medium
 ---
 

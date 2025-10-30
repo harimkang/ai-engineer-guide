@@ -1,7 +1,7 @@
 ---
 title: '핵심 동작 루프: RPA(Reasoning-Planning-Acting) & Reflection'
 date: '2025-10-29'
-tags: [Agentic AI, RPA, Reasoning, Reflection, ReAct]
+tags: [Agentic-AI, RPA, Reasoning, Reflection, ReAct]
 difficulty: medium
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: '메모리 아키텍처: 단기, 장기, 일화 기억의 조합'
 date: '2025-10-29'
-tags: [Agentic AI, Memory Architecture, Context, RAG]
+tags: [Agentic-AI, Memory Architecture, Context, RAG]
 difficulty: hard
 ---
 
