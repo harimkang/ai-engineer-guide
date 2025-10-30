@@ -27,9 +27,9 @@ Agentic AI의 가장 기본적인 작업 흐름은 다음과 같은 4단계로 �
 ```mermaid
 flowchart TD
     subgraph RPA Loop
-        R[1. Reasoning] --> P[2. Planning]
+        R["1. Reasoning"] --> P["2. Planning"]
         P --> A["3. Acting<br>(Tool Calls)"]
-        A --> O[4. Observation]
+        A --> O["4. Observation"]
     end
     O --> R
 ```

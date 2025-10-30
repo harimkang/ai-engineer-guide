@@ -114,7 +114,7 @@ ______________________________________________________________________
 
 ### Q3. 라우팅 실패 시 안전 장치(Safe Stop)와 대체 경로는 어떻게 설계하는가?
 
-**A.** 라우팅 실패에 대비해 **신뢰도 점수(Confidence Score) 기반의 임계값**을 설정하고, 그 이하일 경우 \*\*미리 정의된 대체 경로(Fallback Path)\*\*를 타도록 설계합니다. 가장 기본적인 대체 경로는 "질문을 명확히 해달라"고 사용자에게 되묻거나, 최종 수단으로 "담당자에게 문의하세요"와 같은 안전한 응답을 반환하는 것입니다.
+**A.** 라우팅 실패에 대비해 **신뢰도 점수(Confidence Score) 기반의 임계값**을 설정하고, 그 이하일 경우 **미리 정의된 대체 경로(Fallback Path)** 를 타도록 설계합니다. 가장 기본적인 대체 경로는 "질문을 명확히 해달라"고 사용자에게 되묻거나, 최종 수단으로 "담당자에게 문의하세요"와 같은 안전한 응답을 반환하는 것입니다.
 
 **\[추가 설명\]**
 
@@ -142,3 +142,4 @@ ______________________________________________________________________
 - [컨텍스트 관리 및 압축 (Context Compression)](../5-2-%EB%A9%94%EB%AA%A8%EB%A6%AC-and-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC/context-compression-management.md)
 - [기본 RAG 파이프라인 (Basic RAG)](../5-4-retrieval-augmented-generation-rag/basic-rag-pipeline.md)
 - [도구 스키마 설계 (Tool Schemas)](../5-9-%EB%B3%B4%EC%95%88-and-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C/tool-schemas-jsonrpc-openapi.md)
+- [오케스트레이션 관리](../5-6-agentops-%EC%9A%B4%EC%98%81-and-%EC%9E%90%EB%8F%99%ED%99%94/orchestration-workflow-management.md)

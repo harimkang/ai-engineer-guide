@@ -1,7 +1,10 @@
 ---
 title: 에이전트 기본 개념 (LLM-based, Autonomous, Goal-driven)
-date: '2025-10-29'
-tags: [Agentic-AI, System Design, Basics]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - System-Design
+  - Basics
 difficulty: easy
 ---
 
@@ -9,7 +12,7 @@ difficulty: easy
 
 ## 1. 핵심 개념 (Core Concept)
 
-LLM을 \*\*"사고의 엔진"\*\*으로 사용하는 AI 에이전트는, 주어진 목표를 달성하기 위해 **스스로 계획하고, 다양한 도구를 사용하며, 주변 환경과 상호작용**하는 자율적인 소프트웨어입니다. 이는 단순히 질문에 답하는 챗봇을 넘어, 명확한 **목표 지향성(Goal-driven)** 과 **도구 사용 능력(Tool-augmented)** 을 갖춘 문제 해결사(Problem-solver)에 가깝습니다.
+LLM을 **사고의 엔진**으로 사용하는 AI 에이전트는, 주어진 목표를 달성하기 위해 **스스로 계획하고, 다양한 도구를 사용하며, 주변 환경과 상호작용**하는 자율적인 소프트웨어입니다. 이는 단순히 질문에 답하는 챗봇을 넘어, 명확한 **목표 지향성(Goal-driven)** 과 **도구 사용 능력(Tool-augmented)** 을 갖춘 문제 해결사(Problem-solver)에 가깝습니다.
 
 ![Agent Components](../../images/agent-components-new.png)
 
