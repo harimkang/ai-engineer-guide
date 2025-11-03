@@ -20,7 +20,27 @@ ______________________________________________________________________
 
 ## 2. RAG 파이프라인 5단계
 
-### 2.1 1단계: 데이터 수집 및 전처리 (Data Ingestion & Preprocessing)
+```mermaid
+flowchart TD
+    subgraph Indexing
+        A["데이터 수집"] --> B["전처리"]
+        B --> C["청킹(chunking)"]
+        C --> D["임베딩(embedding)"]
+        D --> E["벡터DB 저장"]
+    end
+
+    subgraph Retrieval
+        F["사용자 입력(query)"] --> G["쿼리 임베딩"]
+        G --> H["벡터 유사도 검색"]
+        H --> I["결과 필터링 / 재정렬"]
+        I --> J["컨텍스트 조립"]
+        J --> K["LLM 응답 생성"]
+    end
+
+    E --> H
+```
+
+### 2.1 1단계: 데이터 수집 및 전처리 (Data Ingestion & Preprocessing/Parsing)
 
 - **목적**: 다양한 포맷의 원본 문서들을 일관된 텍스트 형태로 변환합니다.
 - **주요 작업**: HTML 태그 제거, PDF에서 텍스트 추출, 머리말/꼬리말/중복 내용 제거, 문서의 제목이나 출처 등 메타데이터 추출 및 보존.

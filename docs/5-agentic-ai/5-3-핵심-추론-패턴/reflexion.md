@@ -5,13 +5,12 @@ tags: [Agentic-AI, Reasoning, Reflection, Self-Critique]
 difficulty: hard
 ---
 
-# Reflexion (자기 반성 및 수정)
+# Reflexion/Reflection (자기 반성 및 수정)
 
 ## 1. 핵심 개념 (Core Concept)
 
 Reflexion은 에이전트가 단순히 실패를 반복하는 것을 넘어, **스스로의 실패 경험으로부터 배우고 다음 행동을 개선**하게 하는 자기 수정(Self-correction) 패턴입니다. 이는 에이전트에게 '메타인지(Metacognition)' 능력을 부여하는 것으로, **평가(Evaluation)** 단계에서 행동의 결과를 판단하고, **성찰(Reflection)** 단계에서 실패의 원인을 분석하여 다음 계획에 반영하는 '내부 피드백 루프'를 통해 구현됩니다. 이는 마치 사람이 실수를 통해 배우는 과정과 같습니다.
 
-*Note: 아래 다이어그램을 위한 이미지를 `docs/images/reflexion-pattern-diagram.png` 에 추가해주세요.*
 ![Reflexion Pattern Diagram](../../images/reflexion-pattern-diagram.png)
 
 ______________________________________________________________________
@@ -105,3 +104,9 @@ ______________________________________________________________________
 1. **자원 예산 (Resource Budget)**: 작업 전체에 대한 최대 비용(LLM/Tool API 사용료)이나 최대 실행 시간을 설정하고, 이 한도를 초과하면 즉시 중단시킵니다.
 1. **진행 상황 정체 감지 (Progress Detection)**: 에이전트가 매번 다른 행동을 하지만, 최종 목표에는 전혀 가까워지지 않는 경우가 있습니다. 평가자가 단순히 성공/실패뿐만 아니라, '목표에 얼마나 가까워졌는가'를 점수화하고, 이 점수가 여러 번의 시도에도 불구하고 개선되지 않으면 루프를 중단시킵니다.
 1. **사이클 감지 (Cycle Detection)**: 에이전트가 수행한 (행동, 관찰) 쌍을 기록해두고, 동일한 패턴이 반복되면 루프에 빠졌다고 간주하고 중단시킬 수도 있습니다.
+
+______________________________________________________________________
+
+## 5. 더 읽어보기 (Further Reading)
+
+- image: https://blog.langchain.com/reflection-agents/

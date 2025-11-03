@@ -44,7 +44,6 @@ flowchart TD
   1. **교훈 저장 (Memory Update)**: 실패 원인과 해결책에 대한 교훈을 일화적 메모리(Episodic Memory)에 저장합니다.
   1. **계획 수정 (Plan Revision)**: 저장된 교훈을 바탕으로 기존 계획을 수정하여 다음 시도에서는 다른 접근법을 사용합니다. (예: "더 일반적인 검색어로 다시 시도하자.")
 
-*Note: 아래 다이어그램을 위한 이미지를 `docs/images/agent-rpa-reflection-loop.png` 에 추가해주세요.*
 ![RPA & Reflection Loop](../../images/agent-rpa-reflection-loop.png)
 
 ### 2.3 안정적인 루프를 위한 Pseudocode
@@ -146,6 +145,7 @@ ______________________________________________________________________
 
 - [Building effective agents (Anthropic)](/docs/references/anthropic/building-effective-agents.md)
 - [Agents Companion (Google)](/docs/references/google/Agents_Companion_v2.pdf)
+- [Reflection Agents (LangChain)](https://blog.langchain.com/reflection-agents/)
 
 ______________________________________________________________________
 

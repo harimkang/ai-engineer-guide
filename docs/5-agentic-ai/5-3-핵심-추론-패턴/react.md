@@ -15,7 +15,6 @@ difficulty: medium
 
 ReAct는 LLM에게 **추론(Reason)** 과 **행동(Act)** 을 번갈아 수행하도록 하여, 외부 도구와의 상호작용을 통해 지식을 확장하고 주어진 과업을 해결해나가는 동적인 추론 패턴입니다. 이는 마치 사람이 문제를 풀 때, '생각'을 하고, 부족한 정보를 얻기 위해 책을 찾아보는 '행동'을 한 뒤, 얻은 정보를 바탕으로 다시 '생각'을 이어가는 과정과 같습니다. ReAct는 CoT의 순수 추론 능력을 넘어, 에이전트에게 **'손과 발(도구)'** 을 달아주는 핵심적인 패턴입니다.
 
-*Note: 아래 다이어그램을 위한 이미지를 `docs/images/react-loop-diagram.png` 에 추가해주세요.*
 ![ReAct Loop Diagram](../../images/react-loop-diagram.png)
 
 ______________________________________________________________________
@@ -111,6 +110,7 @@ ______________________________________________________________________
 
 - [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)
 - [A Practical Guide to Building Agents (OpenAI)](/docs/references/openai/a-practical-guide-to-building-agents-3.pdf)
+- image: https://peterroelants.github.io/posts/react-repl-agent/
 
 ______________________________________________________________________
 

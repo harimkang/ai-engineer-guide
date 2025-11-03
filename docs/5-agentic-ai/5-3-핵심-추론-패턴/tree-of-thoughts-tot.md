@@ -15,8 +15,7 @@ difficulty: hard
 
 Tree-of-Thoughts (ToT)는 단일 추론 경로(CoT)에 의존하는 대신, **여러 가능한 해결 경로를 트리(Tree) 형태로 동시에 탐색**하고 각 경로의 유효성을 평가하여 최적의 해결책을 찾아내는 고급 추론 패턴입니다. 이는 마치 체스 선수가 여러 가능한 수를 두고, 각 수에 대한 다음 몇 수를 미리 내다본 뒤 가장 유리한 수를 선택하는 것과 같습니다. ToT는 복잡하고 정답이 명확하지 않은 문제에서 잘못된 경로에 빠질 위험을 줄이고, 더 창의적이거나 견고한 해결책을 찾는 데 강점을 가집니다.
 
-*Note: 아래 다이어그램을 위한 이미지를 `docs/images/tree-of-thoughts-diagram.png` 에 추가해주세요.*
-![Tree of Thoughts Diagram](../../images/tree-of-thoughts-diagram.png)
+![Tree of Thoughts Diagram](../../images/tree-of-thoughts-diagram.webp)
 
 ______________________________________________________________________
 
@@ -110,6 +109,7 @@ ______________________________________________________________________
 ## 5. 더 읽어보기 (Further Reading)
 
 - [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](https://arxiv.org/abs/2305.10601)
+- image: https://arxiv.org/abs/2305.10601
 
 ______________________________________________________________________
 

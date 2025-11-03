@@ -17,14 +17,80 @@ ______________________________________________________________________
 
 ### 2.1 A2A와 ACP: 상호작용의 원리와 규칙
 
-- **A2A (Agent-to-Agent) 상호작용**: 여러 에이전트가 정보를 교환하고 협력하는 행위 자체를 의미하는 광의의 개념입니다. 이는 마치 팀원들이 서로 대화하며 일하는 것과 같습니다.
-- **ACP (Agent Communication Protocol)**: A2A 상호작용이 원활하게 이루어지도록 하는 표준화된 '언어와 규칙'입니다. ACP는 메시지 형식, 상태 공유 방법, 역할 분배 규칙 등을 정의하여, 어떤 에이전트든 이 규약만 따르면 시스템에 참여하고 협업할 수 있도록 보장합니다. 즉, **ACP는 확장 가능한 A2A를 위한 기술적 기반**입니다.
+#### 2.1.1 **A2A (Agent-to-Agent Protocol)**
+
+**정의 및 목적**
+
+- A2A는 Google 등이 주도한 오픈 프로토콜로, 서로 다른 프레임워크나 벤더에서 개발된 AI 에이전트들이 **상호 운용(interoperate)** 할 수 있도록 설계되었습니다. [Google Codelabs+3구글 개발자 블로그+3solo.io+3](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/?utm_source=chatgpt.com)
+- 에이전트 간의 통신, 작업 위임(task delegation), 협업(collaboration)을 가능하게 하여 복잡한 엔터프라이즈 워크플로우를 자동화하려는 목적이 있습니다. [ibm.com+2구글 개발자 블로그+2](https://www.ibm.com/think/topics/agent2agent-protocol?utm_source=chatgpt.com)
+
+**핵심 원리 및 규칙**
+
+1. **Agent Card 및 Capabilities 접근**
+
+   - 각 에이전트는 자신의 정체성(identity), 기능(capabilities), 엔드포인트(endpoints), 인증(auth) 요구사항 등을 기술한 “Agent Card”라는 메타데이터를 JSON 형태로 제공함. [구글 개발자 블로그+2solo.io+2](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/?utm_source=chatgpt.com)
+   - 이를 통해 다른 에이전트가 “어떤 기능을 가진 에이전트인가?”, “이 에이전트는 어떤 작업을 맡을 수 있는가?”를 발견(discovery)하고 선택할 수 있음. [Medium+1](https://medium.com/%40elisowski/what-every-ai-engineer-should-know-about-a2a-mcp-acp-8335a210a742?utm_source=chatgpt.com)
+
+1. **작업(Task) 기반 메시징 및 라이프사이클 관리**
+
+   - A2A에서는 상호작용을 “작업(task)” 단위로 정의하며, 각 작업은 시작(start) → 실행(execution) → 완료(completion) 또는 중단(abort) 등의 상태(state)를 가짐. [Medium+1](https://medium.com/ai-cloud-lab/building-multi-agent-ai-app-with-googles-a2a-agent2agent-protocol-adk-and-mcp-a-deep-a94de2237200?utm_source=chatgpt.com)
+   - 작업의 결과물은 “아티팩트(artifact)”라고 불리며, 에이전트 간에 교환될 수 있는 데이터 또는 생성물임. [구글 개발자 블로그+1](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/?utm_source=chatgpt.com)
+
+1. **보안·상태관리·장기 실행 지원**
+
+   - A2A의 설계 원칙에는 “Secure by default”, “Support for long-running tasks”, “Capability discovery” 등이 포함되어 있음. [구글 개발자 블로그+1](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/?utm_source=chatgpt.com)
+   - HTTP, JSON-RPC, Server-Sent Events (SSE) 같은 기존 웹/서비스 표준을 기반으로 설계되어 기존 인프라와의 통합을 용이하게 함. [구글 개발자 블로그+1](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/?utm_source=chatgpt.com)
+
+1. **상호작용 방식**
+
+   - 에이전트 간 메시지 교환: 작업 위임, 상태 업데이트, 아티팩트 공유
+   - 에이전트 검색 및 선택: Agent Card 기반
+   - 동적 라우팅: 작업을 어느 에이전트가 수행할지 선택하고 위임 가능
+   - 비동기 및 장기 실행: 사용자가 개입하는 작업이나 여러 단계에 걸친 워크플로우 지원
+
+**적합한 사용 맥락**
+
+- 다양한 벤더, 다양한 플랫폼에서 독립적으로 개발된 에이전트들이 **협업**해야 하는 환경
+- 운영 및 유지보수가 복잡한 대규모 멀티에이전트 시스템
+- 에이전트 간 **경계(bounded-context)** 가 명확하고 독립적으로 설계됨
+
+______________________________________________________________________
+
+#### 2.1.2 **ACP (Agent Communication Protocol)**
+
+**정의 및 목적**
+
+- ACP는 IBM Research가 개발한 오픈 프로토콜로, 다양한 프레임워크, 기술 스택으로 개발된 인공지능 에이전트들이 **공통의 언어(shared language)** 로 커뮤니케이션할 수 있도록 설계됨. [ibm.com+1](https://www.ibm.com/think/topics/agent-communication-protocol?utm_source=chatgpt.com)
+- 특히 단일 플랫폼 또는 엣지(edge) 환경, 리소스 제약이 있는 환경에서의 에이전트 간 통신에 초점을 두고 있음. [Everest Group](https://www.everestgrp.com/uncategorized/the-rise-of-agent-protocols-exploring-mcp-a2a-and-acp-blog.html?utm_source=chatgpt.com)
+
+**핵심 원리 및 규칙**
+
+1. **프레임워크 중립 통신 포맷**
+
+   - ACP는 에이전트 간 메시징을 위한 공통 “wire format”을 정의하며, 이로써 서로 다른 프레임워크간 에이전트도 원활히 통신 가능함. [workos.com+1](https://workos.com/blog/ibm-agent-communication-protocol-acp?utm_source=chatgpt.com)
+   - 스트리밍(streaming), 비동기(asynchronous) 실행, 상태 유지(memory) 기능 등이 중심 고려사항으로 등장함. [Niklas Heidloff](https://heidloff.net/article/mcp-acp-a2a-agent-protocols/?utm_source=chatgpt.com)
+
+1. **에이전트 간 컨텍스트 공유 및 협업**
+
+   - ACP는 에이전트끼리 대화(dialogue)하거나 정보를 주고받으며, 공동작업(joint task)을 수행할 수 있게 설계됨. [IBM Research](https://research.ibm.com/blog/agent-communication-protocol-ai?utm_source=chatgpt.com)
+   - 공유된 컨텍스트(context)와 항상 사용자/도구 중심이 아닌 에이전트 중심의 상호작용을 강조함.
+
+1. **발견(Discovery) 및 메타데이터 지원**
+
+   - A2A처럼 “Agent Card” 방식이 아닌, ACP는 에이전트 메타데이터(metadata)가 직접 에이전트 데코레이터(decorator)나 레지스트리(registry)를 통해 제공되며, 에이전트 검색/결합(discovery) 방식이 약간 다름. [Medium+1](https://medium.com/%40sandibesen/an-unbiased-comparison-of-mcp-acp-and-a2a-protocols-0b45923a20f3?utm_source=chatgpt.com)
+
+1. **적합한 사용 맥락**
+
+   - 동일 플랫폼 내 또는 조직 내부에서 다수의 에이전트들이 협업할 때
+   - 리얼타임(real-time) 또는 엣지 컴퓨팅(edge) 제약이 있는 환경
+   - 프레임워크 종속성이 높으나 내부 통신 표준화가 필요한 경우
+
+자세한 내용은 [Standard Protocols](../5-9-%EB%B3%B4%EC%95%88-and-%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C/standard-protocols-a2a-acp-mcp.md) 에서 이어서 계속하겠습니다.
 
 ### 2.2 주요 협업 패턴 (Collaboration Patterns)
 
 어떤 문제를 해결하느냐에 따라 다양한 협업 패턴을 적용할 수 있습니다.
 
-*Note: 아래 다이어그램을 위한 이미지를 `docs/images/multi-agent-collaboration-patterns.png` 에 추가해주세요.*
 ![Multi-Agent Collaboration Patterns](../../images/multi-agent-collaboration-patterns.png)
 
 #### 1. 코디네이터-워커 패턴 (Coordinator-Worker)
@@ -84,13 +150,30 @@ ______________________________________________________________________
 
 ### Q1. A2A와 ACP의 차이와 보완 관계는 무엇인가?
 
-**A.** A2A(Agent-to-Agent)는 에이전트 간의 **상호작용 행위 자체**를 의미하는 개념적인 용어인 반면, ACP(Agent Communication Protocol)는 그 상호작용이 어떻게 이루어져야 하는지를 정의하는 **구체적인 기술 규약**입니다. ACP는 A2A를 표준화하여, 서로 다른 개발자가 만든 에이전트들도 안정적으로 협업할 수 있는 확장 가능한 시스템을 만들도록 보완하는 관계입니다.
+A. **A2A (Agent-to-Agent Protocol)** 는 다양한 벤더 및 프레임워크에서 개발된 AI 에이전트들이 **상호 운용(interoperate)** 할 수 있도록 설계된 개방형 오픈 프로토콜입니다. [구글 개발자 블로그+2solo.io+2](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/?utm_source=chatgpt.com)\
+주요 특징으로는 에이전트 간 기능 발견(capability discovery), 작업(task) 위임(delegate), 장기 실행(long-running tasks) 지원 등이 있습니다. [solo.io+1](https://www.solo.io/topics/ai-infrastructure/what-is-a2a?utm_source=chatgpt.com)
+
+**ACP (Agent Communication Protocol)** 는 다양한 프레임워크나 기술 스택에 걸쳐 개발된 에이전트들이 **공통의 통신 메커니즘(shared messaging interface)** 을 통해 상호작용할 수 있게 설계된 오픈 프로토콜입니다. [agentcommunicationprotocol.dev+2IBM Research+2](https://agentcommunicationprotocol.dev/?utm_source=chatgpt.com)\
+특징으로는 동기 및 비동기 통신, 스트리밍, 상태 유지(stateful)/무상태(stateless) 지원, 다양한 콘텐츠 유형(텍스트, 파일, 미디어 등) 교환 등이 있습니다. [IBM Research+1](https://research.ibm.com/blog/agent-communication-protocol-ai?utm_source=chatgpt.com)
+
+**차이점 및 보완관계**
+
+- **차이점**: A2A는 에이전트 간 협업(collaboration)과 상호 운용(inter-agent across vendors/frameworks)에 초점을 맞춘 반면, ACP는 에이전트 간 통신(communication) 및 메시징 수준에 초점을 둔 프로토콜입니다.
+
+- **보완관계**: 두 프로토콜은 경쟁 관계가 아니라 상호보완적(complementary)입니다. 예컨대, A2A가 다양한 에이전트들이 협업하도록 연결하면, 내부적으로 ACP 같은 통신 표준을 활용해 메시지를 주고받을 수 있습니다. [Niklas Heidloff+1](https://heidloff.net/article/mcp-acp/?utm_source=chatgpt.com)
+
+따라서, 멀티에이전트 시스템을 설계할 때 “에이전트 간 연결과 협업”을 위해 A2A를 사용하고, “에이전트 간 메시징과 통신 인터페이스”를 위해 ACP를 고려하는 것이 바람직합니다.
 
 **\[추가 설명\]**
 
-- **A2A (Agent-to-Agent)**: '무엇'에 해당합니다. '리서처' 에이전트가 '작성자' 에이전트에게 정보를 전달하는 것과 같은 협업의 원리 그 자체를 말합니다. 이 방식은 특정 에이전트들끼리만 통하는 비공식적이고 폐쇄적인 구조일 수 있습니다.
-- **ACP (Agent Communication Protocol)**: '어떻게'에 해당합니다. 웹에서 HTTP가 브라우저와 서버 간의 통신을 표준화하듯, ACP는 에이전트 간의 메시지 형식, 상태 코드, 역할 정의 등을 표준화합니다.
-- **보완 관계**: A2A는 목표, ACP는 그 목표를 달성하기 위한 수단입니다. ACP라는 표준 규약이 있어야만, 특정 에이전트에 종속되지 않는 개방적이고 유연한 멀티-에이전트 생태계(A2A)를 구축할 수 있습니다.
+- A2A 문서에서는 “agents do not need to share tools, memory or internal state”라는 원칙을 제시하고 있으며, 이는 각 에이전트가 독립적인 내부 설계를 유지하면서도 외부적으로는 표준화된 인터페이스로 협업할 수 있음을 의미합니다. [구글 개발자 블로그+1](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/?utm_source=chatgpt.com)
+- ACP 문서에서는 “ACP is now part of A2A under the Linux Foundation”라는 업데이트가 발표되어 있어, 두 프로토콜이 향후 생태계 차원에서 통합되거나 더욱 밀접하게 연계될 가능성도 있음을 시사합니다. [agentcommunicationprotocol.dev+1](https://agentcommunicationprotocol.dev/?utm_source=chatgpt.com)
+- 실제 시스템에서는 다음과 같은 순서로 프로토콜을 적용하는 모델이 제안됩니다:
+  1. 에이전트가 도구(tool)나 외부 리소스와 상호작용할 때 MCP( Model Context Protocol )를 사용합니다. [Auth0+1](https://auth0.com/blog/mcp-vs-a2a/?utm_source=chatgpt.com)
+  1. 에이전트 간 메시징/통신이 필요할 때 ACP를 적용합니다.
+  1. 에이전트 간 협업 및 업무 위임이 필요할 때 A2A를 활용합니다.
+
+이처럼 A2A와 ACP의 차이 및 보완 관계를 이해하면, 멀티에이전트 아키텍처 설계 시 어느 계층에서 어떤 프로토콜을 적용해야 할지 명확해집니다.
 
 ### Q2. 멀티-에이전트가 단일-에이전트 대비 유리한 과제는 무엇인가?
 

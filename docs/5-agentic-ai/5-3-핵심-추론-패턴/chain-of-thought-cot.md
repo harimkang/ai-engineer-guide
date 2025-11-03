@@ -1,7 +1,11 @@
 ---
 title: 생각의 사슬 (Chain-of-Thought, CoT)
-date: '2025-10-29'
-tags: [Agentic-AI, Reasoning, CoT, Prompt Engineering]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - Reasoning
+  - CoT
+  - Prompt-Engineering
 difficulty: easy
 ---
 
@@ -11,8 +15,7 @@ difficulty: easy
 
 Chain-of-Thought (CoT)는 LLM에게 최종 답변만 요구하는 대신, **문제 해결을 위한 중간 추론 과정을 단계별로 생각하고 설명하도록 유도**하는 프롬프팅 기법입니다. 복잡한 문제를 작은 단계로 분해함으로써, 모델이 보다 정확하고 논리적인 결론에 도달하게 하며, 답변의 근거를 투명하게 만들어 신뢰도를 높입니다. 이는 마치 사람이 수학 문제를 풀 때 계산 과정을 순서대로 적는 것과 같습니다.
 
-*Note: 아래 다이어그램을 위한 이미지를 `docs/images/chain-of-thought-diagram.png` 에 추가해주세요.*
-![Chain of Thought Diagram](../../images/chain-of-thought-diagram.png)
+![Chain of Thought Diagram](../../images/chain-of-thought.webp)
 
 ______________________________________________________________________
 
@@ -130,3 +133,4 @@ ______________________________________________________________________
 
 - [Prompt Engineering Guide (Google)](/docs/references/google/Prompt%20Engineering_v7.pdf)
 - [A Practical Guide to Building Agents (OpenAI)](/docs/references/openai/a-practical-guide-to-building-agents-3.pdf)
+- Image: https://cobusgreyling.medium.com/the-anatomy-of-chain-of-thought-prompting-cot-b7489c925402

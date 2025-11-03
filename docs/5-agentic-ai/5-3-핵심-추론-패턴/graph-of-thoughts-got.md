@@ -1,7 +1,11 @@
 ---
 title: 생각의 그래프 (Graph-of-Thoughts, GoT)
-date: '2025-10-29'
-tags: [Agentic-AI, Reasoning, GoT, Graph Reasoning]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - Reasoning
+  - GoT
+  - Graph-Reasoning
 difficulty: hard
 ---
 
@@ -11,7 +15,6 @@ difficulty: hard
 
 Graph-of-Thoughts (GoT)는 LLM의 추론 과정을 **노드(생각)와 엣지(관계)로 구성된 동적인 그래프**로 모델링하는 가장 발전된 추론 패턴입니다. 선형적인 CoT나 분기만 가능한 ToT와 달리, GoT는 **여러 추론 경로를 하나로 합치거나(Merge/Aggregate), 특정 생각을 다시 방문하여 개선(Cycle/Refine)** 할 수 있습니다. 이 유연한 구조 덕분에 여러 가설을 종합하고, 모순을 해결하며, 점진적으로 생각을 발전시키는 복잡한 문제 해결에 매우 강력합니다.
 
-*Note: 아래 다이어그램을 위한 이미지를 `docs/images/graph-of-thoughts-structure.png` 에 추가해주세요.*
 ![Graph of Thoughts Structure](../../images/graph-of-thoughts-structure.png)
 
 ______________________________________________________________________

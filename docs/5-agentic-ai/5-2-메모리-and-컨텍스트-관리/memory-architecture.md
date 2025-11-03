@@ -1,7 +1,11 @@
 ---
 title: '메모리 아키텍처: 단기, 장기, 일화 기억의 조합'
-date: '2025-10-29'
-tags: [Agentic-AI, Memory Architecture, Context, RAG]
+date: 2025-10-29
+tags:
+  - Agentic-AI
+  - Memory-Architecture
+  - Context
+  - RAG
 difficulty: hard
 ---
 
@@ -10,9 +14,6 @@ difficulty: hard
 ## 1. 핵심 개념 (Core Concept)
 
 에이전트의 메모리 아키텍처는 인간의 기억 방식을 모방하여, **단기 기억(Short-term), 장기 기억(Long-term), 일화 기억(Episodic Memory)** 이라는 세 가지 유형의 메모리를 유기적으로 조합합니다. 각 메모리는 서로 다른 목적과 저장 방식을 가지며, 에이전트가 대화의 맥락을 이해하고, 지식을 활용하며, 경험으로부터 학습하게 하는 핵심 요소입니다. 결국 메모리 아키텍처의 목표는 **"무엇을, 언제, 어떻게 기억하고 잊을 것인가"** 를 설계하는 것입니다.
-
-*Note: 아래 다이어그램을 위한 이미지를 `docs/images/agent-memory-architecture.png` 에 추가해주세요.*
-![Agent Memory Architecture](../../images/agent-memory-architecture.png)
 
 ______________________________________________________________________
 

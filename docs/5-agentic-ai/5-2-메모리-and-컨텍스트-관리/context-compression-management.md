@@ -13,8 +13,7 @@ LLM의 컨텍스트 창(Context Window)은 한정된 작업 공간입니다. 아
 
 - **핵심 비유(Analogy)**: LLM의 컨텍스트 창을 '시험 볼 때의 책상'에 비유할 수 있습니다. 책상 크기는 한정되어 있는데, 도서관(DB/지식 베이스)의 모든 책을 올려둘 수는 없습니다. 따라서 가장 핵심적인 내용만 요약한 '요약 노트'(Summarization)를 만들고, 관련성이 높은 페이지만 '포스트잇'(Retrieval)으로 표시하며, 그중에서도 가장 중요한 순서대로(Re-ranking) 책상 위에 배치하여 문제를 푸는 것과 같습니다.
 
-*Note: 아래 다이어그램을 위한 이미지를 `docs/images/context-engineering-pipeline.png` 에 추가해주세요.*
-![Context Engineering Pipeline](../../images/context-engineering-pipeline.png)
+![Context Engineering Pipeline](../../references/anthropic/images/effective-context-engineering-1.webp)
 
 ______________________________________________________________________
 
@@ -48,8 +47,8 @@ ______________________________________________________________________
 
 ### 3.1 하이브리드 검색 (Hybrid Search)
 
-- **목적**: 키워드 검색과 벡터 검색의 장점을 결합하여 검색 성능(Recall)을 극대화합니다.
-- **방법**: BM25와 같은 키워드 기반 검색으로 특정 용어(예: 제품 ID, 인물 이름)를 정확히 찾아내고, 벡터 검색으로 의미적/개념적으로 유사한 문서를 찾아냅니다. 두 검색 결과를 합친 후, Reciprocal Rank Fusion (RRF)과 같은 알고리즘으로 순위를 재조합하여 초기 후보군을 생성합니다.
+- **목적**: 키워드 검색 (Keyword Search)과 벡터 검색(Vector Search)의 장점을 결합하여 검색 성능(Recall)을 극대화합니다.
+- **방법**: BM25 ([Best Matching 25](https://en.wikipedia.org/wiki/Okapi_BM25?utm_source=chatgpt.com)) 와 같은 키워드 기반 검색으로 특정 용어(예: 제품 ID, 인물 이름)를 정확히 찾아내고, 벡터 검색으로 의미적/개념적으로 유사한 문서를 찾아냅니다. 두 검색 결과를 합친 후, Reciprocal Rank Fusion (RRF)과 같은 알고리즘으로 순위를 재조합하여 초기 후보군을 생성합니다.
 
 ### 3.2 리랭킹 (Re-ranking)
 
@@ -80,7 +79,7 @@ ______________________________________________________________________
 
 ### Q1. 하이브리드 검색이 왜 필요하며, 검색 결과의 임계값(threshold)은 어떻게 설정하는 것이 좋은가?
 
-**A.** 하이브리드 검색은 \*\*키워드 검색의 '정확성'\*\*과 \*\*벡터 검색의 '의미적 확장성'\*\*을 결합하여, 어느 한쪽만 사용했을 때 발생하는 검색 실패를 보완하기 위해 필요합니다. 임계값은 고정 값보다는, **1단계에서는 후보군을 넓게 수집(높은 Recall)하고 2단계에서 정밀하게 순위를 매기는(높은 Precision) 2단계 전략**을 사용하는 것이 효과적입니다.
+**A.** 하이브리드 검색은 **키워드 검색의 '정확성'** 과 **벡터 검색의 '의미적 확장성'** 을 결합하여, 어느 한쪽만 사용했을 때 발생하는 검색 실패를 보완하기 위해 필요합니다. 임계값은 고정 값보다는, **1단계에서는 후보군을 넓게 수집(높은 Recall)하고 2단계에서 정밀하게 순위를 매기는(높은 Precision) 2단계 전략**을 사용하는 것이 효과적입니다.
 
 **\[추가 설명\]**
 
@@ -121,6 +120,22 @@ ______________________________________________________________________
   - **개선**: 요약 모델을 직접 파인튜닝하거나, "3개의 불렛 포인트로, 각 불렛 포인트는 20단어 이내로 요약해줘" 와 같이 구체적인 지시사항과 예시를 담아 프롬프트를 엔지니어링하는 것이 효과적입니다.
 
 - **공통**: 오프라인 평가에서 가장 성능이 좋은 모델이나 프롬프트를 선정한 뒤, 실제 사용자 트래픽의 일부를 대상으로 A/B 테스트를 진행하여 최종적으로 사용자 만족도나 다운스트림 태스크 성공률이 더 높은 쪽을 선택합니다.
+
+#### NDCG: Normalized Discounted Cumulative Gain
+
+##### 핵심 개념
+
+- NDCG는 단순히 얼마나 ‘관련 있는 문서’를 돌려주었는가뿐 아니라, **얼마나 관련 있는 문서가 상단에 배치되었는가**를 평가함. [Coralogix+2Arize AI+2](https://coralogix.com/ai-blog/a-practical-guide-to-normalized-discounted-cumulative-gain-ndcg/?utm_source=chatgpt.com)
+- “관련성(Relevance)”에는 이진(관련 / 비관련) 뿐 아니라 등급(예: 매우 관련 = 3점, 보통 관련 = 2점, 조금 관련 = 1점) 등의 \*\*등급화된 레이블(graded relevance)\*\*이 사용될 수 있음. [위키백과+1](https://en.wikipedia.org/wiki/Discounted_cumulative_gain?utm_source=chatgpt.com)
+- 결과 리스트의 상단(rank가 낮은 위치일수록 상단)에 **높은 관련성 문서가 배치되면 좋은 점수**가 나옴. 반대로 관련 문서가 뒤쪽에 배치되면 페널티가 있음. [evidentlyai.com+1](https://www.evidentlyai.com/ranking-metrics/ndcg-metric?utm_source=chatgpt.com)
+- 다양한 쿼리마다 결과 리스트 길이나 관련 문서 수가 다르기 때문에, 단순한 누적 점수(Cumulative Gain, CG) 대신 **정규화(Normalized)** 된 형태가 사용됨 → NDCG. [위키백과+1](https://en.wikipedia.org/wiki/Discounted_cumulative_gain?utm_source=chatgpt.com)
+
+#### ROUGE: Recall-Oriented Understudy for Gisting Evaluation
+
+##### 핵심 개념
+
+- ROUGE는 자동 요약(automatic summarization)이나 기계 번역(machine translation) 같은 자연어 처리(NLP) 작업에서, **모델이 생성한 텍스트(candidate summary or translation)** 와 **사람이 만든 기준 텍스트(reference summary/translation)** 사이의 유사도를 측정하기 위한 평가 지표임. [위키백과+2freecodecamp.org+2](https://en.wikipedia.org/wiki/ROUGE_%28metric%29?utm_source=chatgpt.com)
+- 이 지표는 특히 요약된 텍스트가 얼마나 원문이나 기준 텍스트의 중요한 내용을 포괄했는가(coverage)를 평가하는 데 초점을 맞춤.
 
 ______________________________________________________________________
 
